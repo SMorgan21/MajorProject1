@@ -1,0 +1,32 @@
+#login{
+  margin-top: 100px;
+}
+#register{
+  margin-top: 100px;
+}
+#fawLogo{
+  max-width: 50%;
+  height: auto;
+}
+#fawLogo1{
+  max-width: 20%;
+  height: auto;
+  padding-bottom: 50px;
+}
+#regContainer{
+  padding: 50px;
+  border-style: solid;
+  border-color: #E11A22;
+  border-width: 2px;
+  border-radius: 25px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #d5d8dc;
+}
+#status{
+  max-width: 10%;
+  height: auto;
+}
+body{
+  padding-bottom: 50px;
+}
