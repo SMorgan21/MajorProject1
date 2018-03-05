@@ -6,17 +6,18 @@ if (isset($_POST["forgotPassword"])) {
   $data = $dbcon->query("SELECT id FROM refDetails Where email='$email'");
 
   if ($data->num_rows > 0) {
-    $string = "0987654321zxcvbnmpoiuytrewqasdfghjkl"; //random characters
-    $string = str_shuffle($string);//shuffle the random characters
-    $string = substr($string, 0, 10);//creates a string between 0 and 15 characters from the random characters
-    $url = "http://localhost/MajorProject/resetPassword.php?token=$string&email=$email";
+    $token = "0987654321zxcvbnmpoiuytrewqasdfghjkl"; //random characters
+    $token = str_shuffle($token);//shuffle the random characters
+    $token = substr($token, 0, 10);//creates a string between 0 and 15 characters from the random characters
+    $url = "http://localhost/MajorProject/php/resetPassword.php?token=$token&email=$email";
 
     //mail($email, "Reset Password", "To reset your password, Please visit this link: $url", "From: noreply@footballhub.com\r\n");
-    $data = $dbcon->query("UPDATE refDetails SET token='$string' WHERE email='$email'");
-    echo "please check your mail";//BOOTSTRAP!!
+    $data = $dbcon->query("UPDATE refDetails SET token='$token' WHERE email='$email'");
+
+    $message = '<div class="alert alert-success">A new password has been sent to your <strong> registered email address</strong>,<strong> check your mail</strong> and then <strong>click on the link bellow to login</strong></div>';
 
   }else {
-    echo "The email you entered is not registered";//sort bootrap
+    $message = '<div class="alert alert-danger">Sorry we didnt recognise your details, please re-type, or if you have not got an account click on the button at the bottom of the page to register</div>';
   }
 }
 
@@ -54,7 +55,10 @@ if (isset($_POST["forgotPassword"])) {
               <label for="email">Email</label>
               <input class="form-control" type="email" name="email" id="email" placeholder="Email" maxlength="150" autocomplete="email" required>
             </div>
-            <input type="submit" class="btn btn-primary" name="forgotPassword" value="Request Password" id="forgotPassword">
+            <input type="submit" class="btn btn-primary btn-block" name="forgotPassword" value="Request Password" id="forgotPassword">
+            <div class="form-group">
+              <?php echo $message; ?>
+            </div>
           </form>
         </div>
       </div>

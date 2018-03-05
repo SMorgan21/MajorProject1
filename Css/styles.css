@@ -1,32 +1,75 @@
-#login{
-  margin-top: 100px;
-}
+/* registration page */
 #register{
   margin-top: 100px;
 }
+
+/* Logo's */
 #fawLogo{
   max-width: 50%;
   height: auto;
 }
-#fawLogo1{
-  max-width: 20%;
+.headerLogo{
+  max-width: 45%;
   height: auto;
-  padding-bottom: 50px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-top: 10px;
 }
+
+/* Header */
+.header{
+  padding: 10px;
+}
+.headerInfo{
+  border-style: solid;
+  border-color: #E11A22;
+  border-width: 2px;
+  border-radius: 5px;
+  background-color: #d5d8dc;
+  padding: 10px;
+}
+.headerRightText{
+  font-size: 20px;
+}
+#pageTitle{
+  align-self: center;
+}
+#headerRight{
+  display: flex;
+  justify-content: center;
+}
+#infoTable {
+  align-self: center;
+}
+
+/* Navbar */
+.navbar-custom{
+  background-color:  #eceeef;
+}
+.navbar{
+  width: 100%;
+}
+
+/* Registration Form */
 #regContainer{
   padding: 50px;
   border-style: solid;
   border-color: #E11A22;
   border-width: 2px;
   border-radius: 25px;
-  padding-top: 50px;
-  padding-bottom: 50px;
   background-color: #d5d8dc;
 }
 #status{
   max-width: 10%;
   height: auto;
 }
+
+/* Alert CSS */
+.hidden{
+  display: none;
+}
+
+/* General Css */
 body{
   padding-bottom: 50px;
 }

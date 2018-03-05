@@ -1,6 +1,8 @@
 <?php
+  USE php/PHPMailer.php;
 if (isset($_POST['registration'])) {
-  include 'php/connect.php';
+
+  include 'php/connect.php';//connection details
   $firstName = mysqli_real_escape_string($dbcon, $_POST['firstName']);
   $secondName = mysqli_real_escape_string($dbcon,$_POST['secondName']);
   $userName = mysqli_real_escape_string($dbcon,$_POST['userName']);
@@ -9,9 +11,35 @@ if (isset($_POST['registration'])) {
   $grade = mysqli_real_escape_string($dbcon,$_POST['grade']);
   $email = mysqli_real_escape_string($dbcon,$_POST['email']);
   $telephoneNo = mysqli_real_escape_string($dbcon,$_POST['telephoneNo']);
+  $refereeNumber = mysqli_real_escape_string($dbcon,$_POST['refereeNumber']);
+  $hashed = password_hash($password, PASSWORD_BCRYPT);//encrypts the password using blowfish encryption
 
-  $data = $dbcon->query("INSERT INTO refDetails (firstName, secondName, userName, password, gender, grade, email) VALUES('$firstName','$secondName','$userName','$password','$gender','$grade','$email')");
+  // generate a random string to be used as the login token
+  $token = qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM;
+  $token = str_shuffle($token);
+  $token = substr($token,0,10);
 
+  //Query
+  $data = $dbcon->query("INSERT INTO refDetails (firstName, secondName, userName, password, gender, grade, telephoneNo, email, refereeNumber, token) VALUES('$firstName','$secondName','$userName', '$hashed','$gender','$grade', '$telephoneNo','$email','$refereeNumber','$token')");
+
+  //PHP Mailer
+
+  include_once "php/PHPMailer.php";
+  $verifyEmail = new PHPMailer();
+  $verifyEmail -> setForm('NOREPLY@footballhub.com');
+  $verifyEmail -> addAddress($email, $firstName);
+  $verifyEmail -> Subject = "Verify your account";
+  $verifyEmail -> isHTML(true);
+  $verifyEmail -> Body = "
+    Please click on the link or copy the link and paste it into your browser:<br><br>
+    <a href='http://www.
+  ";
+
+
+
+
+  //Alerts the user that they have been registerd but they need to check their email to complete the process
+  $message = '<div class="alert alert-success">Your deatails have been registered Please check your email to verify your account</div>';
 }
 ?>
 <!doctype html>
@@ -32,7 +60,13 @@ if (isset($_POST['registration'])) {
   <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="js/check.js" type="text/javascript"></script>
+<!-- checks for input in the username input and displays a message -->
+  <script src="js/checkUsername.js" type="text/javascript"></script>
+<!-- checks for input in the email input and displays a message -->
+  <script src="js/checkEmail.js" type="text/javascript"></script>
+<!-- checks for input in the refereeNumber input and displays a message -->
+  <script src="js/checkRefnumber.js" type="text/javascript"></script>
+
   <div class="container-fluid" id="register">
     <div class="row justify-content-center">
       <div class="col-md-6 col-md-offset-3">
@@ -67,7 +101,7 @@ if (isset($_POST['registration'])) {
                 <div class="input-group-preprend">
                   <label class="input-group-text" for="grade">Grade</label>
                 </div>
-                <select class="form-control" id="grade">
+                <select class="form-control" name="grade" id="grade">
                   <option selected>Please Select a Grade</option>
                   <option value="1A">1A</option>
                   <option value="1B">1B</option>
@@ -90,33 +124,47 @@ if (isset($_POST['registration'])) {
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="telephoneNo">Telephone Number</label>
-                <input class="form-control" type="number" name="telephoneNo" id="telephoneNo" autocomplete="mobile" required>
+                <input class="form-control" type="text" name="telephoneNo" id="telephoneNo" placeholder="07123456789" minlength="11" maxlength="11" autocomplete="mobile" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="email">Email</label>
-                <input class="form-control" type="email" name="email" id="email" placeholder="Email" maxlength="150" autocomplete="email" required>
+                <label for="refereeNumber">Referee Number</label>
+                <input class="form-control" type="text" name="refereeNumber" id="refereeNumber" placeholder="1234" minlength="4" maxlength="4" required>
+                <div class="form-group" id="refereeNumberFeedBack">
+                </div>
               </div>
             </div>
             <div class="form-group">
               <label for="userName">User Name</label>
-              <input class="form-control" type="text" name="userName" id="userName" placeholder="User Name" required>
-              <div id="feedBack"></div>
+              <input class="form-control" type="text" name="userName" id="userName" placeholder="User Name" minlength="4" required>
+              <div class="form-group" id="feedBack">
+              </div>
             </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" type="email" name="email" id="email" placeholder="Email" autocomplete="email" required>
+                <div class="form-group" id="emailFeedBack">
+                </div>
+              </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="password">Password</label>
-                <input class="form-control" type="password" name="password" id="password" autocomplete="new-password">
+                <input class="form-control" type="password" name="password" id="password" minlength="8" maxlength="20" autocomplete="new-password">
                 <small id="passwordHelpBlock" class="form-text text-muted">
-                  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</small>
+                  Your password must be 8-20 characters long</small>
                 </div>
+                <script src="js/passwordCheck.js" type="text/javascript"></script>
                 <div class="form-group col-md-6">
                   <label for="conPassword">Confirm Password</label>
-                  <input class="form-control" type="password" name="conPassword" id="conPassword">
-                </div>
+                  <input class="form-control" type="password" name="conPassword" id="conPassword"><div class="alert alert-danger hidden" id="noMatch" role="alert"><strong>Your Passwords don't match,</strong> try again</div><div class="alert alert-success hidden" id="match" role="alert"><strong>Well done!</strong> You passwords match</div>
               </div>
-              <input type="submit" class="btn btn-primary" name="registration" value="Register" id="registration">
+            </div>
+            <div class="form-group">
+              <?php echo $message; ?>
+            </div>
+                <input type="submit" class="btn btn-primary btn-block" name="registration" value="Register" id="registration">
+                <a href="loginTest.php" class="btn btn-primary btn-block" role="button" name="login" id="login">CLick here to login</a>
             </form>
-          </div>
+
         </div>
       </div>
     </div>
