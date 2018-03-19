@@ -1,5 +1,5 @@
 <?php
-include 'connect.php';
+include 'connectRef.php';
 $email = mysqli_real_escape_string($dbcon, $_POST['email']);
 
 $check = mysqli_query($dbcon,"SELECT email FROM refDetails WHERE email = '$email'");//checks database for the username that is being typed in

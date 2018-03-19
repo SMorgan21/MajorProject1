@@ -9,5 +9,5 @@ $dbcon = mysqli_connect(DB_HOST, DB_USER, DB_PSWD, DB_NAME); // Connect to the d
 if (mysqli_connect_errno()) {
     echo mysqli_connect_error();
     exit();
-} echo "Connected";
+};
 ?>

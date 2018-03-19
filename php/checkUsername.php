@@ -1,5 +1,5 @@
 <?php
-include 'connect.php';
+include 'connectRef.php';
 $userName = mysqli_real_escape_string($dbcon, $_POST['userName']);
 
 $check = mysqli_query($dbcon,"SELECT userName FROM refDetails WHERE userName = '$userName'");//checks database for the username that is being typed in
