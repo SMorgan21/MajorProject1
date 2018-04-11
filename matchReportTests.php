@@ -5,7 +5,7 @@ session_start();
 
 if (isset($_POST['submitMatchReport'])) {
 
-include 'php/connectRef.php';//connection details
+include 'php/connect.php';//connection details
 $league = mysqli_real_escape_string($dbcon, $_POST['league']);
 $homeTeam = mysqli_real_escape_string($dbcon,$_POST['homeTeam']);
 $awayTeam = mysqli_real_escape_string($dbcon,$_POST['awayTeam']);
@@ -129,10 +129,10 @@ echo $location ."<br>";
                 <select class="form-control" name="league" id="league" required>
                   <option value="">Please Select an Option</option>
                   <?php
-                  include 'php/connectLeague.php';
+                  include 'php/connect.php';
                   $data = mysqli_query($dbcon, "SELECT * FROM leagues");
-                  while ($row = $data->fetch_assoc()){
-                    echo "<option value=\"{$row['id']}\">{$row['leagueName']}</option>";
+                  while ($row = $data->mysqli_fetch_assoc()){
+                    echo "<option value=\"{$row['leagueName']}\">{$row['leagueName']}</option>";
                   }
                   ?>
                 </select>

@@ -19,7 +19,7 @@
               <a class="nav-link" href="matchReport.php">Match Report</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Messages</a>
+              <a class="nav-link" href="messages.php">Messages</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Links</a>

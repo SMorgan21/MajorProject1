@@ -1,4 +1,12 @@
 <?php
+//Starting Session
+session_start();
+
+//Redirects a logged in user back to their profile page
+if (isset($_SESSION["email"]) && isset ($_SESSION["loggedIn"])) {
+  header("location: profile.php");
+};
+
 if (isset($_POST["forgotPassword"])) {
   include 'php/connect.php';
   $email = mysqli_real_escape_string($dbcon,$_POST['email']);
@@ -6,7 +14,7 @@ if (isset($_POST["forgotPassword"])) {
   $data = $dbcon->query("SELECT id FROM refDetails Where email='$email'");
 
   if ($data->num_rows > 0) {
-    $token = "0987654321zxcvbnmpoiuytrewqasdfghjkl"; //random characters
+    $token = "0987654321zxcvbnmpoiuytrewqasdfghjklASDFGHJKLPOIUYTREWQZXCVBNM"; //random characters
     $token = str_shuffle($token);//shuffle the random characters
     $token = substr($token, 0, 10);//creates a string between 0 and 15 characters from the random characters
     $url = "http://localhost/MajorProject/php/resetPassword.php?token=$token&email=$email";
@@ -17,7 +25,7 @@ if (isset($_POST["forgotPassword"])) {
     $message = '<div class="alert alert-success">A new password has been sent to your <strong> registered email address</strong>,<strong> check your mail</strong> and then <strong>click on the link bellow to login</strong></div>';
 
   }else {
-    $message = '<div class="alert alert-danger">Sorry we didnt recognise your details, please re-type, or if you have not got an account click on the button at the bottom of the page to register</div>';
+    $message = '<div class="alert alert-danger">Sorry but your details were not recognised, please re-type, or if you have not got an account click on the button at the bottom of the page to register</div>';
   }
 }
 
@@ -47,18 +55,20 @@ if (isset($_POST["forgotPassword"])) {
     <div class="row justify-content-center">
       <div class="col-md-6 col-md-offset-3">
         <div class="text-center">
-          <img src="/MajorProject/images/FAW_logo.png" class="img-fluid" alt="FAWlogo" id="fawLogo1">
+          <img src="/MajorProject/images/FAW_logo.png" class="img-fluid fawLogo" alt="FAWlogo" id="fawLogo1">
         </div>
-        <div class="container-fluid" id="regContainer">
+        <div class="container-fluid regContainer">
           <form name="regForm" method="post" action="forgotPassword.php">
             <div class="form-group">
               <label for="email">Email</label>
               <input class="form-control" type="email" name="email" id="email" placeholder="Email" maxlength="150" autocomplete="email" required>
             </div>
-            <input type="submit" class="btn btn-primary btn-block" name="forgotPassword" value="Request Password" id="forgotPassword">
             <div class="form-group">
               <?php echo $message; ?>
             </div>
+            <input type="submit" class="btn btn-primary btn-block" name="forgotPassword" value="Request new password" id="forgotPassword">
+            <a href="registration.php" class="btn btn-primary btn-block" role="button"  name="register">Click here to register</a>
+            <a href="login.php" class="btn btn-primary btn-block" role="button" name="login" id="login">Click here to login</a>
           </form>
         </div>
       </div>

@@ -2,9 +2,9 @@
 
 session_start();
 
-if(!isset($_SESSION["email"]) || !isset($_SESSION["loggedIn"])){
-  header("location: loginTest.php");
-  exit();
+if(!isset($_SESSION["email"]) || !isset($_SESSION["loggedIn"])|| $_SESSION['userLevel'] == "admin"){
+  header("location: profileAdmin.php");
+  die();
 }
 
 ?>

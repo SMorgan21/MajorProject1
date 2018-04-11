@@ -1,8 +1,8 @@
 <?php
-include 'connectRef.php';
+include 'connect.php';
 $email = mysqli_real_escape_string($dbcon, $_POST['email']);
 
-$check = mysqli_query($dbcon,"SELECT email FROM refDetails WHERE email = '$email'");//checks database for the username that is being typed in
+$check = $dbcon->query("SELECT email FROM refDetails WHERE email = '$email'");//checks database for the username that is being typed in
 $check_num_rows = mysqli_num_rows($check);//checks to see if there are ay rows containing the username entered
 
 if ($email==NULL) {

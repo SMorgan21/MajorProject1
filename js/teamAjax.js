@@ -2,7 +2,6 @@ $(document).ready(function () {
     'use strict';
   $("#league").change(function () {
         var leagueId = $(this).val();
-        console.log(leagueId);
         if (leagueId !== "") {
       $.ajax({
                 url: "getTeams.php",
@@ -11,7 +10,6 @@ $(document).ready(function () {
                 success: function (data) {
                  
           $(".teams").html(data);
-                    console.log(data);
                 }
             });
         } else {

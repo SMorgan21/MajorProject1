@@ -2,7 +2,7 @@
 //Starts the Session
 session_start();
 //Includes the connection details
-include 'php/connectRef.php';
+include 'php/connect.php';
 //connects to the data base and requests the username of the user who has logged in
 $data = $dbcon->query("SELECT userName from refDetails where email = '".$_SESSION['email']."'");
  ?>
@@ -41,9 +41,12 @@ $data = $dbcon->query("SELECT userName from refDetails where email = '".$_SESSIO
               <td class="align-middle">
                 <!-- Displays time -->
                 <div id="time">
-                  <?php echo date("h:i:sa"); ?>
+                  <?php
+                  date_default_timezone_set('Europe/London');//sets the timezone to account for daylight savings, the site will only be used in the UK.
+                  echo "Time: ".date("G:i")." GMT"; ?>
                   <br>
-                  <a href="logoutTest.php">Log Out</a>
+                  <br>
+                  <a class="logOut" href="logout.php">Log Out</a>
                 </div>
               </td>
             </tr>

@@ -1,141 +1,745 @@
-<!doctype html>
+<?php
+//Starting Session
+session_start();
+//Checks that the user is logged in 
+require "php/loginCheck.php";
+
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="/MajorProject/Css/styles.css">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"><!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/MajorProject/Css/styles.css" rel="stylesheet">
   <title>Match Report</title>
 </head>
 <body>
-  <!-- Optional JavaScript -->
+  <!-- Bootstrap -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <!-- header -->
-  <div class="container-fluid header">
-    <div class="container-fluid headerInfo">
-      <div class="row justify-content-md-center">
-        <div class="col-md-3">
-          <img src="images/FAW_logoSml.png" class="img-fluid headerLogo" alt="FAW_logoSml">
-        </div>
-        <div class="col-md-6 text-center" id="pageTitle">
-          <h1>CWFA Referee Home Page</h1>
-        </div>
-        <div class="col-md-3 headerRightText" id="headerRight">
-          <table class="table table-responsive" id="infoTable">
-            <tbody>
-              <tr>
-                <td class="align-middle">
-                  <!-- Displays the Username of whomever is logged in -->
-                  <span id="headerUsername">Username:</span>
-                </td>
-              </tr>
-              <tr>
-                <!-- Displays the day of the week followed by the date -->
-                <td class="align-middle">
-                  <div id="date">
-                    <?php echo date("l d/m/Y");?>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="align-middle">
-                  <!-- Displays time -->
-                  <div id="time">
-                    <?php echo date("h:i:sa"); ?>
-                    <br>
-                    <a href="logoutTest.php">Log Out</a>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <!-- End of header -->
-  </div>
-  <!-- Navbar -->
-  <div class="container-fluid">
-    <div class="container-fluid nBar">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <!-- Button that appears if the screen size is reduced -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- Navbar content -->
-        <div class="collapse navbar-collapse" id="navbarText">
-          <!-- Alligns Content to the right -->
-          <ul class="navbar-nav nav-fill w-100">
-            <!-- highlights the active link -->
-            <li class="nav-item active">
-              <a class="nav-link" href="profile.php">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Match Report</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Messages</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Links</a>
-            </li>
-          </ul>
-        </div>
-        <!-- End of Navbar -->
-      </nav>
-    </div>
-  </div>
-
-  <!-- Title -->
+  <script src="http://code.jquery.com/jquery-3.3.1.js">
+  </script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js">
+  </script> 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
+  </script>
+  <script src="js/matchReportInputLogic.js"></script> 
+  <!-- Header -->
+   <?php include 'php/header.php'; ?> <!-- Navbar -->
+   <?php include 'php/navBar.php'; ?> <!-- Title -->
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="text-center">
-          <h1>Central Wales Football Association</h1>
-          <br>
-          <h2>Official Match Report</h2>
-          <br>
+          <h4>Central Wales Football Association</h4><br>
+          <h5>Official Match Report</h5><br>
         </div>
       </div>
     </div>
-    <!-- End of Title -->
-  </div>
-
+  </div><!-- End of Title -->
   <!-- Start of match Report -->
-  <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="text-center">
-          <form class="matchReport" action="matchReport.php" method="post">
+  <!-- First half of Report -->
+  <form action="matchReportPdf" id="matchReport" method="post" name="matchReport">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="text-center">
             <div class="container-fluid regContainer">
               <div class="form-row">
                 <div class="input-group-preprend">
                   <label class="input-group-text" for="league">League</label>
-                </div>
-                <select class="form-control" name="league" id="league">
-                  <option selected>Please Select an Option</option>
-
-                  <?php
-                  include 'php/connectLeague.php';
-                  $data = mysqli_query($dbcon, "SELECT * FROM leagues");
-                  while ($row = $data->fetch_assoc()){
-                    echo "<option value=\"{$row['leagueName']}\">{$row['leagueName']}</option>";
-                  }
-                  ?>
+                </div><select class="form-control" id="league" name="league">
+                  <option value="">
+                    Please Select a League
+                  </option><?php
+                                    include 'php/connect.php';
+                                    $data = mysqli_query($dbcon, "SELECT * FROM leagues");
+                                    while ($row = $data->fetch_assoc()){
+                                      echo "<option value=\"{$row['id']}\">{$row['leagueName']}</option>";
+                                    }
+                                    ?>
                 </select>
               </div>
+              <script charset="utf-8" src="js/teamAjax.js">
+              </script>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="homeTeam">Home Team</label>
+                  </div><select class="form-control teams" id="homeTeam" name="homeTeam">
+                    <option value="">
+                      Please Select A Team
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="awayTeam">Away Team</label>
+                  </div><select class="form-control teams" id="awayTeam" name="awayTeam">
+                    <option value="">
+                      Please Select A Team
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="location">Location</label>
+                  </div><select class="form-control teams" id="location" name="location">
+                    <option value="">
+                      Please Select A Team
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="datePlayed">Match Date</label>
+                  </div><input class="form-control" id="datePlayed" name="datePlayed" type="date">
+                </div>
+              </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
+    </div><!-- End of first half of Report -->
+    <!-- Title for cautions -->
+    <br>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-md-12">
+          <div class="text-center">
+            <h5>Name of offenders - Important: use same form for both clubs for cautions (up to SEVEN names)</h5><br>
+            <h5>For send offs use only one name per form</h5><br>
+          </div>
+        </div>
+      </div>
+    </div><!-- End of title -->
+    <!-- Start of second Half of form -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="text-center">
+            <div class="container-fluid regContainer">
+              <!-- Start of first line -->
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="surname1">Surname</label>
+                  </div><input class="form-control" id="surname1" maxlength="50" name="surname1" placeholder="Surname" type="text">
+                </div>
+                <div class="form-group col-md-3">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="firstName1">First Name</label>
+                  </div><input class="form-control" id="firstName1" maxlength="50" name="firstName1" placeholder="First Name" type="text">
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="team1">Team</label>
+                  </div><select class="form-control teams" id="team1" name="team1">
+                    <option value="">
+                      Please Select A Team
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="caution1">Caution</label>
+                  </div><select class="form-control caution" id="caution1" name="caution">
+                    <option value="">
+                      Please Select A Caution Code
+                    </option>
+                    <option value="C1">
+                      C1
+                    </option>
+                    <option value="C2">
+                      C2
+                    </option>
+                    <option value="C3">
+                      C3
+                    </option>
+                    <option value="C4">
+                      C4
+                    </option>
+                    <option value="C5">
+                      C5
+                    </option>
+                    <option value="C6">
+                      C6
+                    </option>
+                    <option value="C7">
+                      C7
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="sendOff1">Send Off</label>
+                  </div><select class="form-control sendOff" id="sendOff1" name="sendOff">
+                    <option value="">
+                      Please Select A Send Off Code
+                    </option>
+                    <option value="S1">
+                      S1
+                    </option>
+                    <option value="S2">
+                      S2
+                    </option>
+                    <option value="S3">
+                      S3
+                    </option>
+                    <option value="S4">
+                      S4
+                    </option>
+                    <option value="S5">
+                      S5
+                    </option>
+                    <option value="S6">
+                      S6
+                    </option>
+                    <option value="S7">
+                      S7
+                    </option>
+                  </select>
+                </div>
+              </div><!-- End of first line -->
+              <!-- Start of second line -->
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="surname2">Surname</label>
+                  </div><input class="form-control" id="surname2" maxlength="50" name="surname2" placeholder="Surname" type="text">
+                </div>
+                <div class="form-group col-md-3">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="firstName2">First Name</label>
+                  </div><input class="form-control" id="firstName2" maxlength="50" name="firstName2" placeholder="First Name" type="text">
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="team2">Team</label>
+                  </div><select class="form-control teams" id="team2" name="team2">
+                    <option value="">
+                      Please Select A Team
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="caution2">Caution</label>
+                  </div><select class="form-control caution" id="caution2" name="caution">
+                    <option value="">
+                      Please Select A Caution Code
+                    </option>
+                    <option value="C1">
+                      C1
+                    </option>
+                    <option value="C2">
+                      C2
+                    </option>
+                    <option value="C3">
+                      C3
+                    </option>
+                    <option value="C4">
+                      C4
+                    </option>
+                    <option value="C5">
+                      C5
+                    </option>
+                    <option value="C6">
+                      C6
+                    </option>
+                    <option value="C7">
+                      C7
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="sendOff2">Send Off</label>
+                  </div><select class="form-control sendOff" id="sendOff2" name="sendOff">
+                    <option value="">
+                      Please Select A Send Off Code
+                    </option>
+                    <option value="S1">
+                      S1
+                    </option>
+                    <option value="S2">
+                      S2
+                    </option>
+                    <option value="S3">
+                      S3
+                    </option>
+                    <option value="S4">
+                      S4
+                    </option>
+                    <option value="S5">
+                      S5
+                    </option>
+                    <option value="S6">
+                      S6
+                    </option>
+                    <option value="S7">
+                      S7
+                    </option>
+                  </select>
+                </div>
+              </div><!-- End of second line -->
+              <!-- Start of third line -->
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="surname3">Surname</label>
+                  </div><input class="form-control" id="surname3" maxlength="50" name="surname3" placeholder="Surname" type="text">
+                </div>
+                <div class="form-group col-md-3">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="firstName3">First Name</label>
+                  </div><input class="form-control" id="firstName3" maxlength="50" name="firstName3" placeholder="First Name" type="text">
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="team3">Team</label>
+                  </div><select class="form-control teams" id="team3" name="team3">
+                    <option value="">
+                      Please Select A Team
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="caution3">Caution</label>
+                  </div><select class="form-control caution" id="caution3" name="caution">
+                    <option value="">
+                      Please Select A Caution Code
+                    </option>
+                    <option value="C1">
+                      C1
+                    </option>
+                    <option value="C2">
+                      C2
+                    </option>
+                    <option value="C3">
+                      C3
+                    </option>
+                    <option value="C4">
+                      C4
+                    </option>
+                    <option value="C5">
+                      C5
+                    </option>
+                    <option value="C6">
+                      C6
+                    </option>
+                    <option value="C7">
+                      C7
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="sendOff3">Send Off</label>
+                  </div><select class="form-control sendOff" id="sendOff3" name="sendOff">
+                    <option value="">
+                      Please Select A Send Off Code
+                    </option>
+                    <option value="S1">
+                      S1
+                    </option>
+                    <option value="S2">
+                      S2
+                    </option>
+                    <option value="S3">
+                      S3
+                    </option>
+                    <option value="S4">
+                      S4
+                    </option>
+                    <option value="S5">
+                      S5
+                    </option>
+                    <option value="S6">
+                      S6
+                    </option>
+                    <option value="S7">
+                      S7
+                    </option>
+                  </select>
+                </div>
+              </div><!-- End of third line -->
+              <!-- Start of fourth line -->
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="surname4">Surname</label>
+                  </div><input class="form-control" id="surname4" maxlength="50" name="surname4" placeholder="Surname" type="text">
+                </div>
+                <div class="form-group col-md-3">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="firstName4">First Name</label>
+                  </div><input class="form-control" id="firstName4" maxlength="50" name="firstName4" placeholder="First Name" type="text">
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="team4">Team</label>
+                  </div><select class="form-control teams" id="team4" name="team4">
+                    <option value="">
+                      Please Select A Team
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="caution4">Caution</label>
+                  </div><select class="form-control caution" id="caution4" name="caution">
+                    <option value="">
+                      Please Select A Caution Code
+                    </option>
+                    <option value="C1">
+                      C1
+                    </option>
+                    <option value="C2">
+                      C2
+                    </option>
+                    <option value="C3">
+                      C3
+                    </option>
+                    <option value="C4">
+                      C4
+                    </option>
+                    <option value="C5">
+                      C5
+                    </option>
+                    <option value="C6">
+                      C6
+                    </option>
+                    <option value="C7">
+                      C7
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="sendOff4">Send Off</label>
+                  </div><select class="form-control sendOff" id="sendOff4" name="sendOff">
+                    <option value="">
+                      Please Select A Send Off Code
+                    </option>
+                    <option value="S1">
+                      S1
+                    </option>
+                    <option value="S2">
+                      S2
+                    </option>
+                    <option value="S3">
+                      S3
+                    </option>
+                    <option value="S4">
+                      S4
+                    </option>
+                    <option value="S5">
+                      S5
+                    </option>
+                    <option value="S6">
+                      S6
+                    </option>
+                    <option value="S7">
+                      S7
+                    </option>
+                  </select>
+                </div>
+              </div><!-- End of fourth line -->
+              <!-- Start of fifth line -->
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="surname5">Surname</label>
+                  </div><input class="form-control" id="surname5" maxlength="50" name="surname5" placeholder="Surname" type="text">
+                </div>
+                <div class="form-group col-md-3">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="firstName5">First Name</label>
+                  </div><input class="form-control" id="firstName5" maxlength="50" name="firstName5" placeholder="First Name" type="text">
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="team5">Team</label>
+                  </div><select class="form-control teams" id="team5" name="team5">
+                    <option value="">
+                      Please Select A Team
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="caution5">Caution</label>
+                  </div><select class="form-control caution" id="caution5" name="caution">
+                    <option value="">
+                      Please Select A Caution Code
+                    </option>
+                    <option value="C1">
+                      C1
+                    </option>
+                    <option value="C2">
+                      C2
+                    </option>
+                    <option value="C3">
+                      C3
+                    </option>
+                    <option value="C4">
+                      C4
+                    </option>
+                    <option value="C5">
+                      C5
+                    </option>
+                    <option value="C6">
+                      C6
+                    </option>
+                    <option value="C7">
+                      C7
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="sendOff5">Send Off</label>
+                  </div><select class="form-control sendOff" id="sendOff5" name="sendOff">
+                    <option value="">
+                      Please Select A Send Off Code
+                    </option>
+                    <option value="S1">
+                      S1
+                    </option>
+                    <option value="S2">
+                      S2
+                    </option>
+                    <option value="S3">
+                      S3
+                    </option>
+                    <option value="S4">
+                      S4
+                    </option>
+                    <option value="S5">
+                      S5
+                    </option>
+                    <option value="S6">
+                      S6
+                    </option>
+                    <option value="S7">
+                      S7
+                    </option>
+                  </select>
+                </div>
+              </div><!-- End of fifth line -->
+              <!-- Start of sixth line -->
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="surname6">Surname</label>
+                  </div><input class="form-control" id="surname6" maxlength="50" name="surname6" placeholder="Surname" type="text">
+                </div>
+                <div class="form-group col-md-3">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="firstName6">First Name</label>
+                  </div><input class="form-control" id="firstName6" maxlength="50" name="firstName6" placeholder="First Name" type="text">
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="team6">Team</label>
+                  </div><select class="form-control teams" id="team6" name="team6">
+                    <option value="">
+                      Please Select A Team
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="caution6">Caution</label>
+                  </div><select class="form-control caution" id="caution6" name="caution">
+                    <option value="">
+                      Please Select A Caution Code
+                    </option>
+                    <option value="C1">
+                      C1
+                    </option>
+                    <option value="C2">
+                      C2
+                    </option>
+                    <option value="C3">
+                      C3
+                    </option>
+                    <option value="C4">
+                      C4
+                    </option>
+                    <option value="C5">
+                      C5
+                    </option>
+                    <option value="C6">
+                      C6
+                    </option>
+                    <option value="C7">
+                      C7
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="sendOff6">Send Off</label>
+                  </div><select class="form-control sendOff" id="sendOff6" name="sendOff">
+                    <option value="">
+                      Please Select A Send Off Code
+                    </option>
+                    <option value="S1">
+                      S1
+                    </option>
+                    <option value="S2">
+                      S2
+                    </option>
+                    <option value="S3">
+                      S3
+                    </option>
+                    <option value="S4">
+                      S4
+                    </option>
+                    <option value="S5">
+                      S5
+                    </option>
+                    <option value="S6">
+                      S6
+                    </option>
+                    <option value="S7">
+                      S7
+                    </option>
+                  </select>
+                </div>
+              </div><!-- End of sixth line -->
+              <!-- Start of seventh line -->
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="surname7">Surname</label>
+                  </div><input class="form-control" id="surname7" maxlength="50" name="surname7" placeholder="Surname" type="text">
+                </div>
+                <div class="form-group col-md-3">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="firstName7">First Name</label>
+                  </div><input class="form-control" id="firstName7" maxlength="50" name="firstName7" placeholder="First Name" type="text">
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="team7">Team</label>
+                  </div><select class="form-control teams" id="team7" name="team7">
+                    <option value="">
+                      Please Select A Team
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="caution7">Caution</label>
+                  </div><select class="form-control" id="caution7" name="caution">
+                    <option value="">
+                      Please Select A Caution Code
+                    </option>
+                    <option value="C1">
+                      C1
+                    </option>
+                    <option value="C2">
+                      C2
+                    </option>
+                    <option value="C3">
+                      C3
+                    </option>
+                    <option value="C4">
+                      C4
+                    </option>
+                    <option value="C5">
+                      C5
+                    </option>
+                    <option value="C6">
+                      C6
+                    </option>
+                    <option value="C7">
+                      C7
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <div class="input-group-preprend">
+                    <label class="input-group-text" for="sendOff7">Send Off</label>
+                  </div><select class="form-control" id="sendOff7" name="sendOff">
+                    <option value="">
+                      Please Select A Send Off Code
+                    </option>
+                    <option value="S1">
+                      S1
+                    </option>
+                    <option value="S2">
+                      S2
+                    </option>
+                    <option value="S3">
+                      S3
+                    </option>
+                    <option value="S4">
+                      S4
+                    </option>
+                    <option value="S5">
+                      S5
+                    </option>
+                    <option value="S6">
+                      S6
+                    </option>
+                    <option value="S7">
+                      S7
+                    </option>
+                  </select>
+                </div>
+              </div><!-- A script to reset the inputs on the page, I have had to delay the function to allow time for the pdf to generate -->
+              <script>
+                       function resetForm() {
+                         document.getElementById("matchReport").reset();
+                         alert("Your report has been saved and emailed. Press o");
+                       }
+              </script> <input id="submitMatchReport" name="submitMatchReport" onclick="setTimeout(resetForm, 200)" type="submit" value="Save and Send">
+            </div>
+          </div>
+        </div><!-- End of seventh line -->
+        <!-- Start of Caution code list -->
+        <div class="col-md-4">
+          <div class="container-fluid regContainer">
+            <div class="text-center">
+              <h4>Caution Codes</h4>
+            </div>
+            <div class="text-left">
+              <ul class="list-group cautions">
+                <li class="list-group-item list-group-item-warning font-weight-bold">C1 Unsporting behaviour</li>
+                <li class="list-group-item list-group-item-warning font-weight-bold">C2 Shows dissent by word or action</li>
+                <li class="list-group-item list-group-item-warning font-weight-bold">C3 Persistently infringing the laws of the game</li>
+                <li class="list-group-item list-group-item-warning font-weight-bold">C4 Delays the restart of play</li>
+                <li class="list-group-item list-group-item-warning font-weight-bold">C5 Fails to respect the required distance when play is restarted with a corner or a free kick</li>
+                <li class="list-group-item list-group-item-warning font-weight-bold">C6 Enteres or re-enteres the field of play without the referees permission</li>
+                <li class="list-group-item list-group-item-warning font-weight-bold">C7 Deliberatley leaves the field of play without the referees permission</li>
+              </ul>
+            </div><br>
+            <div class="text-center">
+              <h4>Send Off Codes</h4>
+            </div>
+            <div class="text-left">
+              <ul class="list-group sendOff">
+                <li class="list-group-item list-group-item-danger font-weight-bold">S1 Foul play</li>
+                <li class="list-group-item list-group-item-danger font-weight-bold">S2 Violent conduct</li>
+                <li class="list-group-item list-group-item-danger font-weight-bold">S3 Spits at an opponent or other person</li>
+                <li class="list-group-item list-group-item-danger font-weight-bold">S4 Dennies a goal scoring opportunity</li>
+                <li class="list-group-item list-group-item-danger font-weight-bold">S5 Denying the scoring of a goal e.g Hand ball on the line</li>
+                <li class="list-group-item list-group-item-danger font-weight-bold">S6 Using offensive or abusive language</li>
+                <li class="list-group-item list-group-item-danger font-weight-bold">S7 Recieves second caution in the same game</li>
+              </ul>
+            </div>
+          </div>
+        </div><!-- End of Caution code list -->
+      </div>
     </div>
-  </div>
-
-
+  </form>
 </body>
 </html>

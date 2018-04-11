@@ -12,9 +12,9 @@ $(function()
       var past    = new Date (timeString);//past time
       var difference    = now - past; // the difference between now and the past times
       var minutesPast     = Math.floor((difference/60000)); //assigning the difference variable to this variable by using
-      if (minutesPast > 10) {// if the mintuesPast variable become greater than 1 minute then
+      if (minutesPast > 3) {// if the mintuesPast variable become greater than 3 minute then
         sessionStorage.removeItem("previousTime");//removes the previousTime information from the session variable
-        window.location = "./logoutTest.php";//redirects the user to the lougout page
+        window.location = "./logout.php";//redirects the user to the lougout page
         return false;
       }
     }

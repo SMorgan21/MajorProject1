@@ -1,26 +1,23 @@
-/* registration page */
-#register{
-  margin-top: 100px;
-}
-
 /* Logo's */
-#fawLogo{
-  max-width: 50%;
+
+.fawLogo {
+  max-width: 30%;
   height: auto;
+  padding: 10px;
 }
-.headerLogo{
-  max-width: 45%;
+.headerLogo {
+  max-width: 100%;
   height: auto;
   padding-bottom: 10px;
   padding-left: 30px;
   padding-top: 10px;
 }
-
 /* Header */
-.header{
-  padding: 10px;
+
+.header {
+  padding: 20px;
 }
-.headerInfo{
+.headerInfo {
   border-style: solid;
   border-color: #E11A22;
   border-width: 2px;
@@ -28,48 +25,100 @@
   background-color: #d5d8dc;
   padding: 10px;
 }
-.headerRightText{
+.headerRightText {
   font-size: 20px;
 }
-#pageTitle{
+#pageTitle {
   align-self: center;
 }
-#headerRight{
+#headerRight {
   display: flex;
   justify-content: center;
 }
 #infoTable {
   align-self: center;
 }
-
 /* Navbar */
-.navbar-custom{
-  background-color:  #eceeef;
+
+.nBar {
+  padding-bottom: 20px;
 }
-.navbar{
+.navbar {
   width: 100%;
 }
-
+.active {
+  background-color: red;
+  color: yellow;
+}
 /* Registration Form */
-#regContainer{
-  padding: 50px;
+
+.regContainer {
+  padding: 45px;
   border-style: solid;
   border-color: #E11A22;
   border-width: 2px;
   border-radius: 25px;
   background-color: #d5d8dc;
 }
-#status{
+#status {
   max-width: 10%;
   height: auto;
 }
-
 /* Alert CSS */
-.hidden{
+
+.hidden {
   display: none;
 }
+/* Messages Table */
 
+.table tr th a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.table tr th a:hover {
+  color: #E11A22;
+  text-decoration: none;
+}
+.table tr td a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.table tr td a:hover {
+  color: #E11A22;
+  text-decoration: none;
+}
 /* General Css */
-body{
+
+body {
   padding-bottom: 50px;
+}
+.pages a {
+  color: #FFFFFF;
+  display: inline-block;
+  margin: 0px 10px 0px 0px;
+  padding: 10px 20px;
+  background: #007BFF;
+  -webkit-border-radius: 2px;
+  font-family: arial;
+  font-size: 18px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.pages a:active {
+  color: white;
+}
+.pages a:hover {
+  color: #E11A22;
+  text-decoration: none;
+}
+/* Logout link */
+
+.logOut {
+  color: #E11A22 !important;
+}
+
+strong.edit{
+  color: #E11A22 !important;
+  font-weight: bold;
+  font-size: 100;
 }

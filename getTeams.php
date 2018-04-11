@@ -1,4 +1,4 @@
-<?php include("php/connectLeague.php");
+<?php include("php/connect.php");
 
 if(isset($_POST['leagueId'])) {
   $sql = "SELECT * FROM teams WHERE leagueFK =".mysqli_real_escape_string($dbcon, $_POST['leagueId']);

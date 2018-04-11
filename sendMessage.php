@@ -1,3 +1,41 @@
+<?php 
+
+//Starting Session
+session_start();
+
+require "php/loginCheck.php";
+
+//Connects to database
+include 'php/connect.php';
+
+?>
+
+<?php 
+
+if (isset($_POST['submitMessage'])){
+	
+
+//Prepare the variables
+$recipient = mysqli_real_escape_string($dbcon, $_POST['recipient']);
+$subject = mysqli_real_escape_string($dbcon, $_POST['subject']);
+$subjectClean = filter_var($subject, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+$message = mysqli_real_escape_string($dbcon, $_POST['message']);
+$messageClean = filter_var($message, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+
+//Query to retrive refferee data
+$sql = $dbcon->query("SELECT * from refDetails where email = '".$_SESSION['email']."'");
+$reffResults = mysqli_fetch_assoc($sql);
+$reffId = $reffResults["id"];
+$reffFirstName = $reffResults["firstName"];
+$reffSecondName = $reffResults["secondName"];
+$reffFullName = $reffFirstName.' '.$reffSecondName; 
+
+//Insert data into table
+$messageData = $dbcon->query("INSERT INTO messages (reffFK, recievedFrom, recipient, subject, message) VALUES ('$reffId', '$reffFullName', '$recipient', '$subjectClean', '$messageClean')");
+
+}
+	
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -42,26 +80,29 @@
                   ?>
                 </select>
               </div>
+              <br>
               <div class="form-row">
               	<div class="input-group-preprend">
                 <label class="input-group-text" for="subject">Subject</label>
             </div>
-                <input class="form-control" type="text" name="subject" id="subject" placeholder="Subject" maxlength="150">
+                <input class="form-control" type="text" name="subject" id="subject" placeholder="Subject" maxlength="150" required>
               </div>
+              <br>
               <div class="form-row">
               	<div class="input-group-preprend">
                 <label class="input-group-text" for="message">Message</label>
             	</div>
-                <textarea class="form-control" name="message" id="message" placeholder="Please Enter Your Message Here..."></textarea> 
+                <textarea class="form-control" name="message" id="message" rows="5" placeholder="Please Enter Your Message Here..." maxlength="5000" required></textarea> 
+              </div>
+              <br>
+              <div class = "text-center">
+              	<input type="submit" class="btn btn-primary" name="submitMessage" value="Send Message" id="submitMessage">
+              	<a href="messages.php" class="btn btn-primary" role="button">Back to Inbox</a>
               </div>
 	  </div>
 	</form>
 	</div>
 	</div>
 	</div>
-
-
-
-	<?php var_dump($names); ?>
 </body>
 </html>
