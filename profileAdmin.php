@@ -2,6 +2,7 @@
 
 session_start();//Starting Session
 require "php/loginCheckAdmin.php";
+include 'php/connect.php';
 
 ?>
 <!DOCTYPE html>
@@ -22,13 +23,17 @@ require "php/loginCheckAdmin.php";
   </script> 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
   </script>
+  <!-- modal scripts -->
   <script type="text/javascript">
     $(document).ready(function(){
       $("#addTeam").on('click', function (){
         $("#addTeamModal").modal('show');
       });
     });
-  </script> <!-- Header -->
+  </script>
+
+  <!-- End Modal Scripts -->
+   <!-- Header -->
   <?php include 'php/headerAdmin.php'; ?> <!-- Navbar -->
   <?php include 'php/navBarAdmin.php'; ?> <?php 
 
@@ -825,26 +830,30 @@ require "php/loginCheckAdmin.php";
 
   $teams = $dbcon->query("SELECT * FROM teams WHERE leagueFK = '$Id' ORDER BY teamName");
   $league = $dbcon->query("SELECT * FROM leagues WHERE id = '$Id' ORDER BY leagueName");
-  $rowLeague=mysqli_fetch_assoc($league);
  
 
   ?>
 
   <div class="container-fluid">
     <!-- add Team modal -->
-    <div class="modal fade" id="addTeamModal">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content modal-lg">
-          <form name="addTeamForm" id="addTeamForm" action="profileAdmin.php" method="POST">
-        <div class="modal-header modal-lg">
-          <h2 class="modal-title modal-lg">Add a team</h2>
+    <div class="modal fade" id="addTeamModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form name="addTeamForm" id="addTeamForm" action="addTeamModal.php" method="POST">
+        <div class="modal-header">
+          <h2 class="modal-title" id="addTeamTitle">Add a team</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
         </div>
-        <div class="modal-body modal-lg">
+        <div class="modal-body">
           <input class="form-control" type="text" name="addTeamName" placeholder="Team Name" id="addTeamName"><br>
           <input class="form-control" type="text" name="addNewTeamLeague" value="<?php  echo $rowLeague["leagueName"]; ?>" id="addNewTeamLeague" disabled><br>
-          <input class="form-control" type="text" name="addTeamId" value="<?php echo "$Id"; ?>" hidden>
-        <div class="modal-footer modal-lg">
-          <input class="btn-success" type="submit" name="saveTeam" id="saveTeam" value="Save Team">      
+          <input class="form-control" type="text" name="addTeamId" value="<?php echo "$Id"; ?>" hidden>  
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <input class="btn btn-success" type="submit" name="saveTeam" id="saveTeam" value="Save Team">
         </div>
         </form>
            </div>
@@ -882,13 +891,25 @@ require "php/loginCheckAdmin.php";
           <div class="text-center">
             <input class="btn btn-success" type="button" value="Add A Team" role="button" id="addTeam">
             <a class="btn btn-primary" href="profileAdmin.php" role="button">Back Home Page</a>
+            <div class="row">
+              <div class="text-center">
+                <?php while ($rowLeague=mysqli_fetch_assoc($league)) {
+                $leagueId = $rowLeague['id']; 
+                echo '
+
+                <a class="btn btn-danger" role="button" href="?deleteLeague='.$leagueId.'">Delete this league</a>';
+                }?>
+              </div>
+            </div>
 
 
           </div>
         </div>
       </div>
     </div>
-  </div> <?php exit(); } ?> <?php 
+  </div> <?php exit(); } ?> 
+<!-- Delete Team -->
+  <?php 
 
   if (isset($_GET['deleteTeam'])) {
       $teamDelete = $_GET['deleteTeam'];
@@ -919,7 +940,43 @@ require "php/loginCheckAdmin.php";
       exit();
   }
 
-  ?> <!-- End Of Edit Leagues -->
+  ?>
+  <!-- End Of Delete Team -->
+  <!-- Delete League -->
+  <?php 
+
+  if (isset($_GET['deleteLeague'])) {
+      $leagueDelete = $_GET['deleteLeague'];
+
+      //Removes all messages with the message Id set above
+      $deleteLeague = $dbcon->query("DELETE FROM leagues WHERE id = '$leagueDelete'");
+      if ($deleteLeague) {
+          
+            exit; //Redirects back a page page
+      }else {
+           echo'
+  <div class="container-fluid">
+  <div class="row justify-content-center">
+  <div class="col-md-6 col-md-offset-3">
+  <div class="container-fluid regContainer">
+  <div class="text-center">
+  <p>Unfortunatly something went wrong</p>
+  <a href="profileAdmin.php" class="btn btn-primary">Click here to try again</a>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>';
+
+
+ // If the delete request does not work this message will apear 
+      }
+      exit();
+  }
+
+  ?> 
+  <!-- End of Delete League -->
+   <!-- End Of Edit Leagues -->
   <div class="container-fluid regContainer" id="matchReportTableAdmin">
     <div class="row justify-content-center">
       <!-- Display Match Reports -->
@@ -991,12 +1048,12 @@ require "php/loginCheckAdmin.php";
         </div>
       </div>
     </div>
-  </div><!-- Legues -->
+  </div><!-- Leagues -->
   <div class="container-fluid regContainer" id="editLeagues">
     <div class="row justify-content-center">
       <!-- Display Match Reports -->
       <div class="col-md-6">
-        <h2>Leagues</h2>
+        <h2>Leagues and Competitions</h2>
         <div class="form-row">
           <div class="input-group-preprend">
             <label class="input-group-text" for="leagueEdit">League</label>
@@ -1028,32 +1085,76 @@ require "php/loginCheckAdmin.php";
             </tbody>
           </table>
         </div>
+        <input class="btn btn-primary" type="button" value="Add a new League or Competition" role="button" id="addLeague">
       </div>
     </div>
-  </div><!-- end of leagues -->
+        <!-- Add League Modal -->
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $("#addLeague").on('click', function (){
+        $("#addLeagueModal").modal('show');
+      });
+    });
+  </script>
+
+<div class="modal fade" id="addLeagueModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <form action="addNewLeague.php" method="post">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addLeagueTitle">Add a new League or Competition</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="input-group-preprend">
+            <label class="input-group-text" for="leagueName">League/Competition Name</label>
+          </div>
+          <input class="form-control" id="leagueName" name="leagueName" type="text" minlength="3" required>
+          <div class="input-group-preprend">
+            <label class="input-group-text" for="newTeam1">First New Team</label>
+          </div>
+          <input class="form-control" id="newTeam1" name="newTeam1" type="text" minlength="3" required>
+        <div class="input-group-preprend">
+            <label class="input-group-text" for="newTeam2">Second New Team</label>
+          </div>
+          <input class="form-control" id="newTeam2" name="newTeam2" type="text" minlength="3" required>
+          <br>
+          <div class="row">
+        <div class="text-center">
+          <small>Each League/Competition must have a minimum of TWO teams. To add more teams please select the league on the home screen and click on one of the teams</small>
+        </div>
+        </div>
+        </div> 
+        
+      <div class="modal-footer">
+  
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input class="btn btn-success" type="submit" name="saveLeague" value="Save New League/Competition">
+
+      </div>
+      </div>
+      </form>
+    </div>
+     
+  </div>
+</div>
+  <!-- end of leagues -->
   <!-- Update user details -->
-  <div class="container-fluid regContainer" id="updateDetails">
+   <div class="container-fluid regContainer" id="updateDetails">
     <div class="row justify-content-center">
-      <div class="col-md-6">
+      <div class="col-md-12">
         <h2>Update Details</h2><?php 
 
 
 
 
-        if (isset($_POST['update'])) {
-        $gender = mysqli_real_escape_string($dbcon,$_POST['gender']);
-        $grade = mysqli_real_escape_string($dbcon,$_POST['grade']);
-        $gradeClean = filter_var($grade, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-        $email = mysqli_real_escape_string($dbcon,$_POST['email']);
-        $emailClean = filter_var($email, FILTER_SANITIZE_EMAIL, FILTER_FLAG_STRIP_HIGH);
-        $telephoneNo = mysqli_real_escape_string($dbcon,$_POST['telephoneNo']);
-        $telephoneNoClean = filter_var($telephoneNo, FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH);
-
-        $updateQuery = $dbcon->query("UPDATE refDetails SET gender = '$gender', grade = '$gradeClean', email = '$emailClean', telephoneNo = '$telephoneNoClean' WHERE id = '$reffId'");
-        } 
+         
         $currentDetails = $dbcon->query("SELECT * from refDetails where email = '".$_SESSION['email']."'");
-        $reffResults = mysqli_fetch_assoc($currentDetails);{
-        echo '<form action="profileAdmin.php" method="POST">';
+        $reffResults = mysqli_fetch_assoc($currentDetails);
+        $reffId = $reffResults["id"];{
+        echo '<form action="upDateRefDetails.php" method="POST">';
         echo '<div class="form-row">';
         echo ' <div class="form-group col-md-6">';
         echo '<div class="input-group-preprend">';
@@ -1093,9 +1194,9 @@ require "php/loginCheckAdmin.php";
         echo '</div>';
         echo '</div>';
 
+        
 
-
-        echo '<div class="form-row">';
+  echo '<div class="form-row">';
         echo '<div class="form-group col-md-6">';
         echo '<div class="input-group-preprend">';
         echo '<label class="input-group-text" for="telephoneNo">Telephone Number</label>';
@@ -1111,17 +1212,18 @@ require "php/loginCheckAdmin.php";
         echo ' </div>';
         echo ' </div>';
         echo ' </div>';
-        echo ' <input class="btn btn-primary" type="submit" name="update" value="Update Details">';
+        echo ' <input class="btn btn-primary" type="submit" name="updateDetailsRef" value="Update Details">';
 
 
         echo '</form>';
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
+              echo '</div>';
+    echo '</div>';
+  echo '</div>';
 
-        } 
+                } 
 
-        ?><a class="btn btn-primary" href="changePassword.php">Change Password</a>
+        ?>
+        <a class="btn btn-primary" href="changePassword.php">Change Password</a>
       </div>
     </div>
   </div>

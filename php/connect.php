@@ -9,4 +9,7 @@ $dbcon = mysqli_connect(DB_HOST, DB_USER, DB_PSWD, DB_NAME); // Connect to the d
 if (!$dbcon) {
  die("Connection failed: " . mysqli_connect_error());
 }
+// else{
+// 	echo "connected";
+// }
 ?>
