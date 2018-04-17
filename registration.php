@@ -6,33 +6,6 @@ session_start();
 if (isset($_SESSION["email"]) && isset ($_SESSION["loggedIn"])) {
   header("location: profile.php");
 };
-//USE php/PHPMailer.php;
-if (isset($_POST['registration'])) {
-
-  include 'php/connect.php';//connection details
-  $firstName = mysqli_real_escape_string($dbcon, $_POST['firstName']);
-  $firstNameClean = filter_var($firstName, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-  $secondName = mysqli_real_escape_string($dbcon,$_POST['secondName']);
-  $secondNameClean = filter_var($secondName, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-  $userName = mysqli_real_escape_string($dbcon,$_POST['userName']);
-  $userNameClean = filter_var($userName, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_STRIP_HIGH);
-  $password = mysqli_real_escape_string($dbcon,$_POST['password']);
-  $passwordClean = filter_var($password, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-  $gender = mysqli_real_escape_string($dbcon,$_POST['gender']);
-  $grade = mysqli_real_escape_string($dbcon,$_POST['grade']);
-  $gradeClean = filter_var($grade, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-  $email = mysqli_real_escape_string($dbcon,$_POST['email']);
-  $emailClean = filter_var($email, FILTER_SANITIZE_EMAIL, FILTER_FLAG_STRIP_HIGH);
-  $telephoneNo = mysqli_real_escape_string($dbcon,$_POST['telephoneNo']);
-  $telephoneNoClean = filter_var($telephoneNo, FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH);
-  $refereeNumber = mysqli_real_escape_string($dbcon,$_POST['refereeNumber']);
-  $refereeNumberClean = filter_var($refereeNumber, FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH);
-  $hashed = password_hash($passwordClean, PASSWORD_BCRYPT);//encrypts the password using blowfish encryption
-
-  //Query
-  $data = $dbcon->query("INSERT INTO refDetails (firstName, secondName, userName, password, gender, grade, telephoneNo, email, refereeNumber, token) VALUES('$firstNameClean','$secondNameClean','$userNameClean', '$hashed','$gender','$gradeClean', '$telephoneNoClean','$emailClean','$refereeNumberClean','$token')");
-
-}
 ?>
 <!doctype html>
 <html lang="en">
@@ -65,7 +38,7 @@ if (isset($_POST['registration'])) {
         <div class="text-center">
           <img src="/MajorProject/images/FAW_logo.png" class="img-fluid fawLogo" alt="FAWlogo">
         </div>
-        <form name="regForm" method="post" action="registration.php">
+        <form name="regForm" method="post" action="registrationLogin.php">
           <div class="container-fluid regContainer">
             <div class="form-row">
               <div class="form-group col-md-6">

@@ -55,7 +55,7 @@
 /* Registration Form */
 
 .regContainer {
-  padding: 45px;
+  padding: 40px;
   border-style: solid;
   border-color: #E11A22;
   border-width: 2px;
@@ -93,16 +93,38 @@
   text-decoration: none;
 }
 
+/* small tables */
+.table-sm{
+  background-color: white;
+}
+
+.table-sm tr th a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.table-sm tr th a:hover {
+  color: #E11A22;
+  text-decoration: none;
+}
+.table-sm tr td a {
+  color: #000000;
+  text-decoration: none;
+}
+.table-sm tr td a:hover {
+  color: #E11A22;
+  text-decoration: none;
+}
+
 /* Caution Table */
 
 .cautionContainer {
-  padding: 26px;
+  padding: 19px;
   border-style: solid;
   border-color: #E11A22;
   border-width: 2px;
   border-radius: 25px;
   background-color:  #7fc59d  ;
-  font-size: 18px;
+  font-size: 11.5px;
 }
 
 /* General Css */

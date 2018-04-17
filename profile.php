@@ -1,8 +1,6 @@
 <?php
-
 session_start();//Starting Session
 require "php/loginCheck.php";
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,16 +26,13 @@ require "php/loginCheck.php";
   <?php include 'php/header.php'; ?> <!-- Navbar -->
   <?php include 'php/navBar.php'; ?>
   <?php 
-
   $sql = $dbcon->query("SELECT * from refDetails where email = '".$_SESSION['email']."'");
   $reffResults = mysqli_fetch_assoc($sql);
   $reffId = $reffResults['id'];
   $reffUserName = $reffResults['reffUserName'];
-
   //Searches the database for all match reports that match the message Id
   $matchReportResults = $dbcon->query("SELECT * FROM reports1 WHERE reffFK = '$reffId'");
   $row = mysqli_fetch_assoc($matchReportResults); 
-
   ?> <!-- Display Match Reports  -->
   <div class="container-fluid regContainer col-md-10" id="matchReportTable">
     <div class="row justify-content-center">
@@ -59,42 +54,31 @@ require "php/loginCheck.php";
             </thead>
             <tbody>
               <?php 
-
               $sql = $dbcon->query("SELECT id from refDetails where email = '".$_SESSION['email']."'");
               $reffResults = mysqli_fetch_assoc($sql);
               $reffId = $reffResults['id'];
-
               //limits the amount of messages per page
               $reportLimit = 10;
-
               //sets $page as a variable that contains an aray
               $page = $_GET['page'];
-
               //queries the database for all the information stored in the messages table
               $reportResults = mysqli_num_rows($dbcon->query("SELECT * FROM reports1 WHERE reffFK = '$reffId'"));
-
               //Used to get the ammount of pages. I take the ammount of pages and then divide them by the reportLimit(5) and then round the answer up to an int
               $totalReports = ceil($reportResults/$reportLimit);
-
               //Page Logic
               if (!isset($page) || $page <= 0) {
               $pageOffSet = 0;
               }else {
               $pageOffSet = ceil($page - 1) * $reportLimit;
               }
-
               //Searches the database for all messages that match the message Id
               $matchReportResults = $dbcon->query("SELECT * FROM reports1 WHERE reffFK = '$reffId' ORDER BY datePlayed DESC LIMIT $pageOffSet,$reportLimit");
-
               while ($row = mysqli_fetch_assoc($matchReportResults)){
               $datePlayed = $row['datePlayed'];
               $league = $row['league'];
               $homeTeam = $row['homeTeam'];
               $awayTeam = $row['awayTeam'];
               $reffUserName = $row['reffUserName'];
-
-
-
               echo '<tr>';
               echo '<td>'.$datePlayed.'</td>';
               echo '<td>'.$league.'</td>';
@@ -108,8 +92,6 @@ require "php/loginCheck.php";
           </table><!-- Page number logic -->
           <?php
           if($reportResults > $reportLimit){
-
-
           echo '<div class="row">';
           echo '<div class="col-md-12">';
           echo '<div class="text-center pages">';
@@ -117,10 +99,8 @@ require "php/loginCheck.php";
           echo($i == $page) ? '<a class="active">'.$i.'</a>' : '<a href="?page='.$i.'">'.$i.'</a>'; 
           }
           echo'</div>';
-
           echo'</div>';
           echo'</div>';
-
           } 
           ?><!-- End of page number logic -->
         </div>
@@ -137,22 +117,11 @@ require "php/loginCheck.php";
         <p>The boxes bellow display your current details. If you would like to change anything, click on the corrosponding box and enter the change and then click on the Update Details button to save your changes</p>
       </div><br>
         <?php 
-        if (isset($_POST['update'])) {
-        $gender = mysqli_real_escape_string($dbcon,$_POST['gender']);
-        $grade = mysqli_real_escape_string($dbcon,$_POST['grade']);
-        $gradeClean = filter_var($grade, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-        $email = mysqli_real_escape_string($dbcon,$_POST['email']);
-        $emailClean = filter_var($email, FILTER_SANITIZE_EMAIL, FILTER_FLAG_STRIP_HIGH);
-        $telephoneNo = mysqli_real_escape_string($dbcon,$_POST['telephoneNo']);
-        $telephoneNoClean = filter_var($telephoneNo, FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH);
-        
-        $updateQuery = $dbcon->query("UPDATE refDetails SET gender = '$gender', grade = '$gradeClean', email = '$emailClean', telephoneNo = '$telephoneNoClean' WHERE id = '$reffId'");
-        } 
         $currentDetails = $dbcon->query("SELECT * from refDetails where email = '".$_SESSION['email']."'");
         $reffResults = mysqli_fetch_assoc($currentDetails);
         $reffId = $reffResults["id"];{
           echo '
-        <form action="profile.php" method="POST">
+        <form action="upDateRefDetails.php" method="POST">
         <div class="form-row">
          <div class="form-group col-md-6">
         <div class="input-group-preprend">
@@ -210,14 +179,11 @@ require "php/loginCheck.php";
         <div class="text-center">
         <input class="btn btn-primary" type="submit" name="updateDetailsRef" value="Update Details">
         <a class="btn btn-primary" href="changePassword.php">Change Password</a>
-
         </form>
         </div>
         </div>
         </div>';
-
                 } 
-
         ?>
 
 </body>

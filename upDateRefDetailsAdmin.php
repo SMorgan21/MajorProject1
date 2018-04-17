@@ -1,7 +1,7 @@
 <?php 
 
 session_start();
-require "php/loginCheck.php";
+require "php/loginCheckAdmin.php";
 include 'php/connect.php';
 
    if (isset($_POST['updateDetailsRef'])) {

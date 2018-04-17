@@ -75,46 +75,40 @@ if ($_POST['editMatchReport']) {
   $firstName2Clean = filter_var($firstName2, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $caution2 = mysqli_real_escape_string($dbcon,$_POST['caution2']);
   $team2 = mysqli_real_escape_string($dbcon,$_POST['team2']);
-  $sendOff2 = mysqli_real_escape_string($dbcon,$_POST['sendOff2']);
   $surname3 = mysqli_real_escape_string($dbcon,$_POST['surname3']);
   $surname3Clean = filter_var($surname3, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $firstName3 = mysqli_real_escape_string($dbcon,$_POST['firstName3']);
   $firstName3Clean = filter_var($firstName3, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $caution3 = mysqli_real_escape_string($dbcon,$_POST['caution3']);
   $team3 = mysqli_real_escape_string($dbcon,$_POST['team3']);
-  $sendOff3 = mysqli_real_escape_string($dbcon,$_POST['sendOff3']);
   $surname4 = mysqli_real_escape_string($dbcon,$_POST['surname4']);
   $surname4Clean = filter_var($surname4, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $firstName4 = mysqli_real_escape_string($dbcon,$_POST['firstName4']);
   $firstName4Clean = filter_var($firstName4, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $caution4 = mysqli_real_escape_string($dbcon,$_POST['caution4']);
   $team4 = mysqli_real_escape_string($dbcon,$_POST['team4']);
-  $sendOff4 = mysqli_real_escape_string($dbcon,$_POST['sendOff4']);
   $surname5 = mysqli_real_escape_string($dbcon,$_POST['surname5']);
   $surname5Clean = filter_var($surname5, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $firstName5 = mysqli_real_escape_string($dbcon,$_POST['firstName5']);
   $firstName5Clean = filter_var($firstName5, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $caution5 = mysqli_real_escape_string($dbcon,$_POST['caution5']);
   $team5 = mysqli_real_escape_string($dbcon,$_POST['team5']);
-  $sendOff5 = mysqli_real_escape_string($dbcon,$_POST['sendOff5']);
   $surname6 = mysqli_real_escape_string($dbcon,$_POST['surname6']);
   $surname6Clean = filter_var($surname6, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $firstName6 = mysqli_real_escape_string($dbcon,$_POST['firstName6']);
   $firstName6Clean = filter_var($firstName6, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $caution6 = mysqli_real_escape_string($dbcon,$_POST['caution6']);
   $team6 = mysqli_real_escape_string($dbcon,$_POST['team6']);
-  $sendOff6 = mysqli_real_escape_string($dbcon,$_POST['sendOff6']);
   $surname7 = mysqli_real_escape_string($dbcon,$_POST['surname7']);
   $surname7Clean = filter_var($surname7, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $firstName7 = mysqli_real_escape_string($dbcon,$_POST['firstName7']);
   $firstName7Clean = filter_var($firstName7, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $caution7 = mysqli_real_escape_string($dbcon,$_POST['caution7']);
   $team7 = mysqli_real_escape_string($dbcon,$_POST['team7']);
-  $sendOff7 = mysqli_real_escape_string($dbcon,$_POST['sendOff7']);
   $repID = mysqli_real_escape_string($dbcon,$_POST['repId']);
    
   //Query to insert data into the report table
-  $query = $dbcon->query("UPDATE reports1 set homeTeam = '$homeTeam', awayTeam = '$awayTeam', datePlayed = '$datePlayed', location = '$location', surname1 = '$surname1Clean', firstName1 = '$firstName1Clean', team1 = '$team1', caution1 = '$caution1', sendOff1 = '$sendOff1', surname2 = '$surname2Clean', firstName2 = '$firstName2Clean', team2 = '$team2', caution2 = '$caution2', sendOff2 = '$sendOff2', surname3 = '$surname3Clean', firstName3 = '$firstName3Clean', team3 = '$team3', caution3 = '$caution3', sendOff3 = '$sendOff3', surname4 = '$surname4Clean', firstName4 = '$firstName4Clean', team4 = '$team4', caution4 = '$caution4', sendOff4 = '$sendOff4', surname5 = '$surname5Clean', firstName5 = '$firstName5Clean', team5 = '$team5', caution5 = '$caution5', sendOff5 = '$sendOff5', surname6 = '$surname6Clean', firstName6 = '$firstName6Clean', team6 = '$team6', caution6 = '$caution6', sendOff6 = '$sendOff6', surname7 = '$surname7Clean', firstName7 = '$firstName7Clean', team7 = '$team7', caution7 = '$caution7', sendOff7 = '$sendOff7' WHERE id = '$repID'");
+  $query = $dbcon->query("UPDATE reports1 set homeTeam = '$homeTeam', awayTeam = '$awayTeam', datePlayed = '$datePlayed', location = '$location', surname1 = '$surname1Clean', firstName1 = '$firstName1Clean', team1 = '$team1', caution1 = '$caution1', sendOff1 = '$sendOff1', surname2 = '$surname2Clean', firstName2 = '$firstName2Clean', team2 = '$team2', caution2 = '$caution2', surname3 = '$surname3Clean', firstName3 = '$firstName3Clean', team3 = '$team3', caution3 = '$caution3', surname4 = '$surname4Clean', firstName4 = '$firstName4Clean', team4 = '$team4', caution4 = '$caution4', surname5 = '$surname5Clean', firstName5 = '$firstName5Clean', team5 = '$team5', caution5 = '$caution5', surname6 = '$surname6Clean', firstName6 = '$firstName6Clean', team6 = '$team6', caution6 = '$caution6', surname7 = '$surname7Clean', firstName7 = '$firstName7Clean', team7 = '$team7', caution7 = '$caution7' WHERE id = '$repID'");
   
 //  ,
 
@@ -228,8 +222,6 @@ $pdf->Cell(5,5,'',0,0);
 $pdf->Cell(35,5,$caution2,0,0,'L');
 //Dummy Cell for formatting
 $pdf->Cell(5,5,'',0,0);
-//Send Off
-$pdf->Cell(35,5,$sendOff2,0,1,'L');
 
 //Group 2
 //Dummy Cell for formatting
@@ -250,8 +242,6 @@ $pdf->Cell(5,5,'',0,0);
 $pdf->Cell(35,5,$caution3,0,0,'L');
 //Dummy Cell for formatting
 $pdf->Cell(5,5,'',0,0);
-//Send Off
-$pdf->Cell(35,5,$sendOff3,0,1,'L');
 
 //Group 4
 //Dummy Cell for formatting
@@ -272,8 +262,6 @@ $pdf->Cell(5,5,'',0,0);
 $pdf->Cell(35,5,$caution4,0,0,'L');
 //Dummy Cell for formatting
 $pdf->Cell(5,5,'',0,0);
-//Send Off
-$pdf->Cell(35,5,$sendOff4,0,1,'L');
 
 //Group 5
 //Dummy Cell for formatting
@@ -294,8 +282,6 @@ $pdf->Cell(5,5,'',0,0);
 $pdf->Cell(35,5,$caution5,0,0,'L');
 //Dummy Cell for formatting
 $pdf->Cell(5,5,'',0,0);
-//Send Off
-$pdf->Cell(35,5,$sendOff5,0,1,'L');
 //Group 6
 //Dummy Cell for formatting
 $pdf->Cell(5,5,'',0,0);
@@ -315,8 +301,6 @@ $pdf->Cell(5,5,'',0,0);
 $pdf->Cell(35,5,$caution6,0,0,'L');
 //Dummy Cell for formatting
 $pdf->Cell(5,5,'',0,0);
-//Send Off
-$pdf->Cell(35,5,$sendOff6,0,1,'L');
 
 //Group 7
 //Dummy Cell for formatting
@@ -337,8 +321,6 @@ $pdf->Cell(5,5,'',0,0);
 $pdf->Cell(35,5,$caution7,0,0,'L');
 //Dummy Cell for formatting
 $pdf->Cell(5,5,'',0,0);
-//Send Off
-$pdf->Cell(35,5,$sendOff7,0,1,'L');
 }
 
 //Outputs the data

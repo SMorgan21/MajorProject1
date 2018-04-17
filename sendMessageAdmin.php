@@ -9,33 +9,6 @@ require "php/loginCheckAdmin.php";
 include 'php/connect.php';
 
 ?>
-
-<?php 
-
-if (isset($_POST['submitMessage'])){
-	
-
-//Prepare the variables
-$recipient = mysqli_real_escape_string($dbcon, $_POST['recipient']);
-$subject = mysqli_real_escape_string($dbcon, $_POST['subject']);
-$subjectClean = filter_var($subject, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-$message = mysqli_real_escape_string($dbcon, $_POST['message']);
-$messageClean = filter_var($message, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-
-//Query to retrive refferee data
-$sql = $dbcon->query("SELECT * from refDetails where email = '".$_SESSION['email']."'");
-$reffResults = mysqli_fetch_assoc($sql);
-$reffId = $reffResults["id"];
-$reffFirstName = $reffResults["firstName"];
-$reffSecondName = $reffResults["secondName"];
-$reffFullName = $reffFirstName.' '.$reffSecondName; 
-
-//Insert data into table
-$messageData = $dbcon->query("INSERT INTO messages (reffFK, recievedFrom, recipient, subject, message) VALUES ('$reffId', '$reffFullName', '$recipient', '$subjectClean', '$messageClean')");
-
-}
-	
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -63,13 +36,13 @@ $messageData = $dbcon->query("INSERT INTO messages (reffFK, recievedFrom, recipi
 	<div class="container-fluid">
 	<div class="row justify-content-center">
 	  <div class="col-md-6 col-md-offset-3">
-	    <form name="sendMessage" method="post" action="sendMessageAdmin.php">
+	    <form name="sendMessage" method="post" action="messageSentAdmin.php">
 	      <div class="container-fluid regContainer">
 	         <div class="form-row">
                 <div class="input-group-preprend">
                   <label class="input-group-text" for="recipient">Recipient</label>
                 </div>
-                <select class="form-control" name="recipient" id="recipientAdmin" >
+                <select class="form-control" name="recipient" id="recipientAdmin" required>
                   <option value="">Please Select a Recipient</option>
                   <?php
                   include 'php/connect.php';
@@ -96,8 +69,8 @@ $messageData = $dbcon->query("INSERT INTO messages (reffFK, recievedFrom, recipi
               </div>
               <br>
               <div class = "text-center">
-              	<input type="submit" class="btn btn-primary" name="submitMessage" value="Send Message" id="submitMessageAdmin">
-              	<a href="messagesAdmin.php" class="btn btn-primary" role="button">Back to Inbox</a>
+              	<input type="submit" class="btn btn-primary" name="submitMessage" title="Clcik here to send your message" value="Send Message" id="submitMessageAdmin">
+              	<a href="messagesAdmin.php" class="btn btn-primary" title="Click here to return to your inbox" role="button">Back to Inbox</a>
               </div>
 	  </div>
 	</form>

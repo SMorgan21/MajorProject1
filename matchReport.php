@@ -152,8 +152,8 @@ require "php/loginCheck.php";
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="caution1">Caution</label>
-                  </div><select class="form-control caution" id="caution1" name="caution">
-                    <option value="">
+                  </div><select class="form-control caution" id="caution1" name="caution1">
+                    <option value="" selected>
                       Please Select A Caution Code
                     </option>
                     <option value="C1">
@@ -183,8 +183,8 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="sendOff1">Send Off</label>
                   </div>
-                  <select class="form-control sendOff" id="sendOff1" name="sendOff">
-                    <option value="">
+                  <select class="form-control sendOff" id="sendOff1" name="sendOff1">
+                    <option value="" selected>
                       Please Select A Send Off Code
                     </option>
                     <option value="S1">
@@ -234,21 +234,21 @@ require "php/loginCheck.php";
                   $("#reset2").prop("disabled", true);
                   })
                   caution1.onchange = function(e) {
-                    surname2.disabled = (caution1.value == "0");
-                    firstName2.disabled = (caution1.value == "0");
-                    team2.disabled = (caution1.value == "0");
-                    caution2.disabled = (caution1.value == "0");
-                    sendOff2.disabled = (caution1.value == "0");
-                    reset2.disabled = (caution1.value == "0");
+                    surname2.disabled = (caution1.value == "");
+                    firstName2.disabled = (caution1.value == "");
+                    team2.disabled = (caution1.value == "");
+                    caution2.disabled = (caution1.value == "");
+                    sendOff2.disabled = (caution1.value == "");
+                    reset2.disabled = (caution1.value == "");
                   };
-                  sendOff1.onchange = function(e) {
-                    surname2.disabled = (sendOff1.value == "0");
-                    firstName2.disabled = (sendOff1.value == "0");
-                    team2.disabled = (sendOff1.value == "0");
-                    caution2.disabled = (sendOff1.value == "0");
-                    sendOff2.disabled = (sendOff1.value == "0");
-                    reset2.disabled = (sendOff1.value == "0");
-                  };      
+                  // sendOff1.onchange = function(e) {
+                  //   surname2.disabled = (sendOff1.value == "");
+                  //   firstName2.disabled = (sendOff1.value == "");
+                  //   team2.disabled = (sendOff1.value == "");
+                  //   caution2.disabled = (sendOff1.value == "");
+                  //   sendOff2.disabled = (sendOff1.value == "");
+                  //   reset2.disabled = (sendOff1.value == "");
+                  // };        
                 </script>
                 </div>
               </div><!-- End of first line -->
@@ -268,7 +268,7 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="team2">Team</label>
                   </div><select class="form-control teams" id="team2" name="team2" disabled>
-                    <option value="0" selected>
+                    <option value="" selected>
                       Please Select A Team
                     </option>
                   </select>
@@ -276,8 +276,8 @@ require "php/loginCheck.php";
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="caution2">Caution</label>
-                  </div><select class="form-control caution" id="caution2" name="caution" disabled>
-                    <option value="0" selected>
+                  </div><select class="form-control caution" id="caution2" name="caution2" disabled>
+                    <option value="" selected>
                       Please Select A Caution Code
                     </option>
                     <option value="C1">
@@ -302,58 +302,13 @@ require "php/loginCheck.php";
                       C7
                     </option>
                   </select>
-                </div>
-                <div class="form-group col-md-2">
-                  <div class="input-group-preprend">
-                    <label class="input-group-text" for="sendOff2">Send Off</label>
-                  </div><select class="form-control sendOff" id="sendOff2" name="sendOff" disabled>
-                    <option value="0" selected>
-                      Please Select A Send Off Code
-                    </option>
-                    <option value="S1">
-                      S1
-                    </option>
-                    <option value="S2">
-                      S2
-                    </option>
-                    <option value="S3">
-                      S3
-                    </option>
-                    <option value="S4">
-                      S4
-                    </option>
-                    <option value="S5">
-                      S5
-                    </option>
-                    <option value="S6">
-                      S6
-                    </option>
-                    <option value="S7">
-                      S7
-                    </option>
-                  </select>
-                      <input class="btn btn-warning btn-sm" type="button" name="resetSelect" title="Click to reset the caution you have chosen" value="Reset Cautions" id="reset2" disabled>
                   <script type="text/javascript">
-                     $(function() {
-                      $("#caution2").change(function() {
-                        $("#sendOff2").prop("disabled", true);
-                      });
-                      $("#sendOff2").change(function() {
-                        $("#caution2").prop("disabled", true);
-                      });
-                    });
-                  $("#reset2").click(function() {
-                  $('#sendOff2').prop('selectedIndex', 0);
-                  $('#caution2').prop('selectedIndex', 0);
-                  $("#sendOff2").prop("disabled", false);
-                  $("#caution2").prop("disabled", false);
-                  $("#surname3").prop("disabled", true);
-                  $("#firstName3").prop("disabled", true);
-                  $("#team3").prop("disabled", true);
-                  $("#caution3").prop("disabled", true);
-                  $("#sendOff3").prop("disabled", true);
-                  $("#reset3").prop("disabled", true);
-                  };    
+                  caution2.onchange = function(e) {
+                    surname3.disabled = (caution2.value == "");
+                    firstName3.disabled = (caution2.value == "");
+                    team3.disabled = (caution2.value == "");
+                    caution3.disabled = (caution2.value == "");
+                  };
                 </script>
                 </div>
               </div><!-- End of second line -->
@@ -373,7 +328,7 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="team3">Team</label>
                   </div><select class="form-control teams" id="team3" name="team3" disabled>
-                    <option value="0" selected>
+                    <option value="" selected>
                       Please Select A Team
                     </option>
                   </select>
@@ -381,8 +336,8 @@ require "php/loginCheck.php";
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="caution3">Caution</label>
-                  </div><select class="form-control caution" id="caution3" name="caution" disabled>
-                    <option value="0" selected>
+                  </div><select class="form-control caution" id="caution3" name="caution3" disabled>
+                    <option value="" selected>
                       Please Select A Caution Code
                     </option>
                     <option value="C1">
@@ -407,52 +362,13 @@ require "php/loginCheck.php";
                       C7
                     </option>
                   </select>
-                </div>
-                <div class="form-group col-md-2">
-                  <div class="input-group-preprend">
-                    <label class="input-group-text" for="sendOff3">Send Off</label>
-                  </div><select class="form-control sendOff" id="sendOff3" name="sendOff" disabled>
-                    <option value="0" selected>
-                      Please Select A Send Off Code
-                    </option>
-                    <option value="S1">
-                      S1
-                    </option>
-                    <option value="S2">
-                      S2
-                    </option>
-                    <option value="S3">
-                      S3
-                    </option>
-                    <option value="S4">
-                      S4
-                    </option>
-                    <option value="S5">
-                      S5
-                    </option>
-                    <option value="S6">
-                      S6
-                    </option>
-                    <option value="S7">
-                      S7
-                    </option>
-                  </select>
-                      <input class="btn btn-warning btn-sm" type="button" name="resetSelect" title="Click to reset the caution you have chosen" value="Reset Cautions" id="reset3" disabled>
                   <script type="text/javascript">
-                     $(function() {
-                      $("#caution3").change(function() {
-                        $("#sendOff3").prop("disabled", true);
-                      });
-                      $("#sendOff3").change(function() {
-                        $("#caution3").prop("disabled", true);
-                      });
-                    });
-                  $("#reset3").click(function() {
-                  $('#sendOff3').prop('selectedIndex', 0);
-                  $('#caution3').prop('selectedIndex', 0);
-                  $("#sendOff3").prop("disabled", false);
-                  $("#caution3").prop("disabled", false);
-                  });
+                  caution3.onchange = function(e) {
+                    surname4.disabled = (caution3.value == "");
+                    firstName4.disabled = (caution3.value == "");
+                    team4.disabled = (caution3.value == "");
+                    caution4.disabled = (caution3.value == "");
+                  };
                 </script>
                 </div>
               </div><!-- End of third line -->
@@ -472,7 +388,7 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="team4">Team</label>
                   </div><select class="form-control teams" id="team4" name="team4" disabled>
-                    <option value="0" selected>
+                    <option value="" selected>
                       Please Select A Team
                     </option>
                   </select>
@@ -480,8 +396,8 @@ require "php/loginCheck.php";
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="caution4">Caution</label>
-                  </div><select class="form-control caution" id="caution4" name="caution" disabled>
-                    <option value="0" selected>
+                  </div><select class="form-control caution" id="caution4" name="caution4" disabled>
+                    <option value="" selected>
                       Please Select A Caution Code
                     </option>
                     <option value="C1">
@@ -506,51 +422,14 @@ require "php/loginCheck.php";
                       C7
                     </option>
                   </select>
-                </div>
-                <div class="form-group col-md-2">
-                  <div class="input-group-preprend">
-                    <label class="input-group-text" for="sendOff4">Send Off</label>
-                  </div><select class="form-control sendOff" id="sendOff4" name="sendOff" disabled>
-                    <option value="0" selected>
-                      Please Select A Send Off Code
-                    </option>
-                    <option value="S1">
-                      S1
-                    </option>
-                    <option value="S2">
-                      S2
-                    </option>
-                    <option value="S3">
-                      S3
-                    </option>
-                    <option value="S4">
-                      S4
-                    </option>
-                    <option value="S5">
-                      S5
-                    </option>
-                    <option value="S6">
-                      S6
-                    </option>
-                    <option value="S7">
-                      S7
-                    </option>
-                  </select>    <input class="btn btn-warning btn-sm" type="button" name="resetSelect" title="Click to reset the caution you have chosen" value="Reset Cautions" id="reset4" disabled>
+
                   <script type="text/javascript">
-                     $(function() {
-                      $("#caution4").change(function() {
-                        $("#sendOff4").prop("disabled", true);
-                      });
-                      $("#sendOff4").change(function() {
-                        $("#caution4").prop("disabled", true);
-                      });
-                    });
-                  $("#reset4").click(function() {
-                  $('#sendOff4').prop('selectedIndex', 0);
-                  $('#caution4').prop('selectedIndex', 0);
-                  $("#sendOff4").prop("disabled", false);
-                  $("#caution4").prop("disabled", false);
-                  });
+                   caution4.onchange = function(e) {
+                    surname5.disabled = (caution4.value == "");
+                    firstName5.disabled = (caution4.value == "");
+                    team5.disabled = (caution4.value == "");
+                    caution5.disabled = (caution4.value == "");
+                  };
                 </script>
                 </div>
               </div><!-- End of fourth line -->
@@ -570,7 +449,7 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="team5">Team</label>
                   </div><select class="form-control teams" id="team5" name="team5" disabled>
-                    <option value="0" selected>
+                    <option value="" selected>
                       Please Select A Team
                     </option>
                   </select>
@@ -578,8 +457,8 @@ require "php/loginCheck.php";
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="caution5">Caution</label>
-                  </div><select class="form-control caution" id="caution5" name="caution" disabled>
-                    <option value="0" selected>
+                  </div><select class="form-control caution" id="caution5" name="caution5" disabled>
+                    <option value="" selected>
                       Please Select A Caution Code
                     </option>
                     <option value="C1">
@@ -604,51 +483,14 @@ require "php/loginCheck.php";
                       C7
                     </option>
                   </select>
-                </div>
-                <div class="form-group col-md-2">
-                  <div class="input-group-preprend">
-                    <label class="input-group-text" for="sendOff5">Send Off</label>
-                  </div><select class="form-control sendOff" id="sendOff5" name="sendOff" disabled>
-                    <option value="0" selected>
-                      Please Select A Send Off Code
-                    </option>
-                    <option value="S1">
-                      S1
-                    </option>
-                    <option value="S2">
-                      S2
-                    </option>
-                    <option value="S3">
-                      S3
-                    </option>
-                    <option value="S4">
-                      S4
-                    </option>
-                    <option value="S5">
-                      S5
-                    </option>
-                    <option value="S6">
-                      S6
-                    </option>
-                    <option value="S7">
-                      S7
-                    </option>
-                  </select>    <input class="btn btn-warning btn-sm" type="button" name="resetSelect" title="Click to reset the caution you have chosen" value="Reset Cautions" id="reset5" disabled>
                   <script type="text/javascript">
-                     $(function() {
-                      $("#caution5").change(function() {
-                        $("#sendOff5").prop("disabled", true);
-                      });
-                      $("#sendOff5").change(function() {
-                        $("#caution5").prop("disabled", true);
-                      });
-                    });
-                  $("#reset5").click(function() {
-                  $('#sendOff5').prop('selectedIndex', 0);
-                  $('#caution5').prop('selectedIndex', 0);
-                  $("#sendOff5").prop("disabled", false);
-                  $("#caution5").prop("disabled", false);
-                  });
+                   caution5.onchange = function(e) {
+                    surname6.disabled = (caution5.value == "");
+                    firstName6.disabled = (caution5.value == "");
+                    team6.disabled = (caution5.value == "");
+                    caution6.disabled = (caution5.value == "");
+
+                  };
                 </script>
                 </div>
               </div><!-- End of fifth line -->
@@ -668,7 +510,7 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="team6">Team</label>
                   </div><select class="form-control teams" id="team6" name="team6" disabled>
-                    <option value="0" selected>
+                    <option value="" selected>
                       Please Select A Team
                     </option>
                   </select>
@@ -676,8 +518,8 @@ require "php/loginCheck.php";
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="caution6">Caution</label>
-                  </div><select class="form-control caution" id="caution6" name="caution" disabled>
-                    <option value="0" selected>
+                  </div><select class="form-control caution" id="caution6" name="caution6" disabled>
+                    <option value="" selected>
                       Please Select A Caution Code
                     </option>
                     <option value="C1">
@@ -703,53 +545,16 @@ require "php/loginCheck.php";
                     </option>
                   </select>
                 </div>
-                <div class="form-group col-md-2">
-                  <div class="input-group-preprend">
-                    <label class="input-group-text" for="sendOff6">Send Off</label>
-                  </div><select class="form-control sendOff" id="sendOff6" name="sendOff" disabled>
-                    <option value="0" selected>
-                      Please Select A Send Off Code
-                    </option>
-                    <option value="S1">
-                      S1
-                    </option>
-                    <option value="S2">
-                      S2
-                    </option>
-                    <option value="S3">
-                      S3
-                    </option>
-                    <option value="S4">
-                      S4
-                    </option>
-                    <option value="S5">
-                      S5
-                    </option>
-                    <option value="S6">
-                      S6
-                    </option>
-                    <option value="S7">
-                      S7
-                    </option>
-                  </select>    <input class="btn btn-warning btn-sm" type="button" name="resetSelect" title="Click to reset the caution you have chosen" value="Reset Cautions" id="reset6" disabled>
-                  <script type="text/javascript">
-                     $(function() {
-                      $("#caution6").change(function() {
-                        $("#sendOff6").prop("disabled", true);
-                      });
-                      $("#sendOff6").change(function() {
-                        $("#caution6").prop("disabled", true);
-                      });
-                    });
-                  $("#reset6").click(function() {
-                  $('#sendOff6').prop('selectedIndex', 0);
-                  $('#caution6').prop('selectedIndex', 0);
-                  $("#sendOff6").prop("disabled", false);
-                  $("#caution6").prop("disabled", false);
-                  });
+                  <script type="text/javascript">                  
+                   caution6.onchange = function(e) {
+                    surname7.disabled = (caution6.value == "");
+                    firstName7.disabled = (caution6.value == "");
+                    team7.disabled = (caution6.value == "");
+                    caution7.disabled = (caution6.value == "");
+                  };
                 </script>
-                </div>
-              </div><!-- End of sixth line -->
+              </div>
+<!-- End of sixth line -->
               <!-- Start of seventh line -->
               <div class="form-row">
                 <div class="form-group col-md-3">
@@ -766,7 +571,7 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="team7">Team</label>
                   </div><select class="form-control teams" id="team7" name="team7" disabled>
-                    <option value="0" selected>
+                    <option value="" selected>
                       Please Select A Team
                     </option>
                   </select>
@@ -774,8 +579,8 @@ require "php/loginCheck.php";
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="caution7">Caution</label>
-                  </div><select class="form-control" id="caution7" name="caution" disabled>
-                    <option vvalue="0" selected>
+                  </div><select class="form-control" id="caution7" name="caution7" disabled>
+                    <option vvalue="" selected>
                       Please Select A Caution Code
                     </option>
                     <option value="C1">
@@ -801,59 +606,21 @@ require "php/loginCheck.php";
                     </option>
                   </select>
                 </div>
-                <div class="form-group col-md-2">
-                  <div class="input-group-preprend">
-                    <label class="input-group-text" for="sendOff7">Send Off</label>
-                  </div><select class="form-control" id="sendOff7" name="sendOff" disabled>
-                    <option value="0" selected>
-                      Please Select A Send Off Code
-                    </option>
-                    <option value="S1">
-                      S1
-                    </option>
-                    <option value="S2">
-                      S2
-                    </option>
-                    <option value="S3">
-                      S3
-                    </option>
-                    <option value="S4">
-                      S4
-                    </option>
-                    <option value="S5">
-                      S5
-                    </option>
-                    <option value="S6">
-                      S6
-                    </option>
-                    <option value="S7">
-                      S7
-                    </option>
-                  </select>    <input class="btn btn-warning btn-sm" type="button" name="resetSelect" title="Click to reset the caution you have chosen" value="Reset Cautions" id="reset7" disabled>
-                  <script type="text/javascript">
-                     $(function() {
-                      $("#caution7").change(function() {
-                        $("#sendOff7").prop("disabled", true);
-                      });
-                      $("#sendOff7").change(function() {
-                        $("#caution7").prop("disabled", true);
-                      });
-                    });
-                  $("#reset7").click(function() {
-                  $('#sendOff7').prop('selectedIndex', 0);
-                  $('#caution7').prop('selectedIndex', 0);
-                  $("#sendOff7").prop("disabled", false);
-                  $("#caution7").prop("disabled", false);
-                  });
-                </script>
-                </div>
               </div><!-- A script to reset the inputs on the page, I have had to delay the function to allow time for the pdf to generate -->
               <script>
-                       function resetForm() {
+                       function saveReport() {
                          document.getElementById("matchReport").reset();
-                         alert("Your report has been saved and emailed. Press OK to continue");
+                         alert("Your report has been saved. Press OK to continue");
                        }
-              </script> <input class="btn btn-success" id="submitMatchReport" name="submitMatchReport" onclick="setTimeout(resetForm, 200)" type="submit" value="Save Report">
+              </script> 
+              <input class="btn btn-success" id="submitMatchReport" name="submitMatchReport" onclick="setTimeout(saveReport, 200)" type="submit" value="Save Report">
+               <input type="button" class="btn btn-warning" onclick="resetForm()" value="Reset Form">
+
+                <script>
+                function resetForm() {
+                    document.getElementById("matchReport").reset();
+                }
+                </script>
             </div>
           </div>
         </div><!-- End of seventh line -->

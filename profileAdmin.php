@@ -335,36 +335,6 @@ include 'php/connect.php';
                     </option>
                   </select>
                 </div>
-                <div class="form-group col-md-2">
-                  <div class="input-group-preprend">
-                    <label class="input-group-text" for="sendOff2">Send Off</label>
-                  </div><select class="form-control" id="changeSendOff2" name="sendOff2">
-                    <option value="<?php echo $sendOff2;?>">
-                      <?php echo $sendOff2;?>
-                    </option>
-                    <option value="S1">
-                      S1
-                    </option>
-                    <option value="S2">
-                      S2
-                    </option>
-                    <option value="S3">
-                      S3
-                    </option>
-                    <option value="S4">
-                      S4
-                    </option>
-                    <option value="S5">
-                      S5
-                    </option>
-                    <option value="S6">
-                      S6
-                    </option>
-                    <option value="S7">
-                      S7
-                    </option>
-                  </select>
-                </div>
               </div><!-- End of second line -->
               <!-- Start of third line -->
               <div class="form-row">
@@ -414,36 +384,6 @@ include 'php/connect.php';
                     </option>
                     <option value="C7">
                       C7
-                    </option>
-                  </select>
-                </div>
-                <div class="form-group col-md-2">
-                  <div class="input-group-preprend">
-                    <label class="input-group-text" for="sendOff3">Send Off</label>
-                  </div><select class="form-control" id="changeSendOff3" name="sendOff3">
-                    <option value="<?php echo $sendOff3;?>">
-                      <?php echo $sendOff3;?>
-                    </option>
-                    <option value="S1">
-                      S1
-                    </option>
-                    <option value="S2">
-                      S2
-                    </option>
-                    <option value="S3">
-                      S3
-                    </option>
-                    <option value="S4">
-                      S4
-                    </option>
-                    <option value="S5">
-                      S5
-                    </option>
-                    <option value="S6">
-                      S6
-                    </option>
-                    <option value="S7">
-                      S7
                     </option>
                   </select>
                 </div>
@@ -499,36 +439,6 @@ include 'php/connect.php';
                     </option>
                   </select>
                 </div>
-                <div class="form-group col-md-2">
-                  <div class="input-group-preprend">
-                    <label class="input-group-text" for="sendOff4">Send Off</label>
-                  </div><select class="form-control" id="changeSendOff4" name="sendOff4">
-                    <option value="<?php echo $sendOff4;?>">
-                      <?php echo $sendOff4;?>
-                    </option>
-                    <option value="S1">
-                      S1
-                    </option>
-                    <option value="S2">
-                      S2
-                    </option>
-                    <option value="S3">
-                      S3
-                    </option>
-                    <option value="S4">
-                      S4
-                    </option>
-                    <option value="S5">
-                      S5
-                    </option>
-                    <option value="S6">
-                      S6
-                    </option>
-                    <option value="S7">
-                      S7
-                    </option>
-                  </select>
-                </div>
               </div><!-- End of fourth line -->
               <!-- Start of fifth line -->
               <div class="form-row">
@@ -578,36 +488,6 @@ include 'php/connect.php';
                     </option>
                     <option value="C7">
                       C7
-                    </option>
-                  </select>
-                </div>
-                <div class="form-group col-md-2">
-                  <div class="input-group-preprend">
-                    <label class="input-group-text" for="sendOff5">Send Off</label>
-                  </div><select class="form-control" id="changeSendOff5" name="sendOff5">
-                    <option value="<?php echo $sendOff5;?>">
-                      <?php echo $sendOff5;?>
-                    </option>
-                    <option value="S1">
-                      S1
-                    </option>
-                    <option value="S2">
-                      S2
-                    </option>
-                    <option value="S3">
-                      S3
-                    </option>
-                    <option value="S4">
-                      S4
-                    </option>
-                    <option value="S5">
-                      S5
-                    </option>
-                    <option value="S6">
-                      S6
-                    </option>
-                    <option value="S7">
-                      S7
                     </option>
                   </select>
                 </div>
@@ -663,36 +543,6 @@ include 'php/connect.php';
                     </option>
                   </select>
                 </div>
-                <div class="form-group col-md-2">
-                  <div class="input-group-preprend">
-                    <label class="input-group-text" for="sendOff6">Send Off</label>
-                  </div><select class="form-control" id="changeSendOff6" name="sendOff6">
-                    <option value="<?php echo $sendOff6;?>">
-                      <?php echo $sendOff6;?>
-                    </option>
-                    <option value="S1">
-                      S1
-                    </option>
-                    <option value="S2">
-                      S2
-                    </option>
-                    <option value="S3">
-                      S3
-                    </option>
-                    <option value="S4">
-                      S4
-                    </option>
-                    <option value="S5">
-                      S5
-                    </option>
-                    <option value="S6">
-                      S6
-                    </option>
-                    <option value="S7">
-                      S7
-                    </option>
-                  </select>
-                </div>
               </div><!-- End of sixth line -->
               <!-- Start of seventh line -->
               <div class="form-row">
@@ -745,49 +595,19 @@ include 'php/connect.php';
                     </option>
                   </select>
                 </div>
-                <div class="form-group col-md-2">
-                  <div class="input-group-preprend">
-                    <label class="input-group-text" for="sendOff7">Send Off</label>
-                  </div><select class="form-control" id="changeSendOff7" name="sendOff7">
-                    <option value="<?php echo $sendOff7;?>">
-                      <?php echo $sendOff7;?>
-                    </option>
-                    <option value="S1">
-                      S1
-                    </option>
-                    <option value="S2">
-                      S2
-                    </option>
-                    <option value="S3">
-                      S3
-                    </option>
-                    <option value="S4">
-                      S4
-                    </option>
-                    <option value="S5">
-                      S5
-                    </option>
-                    <option value="S6">
-                      S6
-                    </option>
-                    <option value="S7">
-                      S7
-                    </option>
-                  </select>
-                </div>
               </div><!-- A script to reset the inputs on the page, I have had to delay the function to allow time for the pdf to generate -->
               <script>
               function savedAlert() {
               alert("The report has been saved");
 
               }
-              </script> <input id="editMatchReport" name="editMatchReport" onclick="savedAlert()" type="submit" value="Save Report">
+              </script> <input id="editMatchReport" class="btn btn-primary" name="editMatchReport" onclick="savedAlert()" type="submit" value="Save Report">
             </div>
           </div>
         </div><!-- End of seventh line -->
         <!-- Start of Caution code list -->
         <div class="col-md-4">
-          <div class="container-fluid regContainer">
+          <div class="container-fluid cautionContainer">
             <div class="text-center">
               <h4>Caution Codes</h4>
             </div>
@@ -859,7 +679,7 @@ include 'php/connect.php';
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>
           <input class="btn btn-success" type="submit" name="saveTeam" id="saveTeam" value="Save Team">
         </div>
         </form>
@@ -874,7 +694,7 @@ include 'php/connect.php';
         <div class="col-md-12">
           <div class="text-center">
             <h2 class="title" id="editLeagueTitle">Edit League</h2>
-          </div>
+          </div><br>
           <div class="table-responsive">
             <table class="table table-bordered">
               <thead class="thead-dark">
@@ -890,16 +710,26 @@ include 'php/connect.php';
                 echo '
                 <tr>
                 <td>'.$teamName.'</td>
-                <td> <a class="btn btn-danger" role="button" href="?deleteTeam='.$teamId.'">Delete this Team</a></td>
+                <td> <a class="btn btn-danger" role="button" onclick="return deleteConfirmAlert();" title="Click here to delete this team" href="?deleteTeam='.$teamId.'">Delete this Team</a></td>
                 </tr>';
                 }
                 ?>
               </tbody>
+              <script type="text/javascript">
+                function deleteConfirmAlert()
+                {
+                  var conf = confirm("Are you sure you want to delete this team?");
+                  if (conf)
+                    return true;
+                  else
+                    return false;
+                }
+              </script>
             </table>
           </div>
           <div class="text-center">
-            <input class="btn btn-success" type="button" value="Add A Team" role="button" id="addTeam">
-            <a class="btn btn-primary" href="profileAdmin.php" role="button">Back Home Page</a><br><br>   
+            <input class="btn btn-success" type="button" title="Click here to add a team to this league" value="Add A Team" role="button" id="addTeam">
+            <a class="btn btn-primary" href="profileAdmin.php" title="Click here to return to the home page" role="button">Back Home Page</a><br><br>   
               <!--    while ($rowLeague=mysqli_fetch_assoc($league)) {
                 $leagueId = $rowLeague['id']; 
                
@@ -1000,6 +830,7 @@ include 'php/connect.php';
       <div class="col-md-12 ">
         <div class="text-center">
         <h2>Admin Reports</h2>
+        <P>To edit a report click on one of the rows bellow</P>
         </div><br>
         <div class="table-responsive">
           <table class="table table-striped table-bordered table-hover">
@@ -1074,6 +905,7 @@ include 'php/connect.php';
       <div class="col-md-12">
         <div class="text-center">
         <h2>Leagues and Competitions</h2>
+        <p>Choose a legue form the dropdown menu and then click on any team to edit the league</p>
       </div><br>
         <div class="form-row">
           <div class="input-group-preprend">
@@ -1107,7 +939,7 @@ include 'php/connect.php';
           </table>
         </div>
         <div class="text-center">
-        <input class="btn btn-primary" type="button" value="Add a new League or Competition" role="button" id="addLeague">
+        <input class="btn btn-primary" type="button" title="Click here to add a new league or competition" value="Add a new League or Competition" role="button" id="addLeague">
       </div>
       </div>
     </div>
@@ -1162,21 +994,22 @@ include 'php/connect.php';
     </div>
      
   </div>
-</div>
+</div><br>
   <!-- end of leagues -->
   <!-- Update user details -->
-   <div class="container-fluid regContainer" id="updateDetails">
+   <div class="container-fluid regContainer col-md-10" id="updateDetails">
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="text-center">
         <h2>Update Details</h2>
+        <p>The boxes display your current details, if you would like to change anything, click in the corrosponding box and enter your new details. Once you have input your details click on the Update Details button</p>
         </div><br>
         <?php
         $currentDetails = $dbcon->query("SELECT * from refDetails where email = '".$_SESSION['email']."'");
         $reffResults = mysqli_fetch_assoc($currentDetails);
         $reffId = $reffResults["id"];{
         echo '
-        <form action="upDateRefDetails.php" method="POST"
+        <form action="upDateRefDetailsAdmin.php" method="POST"
 
         <div class="form-row">
         <div class="form-group col-md-6">
@@ -1234,11 +1067,15 @@ include 'php/connect.php';
         </div>
         </div>
         <div class="text-center">
-        <input class="btn btn-primary" type="submit" name="updateDetailsRef" value="Update Details">
-        <a class="btn btn-primary" href="changePasswordAdmin.php">Change Password</a>
+        <input class="btn btn-primary" type="submit" name="updateDetailsRef" value="Update Details" onclick="updateSuccesfull()">
+        <a class="btn btn-primary" title="Click here to change your password" href="changePasswordAdmin.php">Change Password</a>
         </div>
         </form>
-
+        <script type="text/javascript">
+        function updateSuccesfull(){
+          alert("Your details have been saved. Press OK to continue");
+        }
+        </script>
         </div>
           </div>
         </div>';

@@ -81,10 +81,21 @@ include 'php/connect.php';
             </table>
           </div>
           <div class="text-center">
-            <a class="btn btn-primary" href="messagesAdmin.php" role="button">Back to Inbox</a> 
-            <a class="btn btn-primary" href="sendMessageAdmin.php" id="sendMessageAdmin" name="sendMessage" role="button">Compose New Message</a> 
-            <a class="btn btn-danger" role="button" href="?delete=<?php echo $id; ?>;">Delete this message</a>
+            <a class="btn btn-primary" href="messagesAdmin.php"  title="Click here to return to your home page" role="button">Back to Inbox</a> 
+            <a class="btn btn-primary" href="sendMessageAdmin.php" id="sendMessageAdmin" name="sendMessage" title="Click here to compose a new message" role="button">Compose New Message</a> 
+            <a class="btn btn-danger" role="button" onclick="return deleteMessageConfirmAlert();" title="Click here to delete this message"> href="?delete=<?php echo $id; ?>;">Delete this message</a>
           </div>
+
+              <script type="text/javascript">
+                function deleteMessageConfirmAlert()
+                {
+                  var conf = confirm("Are you sure you want to delete this message?");
+                  if (conf)
+                    return true;
+                  else
+                    return false;
+                }
+              </script>
         </div>
       </div>
     </div>
@@ -105,14 +116,14 @@ include 'php/connect.php';
 
    ?><!-- End of Messages-->
   <!-- Start of Inbox  -->
-  <div class="container-fluid regContainer">
+  <div class="container-fluid regContainer col-md-10">
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="text-center">
           <h2>Inbox</h2>
+          <p>To view a message click on any part of the message bellow</p>
         </div>
         <br>
-        
         <div class="table-responsive">
           <table class="table table-striped table-bordered table-hover">
             <thead class="thead-dark">

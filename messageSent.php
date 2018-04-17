@@ -55,56 +55,23 @@ $messageData = $dbcon->query("INSERT INTO messages (reffFK, recievedFrom, recipi
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   <!-- Header -->
-  <?php include 'php/header.php'; ?>
+  <?php include 'php/headerAdmin.php'; ?>
 
   <!-- Navbar -->
-  <?php include 'php/navBar.php'; ?>
+  <?php include 'php/navBarAdmin.php'; ?>
+  <div class="container-fluid">
+  <div class="row justify-content-center">
+  <div class="col-md-6 col-md-offset-3">
+  <div class="container-fluid regContainer">
+  <div class="text-center">
+    <p>Message Sent Succesfully</p>
+      <a href="profile.php" class="btn btn-primary" title="Click here to return to your hompage">Return to homepage</a>
+     <a href="messages.php" class="btn btn-primary" title="Click here to return to your inbox">Return to inbox</a>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
 
-	<div class="container-fluid">
-	<div class="row justify-content-center">
-	  <div class="col-md-6 col-md-offset-3">
-	    <form name="sendMessage" method="post" action="messageSent.php">
-	      <div class="container-fluid regContainer">
-	         <div class="form-row">
-                <div class="input-group-preprend">
-                  <label class="input-group-text" for="recipient">Recipient</label>
-                </div>
-                <select class="form-control" name="recipient" id="recipient" required>
-                  <option value="">Please Select a Recipient</option>
-                  <?php
-                  include 'php/connect.php';
-                  $refNames = mysqli_query($dbcon, "SELECT CONCAT_WS( ' ', firstName, secondName) AS names FROM refDetails");
-                  while ($row = mysqli_fetch_assoc($refNames)){
-                    echo "<option value=\"{$row['names']}\">{$row['names']}</option>";
-                  }
-                  ?>
-                </select>
-              </div>
-              <br>
-              <div class="form-row">
-              	<div class="input-group-preprend">
-                <label class="input-group-text" for="subject">Subject</label>
-            </div>
-                <input class="form-control" type="text" name="subject" id="subject" placeholder="Subject" maxlength="150" required>
-              </div>
-              <br>
-              <div class="form-row">
-              	<div class="input-group-preprend">
-                <label class="input-group-text" for="message">Message</label>
-            	</div>
-                <textarea class="form-control" name="message" id="message" rows="5" placeholder="Please Enter Your Message Here..." maxlength="5000" required></textarea> 
-              </div>
-              <br>
-              <div class = "text-center">
-              	<input type="submit" class="btn btn-primary" name="submitMessage" title="Clcik here to send your message" value="Send Message" id="submitMessage">
-              	<a href="messages.php" class="btn btn-primary" title="Click here to return to your inbox" role="button">Back to Inbox</a>
-              </div>
-            
-              </script>
-                      </div>
-	</form>
-	</div>
-	</div>
-	</div>
 </body>
 </html>

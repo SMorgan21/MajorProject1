@@ -1,13 +1,10 @@
 <?php 
-
 //Session Data
 session_start();
 //Connects to the data base
 include 'php/connect.php';
-
 //Includes the FDPF library
 include 'fpdf.php';
-
 //Matchreport PDF
 class PDF extends FPDF{
     
@@ -27,37 +24,28 @@ class PDF extends FPDF{
     // Title
     $this->Cell(30,15,'Official Report For Referees',0,1,'C');
     }
-
     function Footer(){
-
         //Positions Footer at 1.5cm from the bottom of the page
         $this->SetY(-15);
-
         //Setting font and text size
         $this->SetFont('Arial','',8);
-
         //Page Numbers
         $this->Cell(0,10,'Page '.$this->PageNo().' of {nb}',0,0,'C');
     }
 }
-
 //Setting the page layout
 $pdf = new PDF('p', 'mm', 'A4');
-
 // Defines an alias for the total page number
 $pdf->AliasNbPages();
 //Creates a new page
 $pdf->AddPage();
 //Sets the Font family, style and size
 $pdf->SetFont('Arial','',10);
-
 //Table query for results
 //$reportData = $dbcon->query("SELECT * FROM reports1");
 //while ($reportResults = mysqli_fetch_assoc($reportData)){
-
 //Setting the page layout
 if (!empty($_POST['submitMatchReport'])) {
-
      //Reports Table
   $league = mysqli_real_escape_string($dbcon, $_POST['league']);
   $homeTeam = mysqli_real_escape_string($dbcon, $_POST['homeTeam']);
@@ -114,17 +102,14 @@ if (!empty($_POST['submitMatchReport'])) {
   $caution7 = mysqli_real_escape_string($dbcon,$_POST['caution7']);
   $team7 = mysqli_real_escape_string($dbcon,$_POST['team7']);
   $sendOff7 = mysqli_real_escape_string($dbcon,$_POST['sendOff7']);
-
   //Query to retrive refferee data
   $sql = $dbcon->query("SELECT id, userName from refDetails where email = '".$_SESSION['email']."'");
   $reffResults = mysqli_fetch_assoc($sql);
   $reffId = $reffResults["id"];
   $reffUserName = $reffResults["userName"];
-
   //Query to insert data into the report table
-  $reportData = $dbcon->query("INSERT INTO reports1 (reffFK, reffUserName, league, homeTeam, awayTeam, location, datePlayed, surname1, firstName1, caution1, team1, sendOff1, surname2, firstName2, caution2, team2, sendOff2, surname3, firstName3, caution3, team3, sendOff3, surname4, firstName4, caution4, team4, sendOff4, surname5, firstName5, caution5, team5, sendOff5, surname6, firstName6, caution6, team6, sendOff6, surname7, firstName7, caution7, team7, sendOff7) Values ('$reffId', '$reffUserName', '$league', '$homeTeam', '$awayTeam', '$location', '$datePlayed', '$surname1Clean', '$firstName1Clean', '$caution1', '$team1', '$sendOff1', '$surname2Clean', '$firstName2Clean', '$caution2', '$team2', '$sendOff2', '$surname3Clean', '$firstName3Clean', '$caution3', '$team3', '$sendOff3', '$surname4Clean', '$firstName4Clean', '$caution4', '$team4', '$sendOff4', '$surname5Clean', '$firstName5Clean', '$caution5', '$team5', '$sendOff5', '$surname6Clean', '$firstName6Clean', '$caution6', '$team6', '$sendOff6', '$surname7Clean', '$firstName7Clean', '$caution7', '$team7', '$sendOff7')");
+  $reportData = $dbcon->query("INSERT INTO reports1 (reffFK, reffUserName, league, homeTeam, awayTeam, location, datePlayed, surname1, firstName1, caution1, team1, surname2, firstName2, caution2, team2, surname3, firstName3, caution3, team3,  surname4, firstName4, caution4, team4, surname5, firstName5, caution5, team5, surname6, firstName6, caution6, team6, surname7, firstName7, caution7, team7) Values ('$reffId', '$reffUserName', '$league', '$homeTeam', '$awayTeam', '$location', '$datePlayed', '$surname1Clean', '$firstName1Clean', '$caution1', '$team1', '$surname2Clean', '$firstName2Clean', '$caution2', '$team2', '$surname3Clean', '$firstName3Clean', '$caution3', '$team3', '$surname4Clean', '$firstName4Clean', '$caution4', '$team4', '$surname5Clean', '$firstName5Clean', '$caution5', '$team5', '$surname6Clean', '$firstName6Clean', '$caution6', '$team6', '$surname7Clean', '$firstName7Clean', '$caution7', '$team7')");
     
-
 //Dummy Cell for formatting
 $pdf->Cell(10,20,'',0,1);
 //Dummy Cell for formatting
@@ -139,7 +124,8 @@ $pdf->Cell(28,0,'',0,0);
 //Teams
 $pdf->Cell(25,5,'Home Team: ',0,0,'L');
 $pdf->Cell(30,5,$homeTeam,0,0,'L');
-$pdf->Cell(20,5,' VS ',0,0,'L');
+$pdf->Cell(10,0,'',0,0);
+$pdf->Cell(10,5,' VS ',0,0,'L');
 $pdf->Cell(25,5,'Away Team: ',0,0,'L');
 $pdf->Cell(30,5,$awayTeam,0,1,'L');
 //Dummy Cell for formatting
@@ -151,10 +137,8 @@ $pdf->Cell(25,5,'Date Played: ',0,0,'L');
 $pdf->Cell(25,5,$datePlayed,0,0,'L');
 $pdf->Cell(25,5,'Location: ',0,0,'C');
 $pdf->Cell(20,5,$location,0,1,'L');
-
 //Draws a rectangle (left,down,width,hight,'drawline')
 //$pdf->Rect(30, 55, 150, 40, 'D');
-
 //Dummy Cell for formatting
 $pdf->Cell(5,15,'',0,1);
 //Set Font
@@ -162,7 +146,6 @@ $pdf->SetFont('Arial','B',12);
 //Mid Title
 $pdf->Cell(0,10,'Name Of Offenders - Important: use same form for both clubs for cautions',0,1,'C');
 $pdf->Cell(0,10,'For send offs use only one name per form',0,1,'C');
-
 //Dummy Cell for formatting
 $pdf->Cell(5,7,'',0,1);
 //Set Font
@@ -189,12 +172,9 @@ $pdf->Cell(5,0,'',0,0);
 $pdf->Cell(35,5,'Send Off Code ',0,1,'L');
 //Dummy Cell for formatting
 $pdf->Cell(5,5,'',0,1);
-
 // Group 1
-
 //Set Font
 $pdf->SetFont('Arial','',10);
-
 //Dummy Cell for formatting
 $pdf->Cell(5,5,'',0,0);
 //Surname
@@ -215,7 +195,6 @@ $pdf->Cell(35,5,$caution1,0,0,'L');
 $pdf->Cell(5,5,'',0,0);
 //Send Off
 $pdf->Cell(35,5,$sendOff1,0,1,'L');
-
 //Group 2
 //Dummy Cell for formatting
 $pdf->Cell(5,5,'',0,0);
@@ -235,8 +214,6 @@ $pdf->Cell(5,5,'',0,0);
 $pdf->Cell(35,5,$caution2,0,0,'L');
 //Dummy Cell for formatting
 $pdf->Cell(5,5,'',0,0);
-//Send Off
-$pdf->Cell(35,5,$sendOff2,0,1,'L');
 
 //Group 2
 //Dummy Cell for formatting
@@ -257,8 +234,6 @@ $pdf->Cell(5,5,'',0,0);
 $pdf->Cell(35,5,$caution3,0,0,'L');
 //Dummy Cell for formatting
 $pdf->Cell(5,5,'',0,0);
-//Send Off
-$pdf->Cell(35,5,$sendOff3,0,1,'L');
 
 //Group 4
 //Dummy Cell for formatting
@@ -279,8 +254,6 @@ $pdf->Cell(5,5,'',0,0);
 $pdf->Cell(35,5,$caution4,0,0,'L');
 //Dummy Cell for formatting
 $pdf->Cell(5,5,'',0,0);
-//Send Off
-$pdf->Cell(35,5,$sendOff4,0,1,'L');
 
 //Group 5
 //Dummy Cell for formatting
@@ -301,8 +274,7 @@ $pdf->Cell(5,5,'',0,0);
 $pdf->Cell(35,5,$caution5,0,0,'L');
 //Dummy Cell for formatting
 $pdf->Cell(5,5,'',0,0);
-//Send Off
-$pdf->Cell(35,5,$sendOff5,0,1,'L');
+
 //Group 6
 //Dummy Cell for formatting
 $pdf->Cell(5,5,'',0,0);
@@ -322,8 +294,6 @@ $pdf->Cell(5,5,'',0,0);
 $pdf->Cell(35,5,$caution6,0,0,'L');
 //Dummy Cell for formatting
 $pdf->Cell(5,5,'',0,0);
-//Send Off
-$pdf->Cell(35,5,$sendOff6,0,1,'L');
 
 //Group 7
 //Dummy Cell for formatting
@@ -344,44 +314,8 @@ $pdf->Cell(5,5,'',0,0);
 $pdf->Cell(35,5,$caution7,0,0,'L');
 //Dummy Cell for formatting
 $pdf->Cell(5,5,'',0,0);
-//Send Off
-$pdf->Cell(35,5,$sendOff7,0,1,'L');
+
 }
+
 //Outputs the data
  $pdf->Output('D','Match Report - '.$homeTeam.' vs '.$awayTeam.' '.$datePlayed.'.pdf');
-
-
-
-// use PHPMailer\PHPMailer;
-// use PHPMailer\Exception;
-
-// require 'php/PHPMailer.php';
-// require 'php/Exception.php';
-// require 'php/SMTP.php';
-
-
-// $mail = new PHPMailer();
-// $mail->IsSMTP();
-// $mail->Host = "smtp.gmail.com";
-// $mail->SMTPAuth = true;
-// $mail->Username = "mixmastermorgs@gmail.com";
-// $mail->Password = "s6flh5zd";
-// $mail->SMTPSecure = "ssl";
-// $mail->Port = 465;
-
-// $mail->SetFrom("s_morgan21@hotmail.com", "Simon");
-// $mail->AddAddress("s_morgan21@hotmail.com");
-
-// $mail->Subject = "Test";
-// $mail->Body = "Test";
-//  $mail->addStringAttachment($pdf->Output("S",'MatchRep.pdf'), 'MatchRep.pdf', $encoding = 'base64', $type = 'application/pdf');
-//     return $mail->Send();
-// <!-- 
-// <!DOCTYPE html>
-// <html>
-// <head>
-// 	<title></title>
-// </head>
-// <body>
-// </body>
-// </html> -->
