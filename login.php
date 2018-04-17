@@ -79,8 +79,8 @@ if (isset($_POST['login'])) {//listening for the login button
               </div>
             </div>
             <input type="submit" class="btn btn-primary btn-block" name="login" value="Login" id="login">
-            <a href="registration.php" class="btn btn-primary btn-block" role="button"  name="register">Register</a>
-            <a href="forgotPassword.php" class="btn btn-primary btn-block" role="button"  name="forgotPassword">Request new password</a>
+            <a href="registration.php" class="btn btn-primary btn-block" role="button"  id="register">Register</a>
+            <a href="forgotPassword.php" class="btn btn-primary btn-block" role="button"  id="forgotPassword">Request new password</a>
           </form>
         </div>
       </div>

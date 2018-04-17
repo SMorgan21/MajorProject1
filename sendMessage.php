@@ -96,10 +96,16 @@ $messageData = $dbcon->query("INSERT INTO messages (reffFK, recievedFrom, recipi
               </div>
               <br>
               <div class = "text-center">
-              	<input type="submit" class="btn btn-primary" name="submitMessage" value="Send Message" id="submitMessage">
+              	<input type="submit" class="btn btn-primary" name="submitMessage" value="Send Message" onclick="confirmSent()" id="submitMessage">
               	<a href="messages.php" class="btn btn-primary" role="button">Back to Inbox</a>
               </div>
-	  </div>
+
+ <script type="text/javascript">
+         function confirmSent() {
+                         alert("Your message has been sent, press ok to send another message");
+                       }
+                     </script>
+                      </div>
 	</form>
 	</div>
 	</div>

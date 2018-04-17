@@ -3,25 +3,20 @@
 session_start();
 
 ?><!-- header -->
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
   <div class="container-fluid header">
     <div class="container-fluid headerInfo">
-      <div class="row justify-content-md-center">
+      <div class="row justify-content-sm-center">
         <div class="col-md-3"><!-- CWFA Logo -->
-        <img alt="FAW_logoSml" class="img-fluid headerLogo" src="images/FAW_logoSml.png"></div>
+        <img alt="FAW_logo" class="img-fluid" src="images/rsz_faw_logosml.png">
+      </div>
         <div class="col-md-6 text-center" id="pageTitle">
           <h1>CWFA Referee Home Page</h1>
         </div>
         <div class="col-md-3 headerRightText" id="headerRight">
-          <table class="table table-responsive" id="infoTable">
+          <table class="table-sm table-bordered" id="infoTable">
             <tbody>
-              <tr>
-                <td class="align-middle"><!-- Displays the Username of whomever is logged in -->
+              <tr class="table-success">
+                <td><!-- Displays the Username of whomever is logged in -->
                 <span id="headerUsername">Username: <?php
                                 // //Includes the connection details
                                 include 'php/connect.php';
@@ -34,22 +29,21 @@ session_start();
                                 }
                                 ?></span></td>
               </tr>
-              <tr>
+              <tr class="table-success">
                 <!-- Displays the day of the week followed by the date -->
-                <td class="align-middle">
+                <td>
                   <div id="date">
                     <?php echo date("l d/m/Y");?>
                   </div>
                 </td>
               </tr>
-              <tr>
-                <td class="align-middle">
+              <tr class="table-success">
+                <td>
                   <!-- Displays time -->
                   <div id="time">
                     <?php
                                       date_default_timezone_set('Europe/London');//sets the timezone to account for daylight savings, the site will only be used in the UK.
                                       echo "Time: ".date("G:i")." GMT"; ?><br>
-                    <br>
                     <a class="logOut" href="logout.php">Log Out</a>
                   </div>
                 </td>
@@ -60,5 +54,3 @@ session_start();
       </div>
     </div>
   </div><!-- End of header -->
-</body>
-</html>

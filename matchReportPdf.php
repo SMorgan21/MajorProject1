@@ -347,42 +347,41 @@ $pdf->Cell(5,5,'',0,0);
 //Send Off
 $pdf->Cell(35,5,$sendOff7,0,1,'L');
 }
-//}
 //Outputs the data
- // $pdf->Output('D','Match Report - '.$homeTeam.' vs '.$awayTeam.' '.$datePlayed.'.pdf');
+ $pdf->Output('D','Match Report - '.$homeTeam.' vs '.$awayTeam.' '.$datePlayed.'.pdf');
 
 
 
-use PHPMailer\PHPMailer;
-use PHPMailer\Exception;
+// use PHPMailer\PHPMailer;
+// use PHPMailer\Exception;
 
-require 'php/PHPMailer.php';
-require 'php/Exception.php';
-require 'php/SMTP.php';
+// require 'php/PHPMailer.php';
+// require 'php/Exception.php';
+// require 'php/SMTP.php';
 
 
-$mail = new PHPMailer();
-$mail->IsSMTP();
-$mail->Host = "smtp.gmail.com";
-$mail->SMTPAuth = true;
-$mail->Username = "mixmastermorgs@gmail.com";
-$mail->Password = "s6flh5zd";
-$mail->SMTPSecure = "ssl";
-$mail->Port = 465;
+// $mail = new PHPMailer();
+// $mail->IsSMTP();
+// $mail->Host = "smtp.gmail.com";
+// $mail->SMTPAuth = true;
+// $mail->Username = "mixmastermorgs@gmail.com";
+// $mail->Password = "s6flh5zd";
+// $mail->SMTPSecure = "ssl";
+// $mail->Port = 465;
 
-$mail->SetFrom("s_morgan21@hotmail.com", "Simon");
-$mail->AddAddress("s_morgan21@hotmail.com");
+// $mail->SetFrom("s_morgan21@hotmail.com", "Simon");
+// $mail->AddAddress("s_morgan21@hotmail.com");
 
-$mail->Subject = "Test";
-$mail->Body = "Test";
- $mail->addStringAttachment($pdf->Output("S",'MatchRep.pdf'), 'MatchRep.pdf', $encoding = 'base64', $type = 'application/pdf');
-    return $mail->Send();
-?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-</body>
-</html>
+// $mail->Subject = "Test";
+// $mail->Body = "Test";
+//  $mail->addStringAttachment($pdf->Output("S",'MatchRep.pdf'), 'MatchRep.pdf', $encoding = 'base64', $type = 'application/pdf');
+//     return $mail->Send();
+// <!-- 
+// <!DOCTYPE html>
+// <html>
+// <head>
+// 	<title></title>
+// </head>
+// <body>
+// </body>
+// </html> -->

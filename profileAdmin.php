@@ -108,8 +108,8 @@ include 'php/connect.php';
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="text-center">
-          <h4>Central Wales Football Association</h4><br>
-          <h5>Official Match Report <strong class="edit">Editing Page</strong></h5><br>
+          <h2>Central Wales Football Association</h2><br>
+          <h3>Official Match Report <strong class="edit">Editing Page</strong></h3><br>
         </div>
       </div>
     </div>
@@ -190,8 +190,8 @@ include 'php/connect.php';
       <div class="row justify-content-center">
         <div class="col-md-12">
           <div class="text-center">
-            <h5>Name of offenders - Important: use same form for both clubs for cautions (up to SEVEN names)</h5><br>
-            <h5>For send offs use only one name per form</h5><br>
+            <h3>Name of offenders - Important: use same form for both clubs for cautions (up to SEVEN names)</h3><br>
+            <h3>For send offs use only one name per form</h3><br>
           </div>
         </div>
       </div>
@@ -830,6 +830,7 @@ include 'php/connect.php';
 
   $teams = $dbcon->query("SELECT * FROM teams WHERE leagueFK = '$Id' ORDER BY teamName");
   $league = $dbcon->query("SELECT * FROM leagues WHERE id = '$Id' ORDER BY leagueName");
+
  
 
   ?>
@@ -847,10 +848,16 @@ include 'php/connect.php';
         </button>
         </div>
         <div class="modal-body">
-          <input class="form-control" type="text" name="addTeamName" placeholder="Team Name" id="addTeamName"><br>
-          <input class="form-control" type="text" name="addNewTeamLeague" value="<?php  echo $rowLeague["leagueName"]; ?>" id="addNewTeamLeague" disabled><br>
+          <div class="form-row">
+          <div class="input-group-preprend">
+            <label class="input-group-text" for="addTeamName">Add Team Name</label>
+          </div>
+          <input class="form-control" type="text" name="addTeamName" placeholder="Team Name......" id="addTeamName">
+        </div><br>
+        <div class="form-row">
           <input class="form-control" type="text" name="addTeamId" value="<?php echo "$Id"; ?>" hidden>  
           </div>
+        </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <input class="btn btn-success" type="submit" name="saveTeam" id="saveTeam" value="Save Team">
@@ -865,8 +872,11 @@ include 'php/connect.php';
     <div class="row justify-content-center">
       <div class="regContainer">
         <div class="col-md-12">
+          <div class="text-center">
+            <h2 class="title" id="editLeagueTitle">Edit League</h2>
+          </div>
           <div class="table-responsive">
-            <table class="table table-dark table-bordered">
+            <table class="table table-bordered">
               <thead class="thead-dark">
                 <tr>
                   <th scope="col">Team</th>
@@ -886,23 +896,18 @@ include 'php/connect.php';
                 ?>
               </tbody>
             </table>
-            <div class="text-center"></div>
           </div>
           <div class="text-center">
             <input class="btn btn-success" type="button" value="Add A Team" role="button" id="addTeam">
-            <a class="btn btn-primary" href="profileAdmin.php" role="button">Back Home Page</a>
-            <div class="row">
-              <div class="text-center">
-                <?php while ($rowLeague=mysqli_fetch_assoc($league)) {
+            <a class="btn btn-primary" href="profileAdmin.php" role="button">Back Home Page</a><br><br>   
+              <!--    while ($rowLeague=mysqli_fetch_assoc($league)) {
                 $leagueId = $rowLeague['id']; 
+               
                 echo '
-
-                <a class="btn btn-danger" role="button" href="?deleteLeague='.$leagueId.'">Delete this league</a>';
-                }?>
-              </div>
-            </div>
-
-
+                <div class="text-center">
+                <a class="btn btn-danger" role="button" href="?deleteLeague='.$leagueId.'">Delete this league</a>
+                 </div>';
+                 -->
           </div>
         </div>
       </div>
@@ -949,11 +954,25 @@ include 'php/connect.php';
       $leagueDelete = $_GET['deleteLeague'];
 
       //Removes all messages with the message Id set above
-      $deleteLeague = $dbcon->query("DELETE FROM leagues WHERE id = '$leagueDelete'");
-      if ($deleteLeague) {
+      $removeLeague = $dbcon->query("DELETE FROM leagues WHERE id = '$leagueDelete'");
+      if ($removeLeague) {
+     echo'
+  <div class="container-fluid">
+  <div class="row justify-content-center">
+  <div class="col-md-6 col-md-offset-3">
+  <div class="container-fluid regContainer">
+  <div class="text-center">
+  <p>The League has been removed</p>
+  <a href="profileAdmin.php" class="btn btn-primary">Click here to continue</a>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>';
           
-            exit; //Redirects back a page page
+            exit;
       }else {
+           echo $leagueDelete;
            echo'
   <div class="container-fluid">
   <div class="row justify-content-center">
@@ -968,8 +987,6 @@ include 'php/connect.php';
   </div>
   </div>';
 
-
- // If the delete request does not work this message will apear 
       }
       exit();
   }
@@ -977,20 +994,22 @@ include 'php/connect.php';
   ?> 
   <!-- End of Delete League -->
    <!-- End Of Edit Leagues -->
-  <div class="container-fluid regContainer" id="matchReportTableAdmin">
+  <div class="container-fluid regContainer col-md-9" id="matchReportTableAdmin">
     <div class="row justify-content-center">
       <!-- Display Match Reports -->
-      <div class="col-md-12">
+      <div class="col-md-12 ">
+        <div class="text-center">
         <h2>Admin Reports</h2>
+        </div><br>
         <div class="table-responsive">
-          <table class="table table-dark table-striped table-bordered table-hover">
+          <table class="table table-striped table-bordered table-hover">
             <thead class="thead-dark">
               <tr>
-                <th>Match Played</th>
-                <th>League</th>
-                <th>Home Team</th>
-                <th>Away Team</th>
-                <th>Refferee</th>
+                <th scope="col">Match Played</th>
+                <th scope="col">League</th>
+                <th scope="col">Home Team</th>
+                <th scope="col">Away Team</th>
+                <th scope="col">Refferee</th>
               </tr>
             </thead>
             <tbody>
@@ -1048,12 +1067,14 @@ include 'php/connect.php';
         </div>
       </div>
     </div>
-  </div><!-- Leagues -->
-  <div class="container-fluid regContainer" id="editLeagues">
+  </div><br> <!-- Leagues -->
+  <div class="container-fluid regContainer col-md-5" id="editLeagues">
     <div class="row justify-content-center">
       <!-- Display Match Reports -->
-      <div class="col-md-6">
+      <div class="col-md-12">
+        <div class="text-center">
         <h2>Leagues and Competitions</h2>
+      </div><br>
         <div class="form-row">
           <div class="input-group-preprend">
             <label class="input-group-text" for="leagueEdit">League</label>
@@ -1072,10 +1093,10 @@ include 'php/connect.php';
         <div class="table-responsive">
           <script charset="utf-8" src="js/editTeamAjax.js">
           </script>
-          <table class="table table-striped table-bordered table-hover">
-            <thead class="">
+          <table class="table-sm table-striped table-bordered table-hover">
+            <thead class="thead-dark">
               <tr>
-                <th>Teams</th>
+                <th scope="col">Teams</th>
               </tr>
             </thead>
             <tbody>
@@ -1085,7 +1106,9 @@ include 'php/connect.php';
             </tbody>
           </table>
         </div>
+        <div class="text-center">
         <input class="btn btn-primary" type="button" value="Add a new League or Competition" role="button" id="addLeague">
+      </div>
       </div>
     </div>
         <!-- Add League Modal -->
@@ -1145,85 +1168,84 @@ include 'php/connect.php';
    <div class="container-fluid regContainer" id="updateDetails">
     <div class="row justify-content-center">
       <div class="col-md-12">
-        <h2>Update Details</h2><?php 
-
-
-
-
-         
+        <div class="text-center">
+        <h2>Update Details</h2>
+        </div><br>
+        <?php
         $currentDetails = $dbcon->query("SELECT * from refDetails where email = '".$_SESSION['email']."'");
         $reffResults = mysqli_fetch_assoc($currentDetails);
         $reffId = $reffResults["id"];{
-        echo '<form action="upDateRefDetails.php" method="POST">';
-        echo '<div class="form-row">';
-        echo ' <div class="form-group col-md-6">';
-        echo '<div class="input-group-preprend">';
-        echo '  <label class="input-group-text" for="gender">Gender</label>';
-        echo '</div>';     
-        echo ' <select class="form-control" name="gender" id="gender">';
-        echo ' <option value="'.$reffResults['gender'].'">'.$reffResults['gender'].'
-        </option>';
-        echo ' <option value="male">Male</option>';
-        echo '<option value="female">Female</option>';
-        echo '<option value="other">Other</option>';
-        echo ' </select>';
-        echo ' </div>';
-        echo '<div class="form-group col-md-6">';
-        echo '<div class="input-group-preprend">';
-        echo '  <label class="input-group-text" for="grade">Grade</label>';
-        echo ' </div>';
-        echo ' <select class="form-control" name="grade" id="grade">';
-        echo '<option value="'.$reffResults['grade'].'">'.$reffResults['grade'].'
-        </option>';
-        echo '<option value="1A">1A</option>';
-        echo '<option value="1B">1B</option>';
-        echo '<option value="F">F</option>';
-        echo '<option value="F-1A">F-1A</option>';
-        echo '<option value="F-1B">F-1B</option>';
-        echo '<option value="2">2</option>';
-        echo '<option value="F-2A">F-2A</option>';
-        echo '<option value="F-2B">F-2B</option>';
-        echo '<option value="3A">3A</option>';
-        echo '<option value="3B">3B</option>';
-        echo '<option value="4A">4A</option>';
-        echo '<option value="4B">4B</option>';
-        echo '<option value="4C">4C</option>';
-        echo '<option value="4D">4D</option>';
-        echo '<option value="4E">4E</option>';
-        echo '</select>';
-        echo '</div>';
-        echo '</div>';
+        echo '
+        <form action="upDateRefDetails.php" method="POST"
 
-        
+        <div class="form-row">
+        <div class="form-group col-md-6">
+        <div class="input-group-preprend">
+        <label class="input-group-text" for="gender">Gender</label>
+        </div>   
+        <select class="form-control" name="gender" id="gender">
+        <option value="'.$reffResults['gender'].'">'.$reffResults['gender'].'
+        </option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+         </select>
+         </div>
+        <div class="form-group col-md-6">
+        <div class="input-group-preprend">
+          <label class="input-group-text" for="grade">Grade</label>
+         </div>
+         <select class="form-control" name="grade" id="grade">
+        <option value="'.$reffResults['grade'].'">'.$reffResults['grade'].'
+        </option>
+        <option value="1A">1A</option>
+        <option value="1B">1B</option>
+        <option value="F">F</option>
+        <option value="F-1A">F-1A</option>
+        <option value="F-1B">F-1B</option>
+        <option value="2">2</option>
+        <option value="F-2A">F-2A</option>
+        <option value="F-2B">F-2B</option>
+        <option value="3A">3A</option>
+        <option value="3B">3B</option>
+        <option value="4A">4A</option>
+        <option value="4B">4B</option>
+        <option value="4C">4C</option>
+        <option value="4D">4D</option>
+        <option value="4E">4E</option>
+       </select>
+        </div>
+        </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <div class="input-group-preprend">
+              <label class="input-group-text" for="telephoneNo">Telephone Number</label>
+            </div>
+            <input class="form-control" type="text" name="telephoneNo" id="telephoneNo" placeholder="01234567890" value="'.$reffResults['telephoneNo'].'"  minlength="11" maxlength="11" autocomplete="mobile">
+          </div>
+        <div class="form-group col-md-6">
+        <div class="input-group-preprend">
+        <label class="input-group-text" for="email">Email</label>
+        </div>
+        <input class="form-control" type="email" name="email" id="email" placeholder="Email" value="'.$reffResults['email'].'" autocomplete="email">
+        <div class="form-group" id="emailFeedBack">
+        </div>
+        </div>
+        </div>
+        <div class="text-center">
+        <input class="btn btn-primary" type="submit" name="updateDetailsRef" value="Update Details">
+        <a class="btn btn-primary" href="changePasswordAdmin.php">Change Password</a>
+        </div>
+        </form>
 
-  echo '<div class="form-row">';
-        echo '<div class="form-group col-md-6">';
-        echo '<div class="input-group-preprend">';
-        echo '<label class="input-group-text" for="telephoneNo">Telephone Number</label>';
-        echo '</div>';
-        echo '<input class="form-control" type="text" name="telephoneNo" id="telephoneNo" placeholder="01234567890" value="'.$reffResults['telephoneNo'].'"  minlength="11" maxlength="11" autocomplete="mobile">';
-        echo ' </div>';
-        echo '<div class="form-group col-md-6">';
-        echo '<div class="input-group-preprend">';
-        echo '<label class="input-group-text" for="email">Email</label>';
-        echo '</div>';
-        echo '<input class="form-control" type="email" name="email" id="email" placeholder="Email" value="'.$reffResults['email'].'" autocomplete="email">';
-        echo '<div class="form-group" id="emailFeedBack">';
-        echo ' </div>';
-        echo ' </div>';
-        echo ' </div>';
-        echo ' <input class="btn btn-primary" type="submit" name="updateDetailsRef" value="Update Details">';
-
-
-        echo '</form>';
-              echo '</div>';
-    echo '</div>';
-  echo '</div>';
+        </div>
+          </div>
+        </div>';
 
                 } 
 
         ?>
-        <a class="btn btn-primary" href="changePassword.php">Change Password</a>
       </div>
     </div>
   </div>

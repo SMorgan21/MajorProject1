@@ -19,7 +19,7 @@ if (isset($_POST["forgotPassword"])) {
     $token = substr($token, 0, 10);//creates a string between 0 and 15 characters from the random characters
     $url = "http://localhost/MajorProject/php/resetPassword.php?token=$token&email=$email";
 
-    //mail($email, "Reset Password", "To reset your password, Please visit this link: $url", "From: noreply@footballhub.com\r\n");
+    mail($email, "Reset Password", "To reset your password, Please visit this link: $url", "From: noreply@footballhub.com\r\n");
     $data = $dbcon->query("UPDATE refDetails SET token='$token' WHERE email='$email'");
 
     $message = '<div class="alert alert-success">A new password has been sent to your <strong> registered email address</strong>,<strong> check your mail</strong> and then <strong>click on the link bellow to login</strong></div>';

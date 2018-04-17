@@ -61,7 +61,7 @@ include 'php/connect.php';
       <div class="regContainer">
         <div class="col-md-12">
           <div class="table-responsive">
-            <table class="table table-dark table-bordered">
+            <table class="table table-bordered">
               <thead class="thead-dark">
                 <tr>
                   <th scope="col">From</th>
@@ -105,7 +105,7 @@ include 'php/connect.php';
 
    ?><!-- End of Messages-->
   <!-- Start of Inbox  -->
-  <div class="container-fluid regContainer">
+  <div class="container-fluid regContainer col-md-9">
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="text-center">
@@ -114,7 +114,7 @@ include 'php/connect.php';
         <br>
         
         <div class="table-responsive">
-          <table class="table table-dark table-striped table-bordered table-hover">
+          <table class="table table-striped table-bordered table-hover">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">From</th>
@@ -183,8 +183,9 @@ include 'php/connect.php';
         </div><!-- End of Inbox  -->
         <!-- Compose Button -->
         <div class="text-center">
-          <a class="btn btn-primary btn" href="sendMessage.php" id="composeMessage" name="composeMessage" role="button">Compose New Message</a>
-        </div><br>
+          <a class="btn btn-primary btn" href="sendMessage.php" id="composeMessage" name="composeMessage"  role="button">Compose New Message</a><br><br>
+        </div>
+       
         <!-- End Of Compose Button -->
          <!-- Page number logic -->
          <?php

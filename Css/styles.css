@@ -5,13 +5,6 @@
   height: auto;
   padding: 10px;
 }
-.headerLogo {
-  max-width: 100%;
-  height: auto;
-  padding-bottom: 10px;
-  padding-left: 30px;
-  padding-top: 10px;
-}
 /* Header */
 
 .header {
@@ -22,11 +15,11 @@
   border-color: #E11A22;
   border-width: 2px;
   border-radius: 5px;
-  background-color: #d5d8dc;
+  background-color: #7fc59d  ;
   padding: 10px;
 }
 .headerRightText {
-  font-size: 20px;
+  font-size: 22px;
 }
 #pageTitle {
   align-self: center;
@@ -39,17 +32,26 @@
   align-self: center;
 }
 /* Navbar */
-
+.navbar-custom {
+  background-color: #7fc59d;
+  border: 2px;
+  border-style: solid;
+  border-color: #E11A22 !important;
+  border-width: 2px;
+  border-radius: 5px;
+}
+.navbar-custom .navbar-nav .nav-link {
+    color: #000000;
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #E11A22;
+}
 .nBar {
   padding-bottom: 20px;
 }
-.navbar {
-  width: 100%;
-}
-.active {
-  background-color: red;
-  color: yellow;
-}
+
 /* Registration Form */
 
 .regContainer {
@@ -58,7 +60,7 @@
   border-color: #E11A22;
   border-width: 2px;
   border-radius: 25px;
-  background-color: #d5d8dc;
+  background-color:  #7fc59d  ;
 }
 #status {
   max-width: 10%;
@@ -69,7 +71,10 @@
 .hidden {
   display: none;
 }
-/* Messages Table */
+/* Messages Tables */
+.table{
+  background-color: white;
+}
 
 .table tr th a {
   color: #ffffff;
@@ -80,13 +85,26 @@
   text-decoration: none;
 }
 .table tr td a {
-  color: #ffffff;
+  color: #000000;
   text-decoration: none;
 }
 .table tr td a:hover {
   color: #E11A22;
   text-decoration: none;
 }
+
+/* Caution Table */
+
+.cautionContainer {
+  padding: 26px;
+  border-style: solid;
+  border-color: #E11A22;
+  border-width: 2px;
+  border-radius: 25px;
+  background-color:  #7fc59d  ;
+  font-size: 18px;
+}
+
 /* General Css */
 
 body {

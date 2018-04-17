@@ -29,28 +29,9 @@ if (isset($_POST['registration'])) {
   $refereeNumberClean = filter_var($refereeNumber, FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH);
   $hashed = password_hash($passwordClean, PASSWORD_BCRYPT);//encrypts the password using blowfish encryption
 
-  // generate a random string to be used as the login token
-  $token = qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM;
-  $token = str_shuffle($token);
-  $token = substr($token,0,10);
-
   //Query
   $data = $dbcon->query("INSERT INTO refDetails (firstName, secondName, userName, password, gender, grade, telephoneNo, email, refereeNumber, token) VALUES('$firstNameClean','$secondNameClean','$userNameClean', '$hashed','$gender','$gradeClean', '$telephoneNoClean','$emailClean','$refereeNumberClean','$token')");
 
-  //PHP Mailer
-
-  /*  include_once "php/PHPMailer.php";
-  $verifyEmail = new PHPMailer();
-  $verifyEmail -> setForm('NOREPLY@footballhub.com');
-  $verifyEmail -> addAddress($email, $firstName);
-  $verifyEmail -> Subject = "Verify your account";
-  $verifyEmail -> isHTML(true);
-  $verifyEmail -> Body = "
-  Please click on the link or copy the link and paste it into your browser:<br><br>
-  <a href='http://www.
-  ";
-  //Alerts the user that they have been registerd but they need to check their email to complete the process
-  $message = '<div class="alert alert-success">Your deatails have been registered Please check your email to verify your account</div>';*/
 }
 ?>
 <!doctype html>
@@ -95,9 +76,9 @@ if (isset($_POST['registration'])) {
               </div>
               <div class="form-group col-md-6">
                 <div class="input-group-preprend">
-                <label class="input-group-text" for="secondName">Family Name</label>
+                <label class="input-group-text" for="secondName">Surname</label>
               </div>
-                <input class="form-control" type="text" name="secondName" id="secondName" placeholder="Family Name" maxlength="50" autocomplete="family-name" required>
+                <input class="form-control" type="text" name="secondName" id="secondName" placeholder="Surname" maxlength="50" autocomplete="family-name" required>
               </div>
             </div>
             <div class="form-row">
@@ -184,9 +165,6 @@ if (isset($_POST['registration'])) {
               </div>
                   <input class="form-control" type="password" name="conPassword" id="conPassword"><div class="alert alert-danger hidden" id="noMatch" role="alert"><strong>Your Passwords don't match,</strong> try again</div><div class="alert alert-success hidden" id="match" role="alert"><strong>Well done!</strong> You passwords match</div>
                 </div>
-              </div>
-              <div class="form-group">
-                <?php echo $message; ?>
               </div>
               <input type="submit" class="btn btn-primary btn-block" name="registration" value="Register" id="registration">
               <a href="login.php" class="btn btn-primary btn-block" role="button" name="login" id="login">Already have an account? click here to login</a>

@@ -61,7 +61,7 @@ include 'php/connect.php';
       <div class="regContainer">
         <div class="col-md-12">
           <div class="table-responsive">
-            <table class="table table-dark table-bordered">
+            <table class="table table-bordered">
               <thead class="thead-dark">
                 <tr>
                   <th scope="col">From</th>
@@ -114,7 +114,7 @@ include 'php/connect.php';
         <br>
         
         <div class="table-responsive">
-          <table class="table table-dark table-striped table-bordered table-hover">
+          <table class="table table-striped table-bordered table-hover">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">From</th>

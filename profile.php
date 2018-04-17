@@ -26,7 +26,7 @@ require "php/loginCheck.php";
   <script src='js/timeOut.js'>
   </script> <!-- Header -->
   <?php include 'php/header.php'; ?> <!-- Navbar -->
-  <?php include 'php/navBar.php'; ?> <!-- Start off CRUD design -->
+  <?php include 'php/navBar.php'; ?>
   <?php 
 
   $sql = $dbcon->query("SELECT * from refDetails where email = '".$_SESSION['email']."'");
@@ -34,24 +34,27 @@ require "php/loginCheck.php";
   $reffId = $reffResults['id'];
   $reffUserName = $reffResults['reffUserName'];
 
-  //Searches the database for all messages that match the message Id
+  //Searches the database for all match reports that match the message Id
   $matchReportResults = $dbcon->query("SELECT * FROM reports1 WHERE reffFK = '$reffId'");
   $row = mysqli_fetch_assoc($matchReportResults); 
 
   ?> <!-- Display Match Reports  -->
-  <div class="container-fluid regContainer" id="matchReportTable">
+  <div class="container-fluid regContainer col-md-10" id="matchReportTable">
     <div class="row justify-content-center">
       <div class="col-md-12">
+        <div class="text-center">
         <h2>Completed Match Reports</h2>
+      </div><br>
+      <div class="container-fluid">
         <div class="table-responsive">
-          <table class="table table-dark table-striped table-bordered table-hover">
+          <table class="table table-striped table-bordered table-hover">
             <thead class="thead-dark">
               <tr>
-                <th>Match Played</th>
-                <th>League</th>
-                <th>Home Team</th>
-                <th>Away Team</th>
-                <th>Refferee</th>
+                <th scope="col">Match Played</th>
+                <th scope="col">League</th>
+                <th scope="col">Home Team</th>
+                <th scope="col">Away Team</th>
+                <th scope="col">Refferee</th>
               </tr>
             </thead>
             <tbody>
@@ -121,17 +124,19 @@ require "php/loginCheck.php";
           } 
           ?><!-- End of page number logic -->
         </div>
+        </div>
       </div>
     </div>
-  </div><!-- Update user details -->
-  <div class="container-fluid regContainer" id="updateDetails">
+  </div><br>
+  <!-- Update user details -->
+  <div class="container-fluid regContainer col-md-10" id="updateDetails">
     <div class="row justify-content-center">
       <div class="col-md-12">
-        <h2>Update Details</h2><?php 
-
-
-
-
+        <div class="text-center">
+        <h2>Update Details</h2><br>
+        <p>The boxes bellow display your current details. If you would like to change anything, click on the corrosponding box and enter the change and then click on the Update Details button to save your changes</p>
+      </div><br>
+        <?php 
         if (isset($_POST['update'])) {
         $gender = mysqli_real_escape_string($dbcon,$_POST['gender']);
         $grade = mysqli_real_escape_string($dbcon,$_POST['grade']);
@@ -146,75 +151,74 @@ require "php/loginCheck.php";
         $currentDetails = $dbcon->query("SELECT * from refDetails where email = '".$_SESSION['email']."'");
         $reffResults = mysqli_fetch_assoc($currentDetails);
         $reffId = $reffResults["id"];{
-        echo '<form action="profile.php" method="POST">';
-        echo '<div class="form-row">';
-        echo ' <div class="form-group col-md-6">';
-        echo '<div class="input-group-preprend">';
-        echo '  <label class="input-group-text" for="gender">Gender</label>';
-        echo '</div>';     
-        echo ' <select class="form-control" name="gender" id="gender">';
-        echo ' <option value="'.$reffResults['gender'].'">'.$reffResults['gender'].'
-        </option>';
-        echo ' <option value="male">Male</option>';
-        echo '<option value="female">Female</option>';
-        echo '<option value="other">Other</option>';
-        echo ' </select>';
-        echo ' </div>';
-        echo '<div class="form-group col-md-6">';
-        echo '<div class="input-group-preprend">';
-        echo '  <label class="input-group-text" for="grade">Grade</label>';
-        echo ' </div>';
-        echo ' <select class="form-control" name="grade" id="grade">';
-        echo '<option value="'.$reffResults['grade'].'">'.$reffResults['grade'].'
-        </option>';
-        echo '<option value="1A">1A</option>';
-        echo '<option value="1B">1B</option>';
-        echo '<option value="F">F</option>';
-        echo '<option value="F-1A">F-1A</option>';
-        echo '<option value="F-1B">F-1B</option>';
-        echo '<option value="2">2</option>';
-        echo '<option value="F-2A">F-2A</option>';
-        echo '<option value="F-2B">F-2B</option>';
-        echo '<option value="3A">3A</option>';
-        echo '<option value="3B">3B</option>';
-        echo '<option value="4A">4A</option>';
-        echo '<option value="4B">4B</option>';
-        echo '<option value="4C">4C</option>';
-        echo '<option value="4D">4D</option>';
-        echo '<option value="4E">4E</option>';
-        echo '</select>';
-        echo '</div>';
-        echo '</div>';
+          echo '
+        <form action="profile.php" method="POST">
+        <div class="form-row">
+         <div class="form-group col-md-6">
+        <div class="input-group-preprend">
+          <label class="input-group-text" for="gender">Gender</label>
+        </div>
+         <select class="form-control" name="gender" id="gender">
+         <option value="'.$reffResults['gender'].'">'.$reffResults['gender'].'
+        </option>
+         <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+         </select>
+         </div>
+        <div class="form-group col-md-6">
+        <div class="input-group-preprend">
+          <label class="input-group-text" for="grade">Grade</label>
+         </div>
+         <select class="form-control" name="grade" id="grade">
+        <option value="'.$reffResults['grade'].'">'.$reffResults['grade'].'
+        </option>
+        <option value="1A">1A</option>
+        <option value="1B">1B</option>
+        <option value="F">F</option>
+        <option value="F-1A">F-1A</option>
+       <option value="F-1B">F-1B</option>
+        <option value="2">2</option>
+        <option value="F-2A">F-2A</option>
+        <option value="F-2B">F-2B</option>
+        <option value="3A">3A</option>
+        <option value="3B">3B</option>
+        <option value="4A">4A</option>
+        <option value="4B">4B</option>
+        <option value="4C">4C</option>
+        <option value="4D">4D</option>
+        <option value="4E">4E</option>
+        </select>
+        </div>
+        </div>
+        <div class="form-row">
+        <div class="form-group col-md-6">
+        <div class="input-group-preprend">
+        <label class="input-group-text" for="telephoneNo">Telephone Number</label>
+        </div>
+        <input class="form-control" type="text" name="telephoneNo" id="telephoneNo" placeholder="01234567890" value="'.$reffResults['telephoneNo'].'"  minlength="11" maxlength="11" autocomplete="mobile">
+         </div>
+        <div class="form-group col-md-6">
+        <div class="input-group-preprend">
+        <label class="input-group-text" for="email">Email</label>
+        </div>
+        <input class="form-control" type="email" name="email" id="email" placeholder="Email" value="'.$reffResults['email'].'" autocomplete="email">
+        <div class="form-group" id="emailFeedBack">
+         </div>
+         </div>
+         </div>
+        <div class="text-center">
+        <input class="btn btn-primary" type="submit" name="updateDetailsRef" value="Update Details">
+        <a class="btn btn-primary" href="changePassword.php">Change Password</a>
 
-        
-
-  echo '<div class="form-row">';
-        echo '<div class="form-group col-md-6">';
-        echo '<div class="input-group-preprend">';
-        echo '<label class="input-group-text" for="telephoneNo">Telephone Number</label>';
-        echo '</div>';
-        echo '<input class="form-control" type="text" name="telephoneNo" id="telephoneNo" placeholder="01234567890" value="'.$reffResults['telephoneNo'].'"  minlength="11" maxlength="11" autocomplete="mobile">';
-        echo ' </div>';
-        echo '<div class="form-group col-md-6">';
-        echo '<div class="input-group-preprend">';
-        echo '<label class="input-group-text" for="email">Email</label>';
-        echo '</div>';
-        echo '<input class="form-control" type="email" name="email" id="email" placeholder="Email" value="'.$reffResults['email'].'" autocomplete="email">';
-        echo '<div class="form-group" id="emailFeedBack">';
-        echo ' </div>';
-        echo ' </div>';
-        echo ' </div>';
-        echo ' <input class="btn btn-primary" type="submit" name="update" value="Update Details">';
-
-
-        echo '</form>';
-              echo '</div>';
-    echo '</div>';
-  echo '</div>';
+        </form>
+        </div>
+        </div>
+        </div>';
 
                 } 
 
         ?>
-        <a class="btn btn-primary" href="changePassword.php">Change Password</a>
+
 </body>
 </html>
