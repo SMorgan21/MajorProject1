@@ -22,7 +22,7 @@
               <a class="nav-link" href="messages.php">Messages</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Links</a>
+              <a class="nav-link" href="links.php">Links</a>
             </li>
           </ul>
         </div>

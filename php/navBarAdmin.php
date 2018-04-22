@@ -18,7 +18,7 @@
             <a class="nav-link" href="messagesAdmin.php">Messages</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Links</a>
+            <a class="nav-link" href="linksAdmin.php">Links</a>
           </li>
           </ul>
         </div>
