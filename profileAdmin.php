@@ -23,6 +23,8 @@ include 'php/connect.php';
   </script> 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
   </script>
+    <script src='js/timeOut.js'>
+  </script>
   <!-- modal scripts -->
   <script type="text/javascript">
     $(document).ready(function(){

@@ -24,6 +24,8 @@ require "php/loginCheck.php";
   </script> 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
   </script>
+    <script src='js/timeOut.js'>
+  </script>
   <!-- Header -->
    <?php include 'php/header.php'; ?> <!-- Navbar -->
    <?php include 'php/navBar.php'; ?> <!-- Title -->
@@ -153,7 +155,7 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="caution1">Caution</label>
                   </div><select class="form-control caution" id="caution1" name="caution1">
-                    <option value="" selected>
+                    <option value="">
                       Please Select A Caution Code
                     </option>
                     <option value="C1">
@@ -184,7 +186,7 @@ require "php/loginCheck.php";
                     <label class="input-group-text" for="sendOff1">Send Off</label>
                   </div>
                   <select class="form-control sendOff" id="sendOff1" name="sendOff1">
-                    <option value="" selected>
+                    <option value="">
                       Please Select A Send Off Code
                     </option>
                     <option value="S1">
@@ -212,14 +214,14 @@ require "php/loginCheck.php";
                   <input class="btn btn-warning btn-sm" type="button" title="Click to reset the caution you have chosen" name="resetSelect" value="Reset Cautions" id="reset1">
                   <!-- This script stops the user from selecting both the send off and the caution options. if a caution is selected then the send off is dissabled and vice versa-->
                   <script type="text/javascript">
-                    $(function() {
-                      $("#caution1").change(function() {
-                        $("#sendOff1").prop("disabled", true);
-                      });
-                      $("#sendOff1").change(function() {
-                        $("#caution1").prop("disabled", true);
-                      });
-                    });
+                    // $(function() {
+                    //   $("#caution1").change(function() {
+                    //     $("#sendOff1").prop("disabled", true);
+                    //   });
+                    //   $("#sendOff1").change(function() {
+                    //     $("#caution1").prop("disabled", true);
+                    //   });
+                    // });
                     // this part of the script resets the above code incase the user selects the wrong box by accident
                   $("#reset1").click(function() {
                   $('#sendOff1').prop('selectedIndex', 0);
@@ -230,25 +232,14 @@ require "php/loginCheck.php";
                   $("#firstName2").prop("disabled", true);
                   $("#team2").prop("disabled", true);
                   $("#caution2").prop("disabled", true);
-                  $("#sendOff2").prop("disabled", true);
-                  $("#reset2").prop("disabled", true);
                   })
                   caution1.onchange = function(e) {
                     surname2.disabled = (caution1.value == "");
                     firstName2.disabled = (caution1.value == "");
                     team2.disabled = (caution1.value == "");
                     caution2.disabled = (caution1.value == "");
-                    sendOff2.disabled = (caution1.value == "");
-                    reset2.disabled = (caution1.value == "");
-                  };
-                  // sendOff1.onchange = function(e) {
-                  //   surname2.disabled = (sendOff1.value == "");
-                  //   firstName2.disabled = (sendOff1.value == "");
-                  //   team2.disabled = (sendOff1.value == "");
-                  //   caution2.disabled = (sendOff1.value == "");
-                  //   sendOff2.disabled = (sendOff1.value == "");
-                  //   reset2.disabled = (sendOff1.value == "");
-                  // };        
+
+                  };       
                 </script>
                 </div>
               </div><!-- End of first line -->
@@ -268,7 +259,7 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="team2">Team</label>
                   </div><select class="form-control teams" id="team2" name="team2" disabled>
-                    <option value="" selected>
+                    <option value="">
                       Please Select A Team
                     </option>
                   </select>
@@ -277,7 +268,7 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="caution2">Caution</label>
                   </div><select class="form-control caution" id="caution2" name="caution2" disabled>
-                    <option value="" selected>
+                    <option value="">
                       Please Select A Caution Code
                     </option>
                     <option value="C1">
@@ -328,7 +319,7 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="team3">Team</label>
                   </div><select class="form-control teams" id="team3" name="team3" disabled>
-                    <option value="" selected>
+                    <option value="">
                       Please Select A Team
                     </option>
                   </select>
@@ -337,7 +328,7 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="caution3">Caution</label>
                   </div><select class="form-control caution" id="caution3" name="caution3" disabled>
-                    <option value="" selected>
+                    <option value="">
                       Please Select A Caution Code
                     </option>
                     <option value="C1">
@@ -388,7 +379,7 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="team4">Team</label>
                   </div><select class="form-control teams" id="team4" name="team4" disabled>
-                    <option value="" selected>
+                    <option value="">
                       Please Select A Team
                     </option>
                   </select>
@@ -397,7 +388,7 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="caution4">Caution</label>
                   </div><select class="form-control caution" id="caution4" name="caution4" disabled>
-                    <option value="" selected>
+                    <option value="">
                       Please Select A Caution Code
                     </option>
                     <option value="C1">
@@ -449,7 +440,7 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="team5">Team</label>
                   </div><select class="form-control teams" id="team5" name="team5" disabled>
-                    <option value="" selected>
+                    <option value="">
                       Please Select A Team
                     </option>
                   </select>
@@ -458,7 +449,7 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="caution5">Caution</label>
                   </div><select class="form-control caution" id="caution5" name="caution5" disabled>
-                    <option value="" selected>
+                    <option value="">
                       Please Select A Caution Code
                     </option>
                     <option value="C1">
@@ -510,7 +501,7 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="team6">Team</label>
                   </div><select class="form-control teams" id="team6" name="team6" disabled>
-                    <option value="" selected>
+                    <option value="">
                       Please Select A Team
                     </option>
                   </select>
@@ -519,7 +510,7 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="caution6">Caution</label>
                   </div><select class="form-control caution" id="caution6" name="caution6" disabled>
-                    <option value="" selected>
+                    <option value="">
                       Please Select A Caution Code
                     </option>
                     <option value="C1">
@@ -571,7 +562,7 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="team7">Team</label>
                   </div><select class="form-control teams" id="team7" name="team7" disabled>
-                    <option value="" selected>
+                    <option value="">
                       Please Select A Team
                     </option>
                   </select>
@@ -580,7 +571,7 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="caution7">Caution</label>
                   </div><select class="form-control" id="caution7" name="caution7" disabled>
-                    <option vvalue="" selected>
+                    <option vvalue="">
                       Please Select A Caution Code
                     </option>
                     <option value="C1">

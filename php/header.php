@@ -15,7 +15,7 @@ session_start();
         <div class="col-md-3 headerRightText" id="headerRight">
           <table class="table-sm table-bordered" id="infoTable">
             <tbody>
-              <tr class="table-success">
+              <tr class="table-warning">
                 <td><!-- Displays the Username of whomever is logged in -->
                 <span id="headerUsername">Username: <?php
                                 // //Includes the connection details
@@ -29,7 +29,7 @@ session_start();
                                 }
                                 ?></span></td>
               </tr>
-              <tr class="table-success">
+              <tr class="table-warning">
                 <!-- Displays the day of the week followed by the date -->
                 <td>
                   <div id="date">
@@ -37,7 +37,7 @@ session_start();
                   </div>
                 </td>
               </tr>
-              <tr class="table-success">
+              <tr class="table-warning">
                 <td>
                   <!-- Displays time -->
                   <div id="time">
