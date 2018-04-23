@@ -1,4 +1,4 @@
-<?php
+|<?php
 //Starting Session
 session_start();
 //Checks that the user is logged in 
@@ -214,14 +214,14 @@ require "php/loginCheck.php";
                   <input class="btn btn-warning btn-sm" type="button" title="Click to reset the caution you have chosen" name="resetSelect" value="Reset Cautions" id="reset1">
                   <!-- This script stops the user from selecting both the send off and the caution options. if a caution is selected then the send off is dissabled and vice versa-->
                   <script type="text/javascript">
-                    // $(function() {
-                    //   $("#caution1").change(function() {
-                    //     $("#sendOff1").prop("disabled", true);
-                    //   });
-                    //   $("#sendOff1").change(function() {
-                    //     $("#caution1").prop("disabled", true);
-                    //   });
-                    // });
+                    $(function() {
+                      $("#caution1").change(function() {
+                        $("#sendOff1").prop("disabled", true);
+                      });
+                      $("#sendOff1").change(function() {
+                        $("#caution1").prop("disabled", true);
+                      });
+                    });
                     // this part of the script resets the above code incase the user selects the wrong box by accident
                   $("#reset1").click(function() {
                   $('#sendOff1').prop('selectedIndex', 0);

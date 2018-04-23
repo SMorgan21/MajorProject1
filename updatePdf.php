@@ -126,7 +126,8 @@ $pdf->Cell(28,0,'',0,0);
 //Teams
 $pdf->Cell(25,5,'Home Team: ',0,0,'L');
 $pdf->Cell(30,5,$homeTeam,0,0,'L');
-$pdf->Cell(20,5,' VS ',0,0,'L');
+$pdf->Cell(10,0,'',0,0);
+$pdf->Cell(10,5,' VS ',0,0,'L');
 $pdf->Cell(25,5,'Away Team: ',0,0,'L');
 $pdf->Cell(30,5,$awayTeam,0,1,'L');
 //Dummy Cell for formatting
