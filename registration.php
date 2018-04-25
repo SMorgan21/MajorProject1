@@ -26,11 +26,19 @@ if (isset($_SESSION["email"]) && isset ($_SESSION["loggedIn"])) {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <!-- checks for input in the username input and displays a message -->
+<<<<<<< HEAD
   <script src="js/checkUsername.js"></script>
   <!-- checks for input in the email input and displays a message -->
   <script src="js/checkEmail.js"></script>
   <!-- checks for input in the refereeNumber input and displays a message -->
   <script src="js/checkRefnumber.js"></script>
+=======
+  <script src="js/checkUsername.js" type="text/javascript"></script>
+  <!-- checks for input in the email input and displays a message -->
+  <script src="js/checkEmail.js" type="text/javascript"></script>
+  <!-- checks for input in the refereeNumber input and displays a message -->
+  <script src="js/checkRefnumber.js" type="text/javascript"></script>
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
 
   <div class="container-fluid">
     <div class="row justify-content-center">
@@ -131,7 +139,11 @@ if (isset($_SESSION["email"]) && isset ($_SESSION["loggedIn"])) {
                 <small id="passwordHelpBlock" class="form-text text-muted">
                   Your password must be 8-20 characters long</small>
                 </div>
+<<<<<<< HEAD
                 <script src="js/passwordCheck.js"></script>
+=======
+                <script src="js/passwordCheck.js" type="text/javascript"></script>
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
                 <div class="form-group col-md-6">
                   <div class="input-group-preprend">
                 <label class="input-group-text" for="conPassword">Confirm Password</label>

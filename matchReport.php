@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php
+=======
+|<?php
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
 //Starting Session
 session_start();
 //Checks that the user is logged in 
@@ -8,11 +12,20 @@ require "php/loginCheck.php";
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"><!-- Bootstrap CSS -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
   <title>Match Report</title>
 <link href="/MajorProject/Css/styles.css" rel="stylesheet">
+=======
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"><!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/MajorProject/Css/styles.css" rel="stylesheet">
+  <title>Match Report</title>
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
 </head>
 <body>
   <!-- Bootstrap -->
@@ -61,7 +74,11 @@ require "php/loginCheck.php";
                                     ?>
                 </select>
               </div>
+<<<<<<< HEAD
               <script src="js/teamAjax.js">
+=======
+              <script charset="utf-8" src="js/teamAjax.js">
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
               </script><br>
               <div class="form-row">
                 <div class="form-group col-md-6">
@@ -83,7 +100,11 @@ require "php/loginCheck.php";
                   </select>
                 </div>
                 <!-- This script disables the first team selected so that th user cant select the first team twice -->
+<<<<<<< HEAD
                 <script>
+=======
+                <script type="text/javascript">
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
                   $(".selectedTeams").change(function () {
                   $("select option").prop("disabled", false);
                   $(".selectedTeams").not($(this)).find("option[value='" + $(this).val() + "']").prop("disabled", true);
@@ -212,7 +233,11 @@ require "php/loginCheck.php";
                   </select>
                   <input class="btn btn-warning btn-sm" type="button" title="Click to reset the caution you have chosen" name="resetSelect" value="Reset Cautions" id="reset1">
                   <!-- This script stops the user from selecting both the send off and the caution options. if a caution is selected then the send off is dissabled and vice versa-->
+<<<<<<< HEAD
                   <script>
+=======
+                  <script type="text/javascript">
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
                     $(function() {
                       $("#caution1").change(function() {
                         $("#sendOff1").prop("disabled", true);
@@ -221,7 +246,11 @@ require "php/loginCheck.php";
                         $("#caution1").prop("disabled", true);
                       });
                     });
+<<<<<<< HEAD
                     // this part of the script resets the above code incase the user selects the wrong box
+=======
+                    // this part of the script resets the above code incase the user selects the wrong box by accident
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
                   $("#reset1").click(function() {
                   $('#sendOff1').prop('selectedIndex', 0);
                   $('#caution1').prop('selectedIndex', 0);
@@ -292,7 +321,11 @@ require "php/loginCheck.php";
                       C7
                     </option>
                   </select>
+<<<<<<< HEAD
                   <script>
+=======
+                  <script type="text/javascript">
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
                   caution2.onchange = function(e) {
                     surname3.disabled = (caution2.value == "");
                     firstName3.disabled = (caution2.value == "");
@@ -352,7 +385,11 @@ require "php/loginCheck.php";
                       C7
                     </option>
                   </select>
+<<<<<<< HEAD
                   <script>
+=======
+                  <script type="text/javascript">
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
                   caution3.onchange = function(e) {
                     surname4.disabled = (caution3.value == "");
                     firstName4.disabled = (caution3.value == "");
@@ -413,7 +450,11 @@ require "php/loginCheck.php";
                     </option>
                   </select>
 
+<<<<<<< HEAD
                   <script>
+=======
+                  <script type="text/javascript">
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
                    caution4.onchange = function(e) {
                     surname5.disabled = (caution4.value == "");
                     firstName5.disabled = (caution4.value == "");
@@ -473,7 +514,11 @@ require "php/loginCheck.php";
                       C7
                     </option>
                   </select>
+<<<<<<< HEAD
                   <script>
+=======
+                  <script type="text/javascript">
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
                    caution5.onchange = function(e) {
                     surname6.disabled = (caution5.value == "");
                     firstName6.disabled = (caution5.value == "");
@@ -535,7 +580,11 @@ require "php/loginCheck.php";
                     </option>
                   </select>
                 </div>
+<<<<<<< HEAD
                   <script>                  
+=======
+                  <script type="text/javascript">                  
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
                    caution6.onchange = function(e) {
                     surname7.disabled = (caution6.value == "");
                     firstName7.disabled = (caution6.value == "");
@@ -570,7 +619,11 @@ require "php/loginCheck.php";
                   <div class="input-group-preprend">
                     <label class="input-group-text" for="caution7">Caution</label>
                   </div><select class="form-control" id="caution7" name="caution7" disabled>
+<<<<<<< HEAD
                     <option value="">
+=======
+                    <option vvalue="">
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
                       Please Select A Caution Code
                     </option>
                     <option value="C1">

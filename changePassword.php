@@ -24,7 +24,11 @@ include 'php/connect.php';
 	</script> 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
 	</script> <!-- checks for input in the email input and displays a message -->
+<<<<<<< HEAD
 	<script src="js/checkChangePassEmail.js">
+=======
+	<script src="js/checkChangePassEmail.js" type="text/javascript">
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
 	</script> <!-- checks for input in the refereeNumber input and displays a message -->
 
 	
@@ -104,7 +108,11 @@ include 'php/connect.php';
 	<div class='container-fluid regContainer'>
 	<div class='form-group'>
 	<div class='input-group-preprend'>
+<<<<<<< HEAD
 	<label class='input-group-text' for='changeEmail'>Email</label>
+=======
+	<label class='input-group-text' for='email'>Email</label>
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
 	</div>
 	<input class='form-control' type='email' name='changeEmail' id='changeEmail' placeholder='Email' autocomplete='email' required>
 	</div>
@@ -124,7 +132,11 @@ include 'php/connect.php';
 	<small id='passwordHelpBlock' class='form-text text-muted'>
 	Your password must be 8-20 characters long</small>
 	</div>
+<<<<<<< HEAD
 	<script src='js/changePasswordCheck.js'></script>
+=======
+	<script src='js/changePasswordCheck.js' type='text/javascript'></script>
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
 	<div class='form-group'>
 	<div class='input-group-preprend'>
 	<label class='input-group-text' for='conPassword'>Confirm Password</label>
@@ -136,7 +148,11 @@ include 'php/connect.php';
 	<div class='form-group'>
 	<?php echo $message; ?>
 	<form>
+<<<<<<< HEAD
 		<input class='btn btn-primary btn-block' id='changePassword' name='changePasswordDetails' type='submit' value='Change Password'>
+=======
+		<input class='btn btn-primary btn-block' id='Change Password' name='changePasswordDetails' type='submit' value='Change Password'>
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
 	</form>"; } 
 	?>
 </body>

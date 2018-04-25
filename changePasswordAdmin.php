@@ -108,6 +108,11 @@ include 'php/connect.php';
 	</div>
 	<input class='form-control' type='email' name='changeEmail' id='changeEmailAdmin' placeholder='Email' autocomplete='email' required>
 	</div>
+<<<<<<< HEAD
+=======
+	<div class='form-group' id='changeEmailFeedBackAdmin'>
+    </div>
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
 	<div class='form-group'>
 	<div class='input-group-preprend'>
 	<label class='input-group-text' for='currentPassword'>Current Password</label>

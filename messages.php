@@ -194,7 +194,11 @@ include 'php/connect.php';
         </div><!-- End of Inbox  -->
         <!-- Compose Button -->
         <div class="text-center">
+<<<<<<< HEAD
           <a class="btn btn-primary btn" href="sendMessage.php" id="composeMessage" title="Click here to compose a new message" role="button">Compose New Message</a><br><br>
+=======
+          <a class="btn btn-primary btn" href="sendMessage.php" id="composeMessage" name="composeMessage" title="Click here to compose a new message" role="button">Compose New Message</a><br><br>
+>>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
         </div>
        
         <!-- End Of Compose Button -->
