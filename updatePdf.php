@@ -326,34 +326,4 @@ $pdf->Cell(5,5,'',0,0);
 
 //Outputs the data
  $pdf->Output('D','Match Report - '.$homeTeam.' vs '.$awayTeam.' '.$datePlayed.'.pdf');
-<<<<<<< HEAD
-=======
-
-
-
-// use PHPMailer\PHPMailer;
-// use PHPMailer\Exception;
-
-// require 'php/PHPMailer.php';
-// require 'php/Exception.php';
-// require 'php/SMTP.php';
-
-
-// $mail = new PHPMailer();
-// $mail->IsSMTP();
-// $mail->Host = "smtp.gmail.com";
-// $mail->SMTPAuth = true;
-// $mail->Username = "mixmastermorgs@gmail.com";
-// $mail->Password = "s6flh5zd";
-// $mail->SMTPSecure = "ssl";
-// $mail->Port = 465;
-
-// $mail->SetFrom("s_morgan21@hotmail.com", "Simon");
-// $mail->AddAddress("s_morgan21@hotmail.com");
-
-// $mail->Subject = "Test";
-// $mail->Body = "Test";
-//  $mail->addStringAttachment($pdf->Output("S",'MatchRep.pdf'), 'MatchRep.pdf', $encoding = 'base64', $type = 'application/pdf');
-//     return $mail->Send();
->>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
 ?>

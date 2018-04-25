@@ -26,11 +26,7 @@ include 'php/connect.php';
     <script src='js/timeOut.js'>
   </script>
   <!-- modal scripts -->
-<<<<<<< HEAD
   <script>
-=======
-  <script type="text/javascript">
->>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
     $(document).ready(function(){
       $("#addTeam").on('click', function (){
         $("#addTeamModal").modal('show');
@@ -147,11 +143,7 @@ include 'php/connect.php';
                   ?>
                 </select>
               </div>
-<<<<<<< HEAD
               <script src="js/teamAjaxAdmin.js">
-=======
-              <script charset="utf-8" src="js/teamAjaxAdmin.js">
->>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
               </script>
               <div class="form-row">
                 <div class="form-group col-md-6">
@@ -725,11 +717,7 @@ include 'php/connect.php';
                 }
                 ?>
               </tbody>
-<<<<<<< HEAD
               <script>
-=======
-              <script type="text/javascript">
->>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
                 function deleteConfirmAlert()
                 {
                   var conf = confirm("Are you sure you want to delete this team?");
@@ -742,21 +730,8 @@ include 'php/connect.php';
             </table>
           </div>
           <div class="text-center">
-<<<<<<< HEAD
             <input class="btn btn-success" type="button" title="Click here to add a team to this league" value="Add A Team" id="addTeam">
             <a class="btn btn-primary" href="profileAdmin.php" title="Click here to return to the home page" role="button">Back Home Page</a><br><br>   
-=======
-            <input class="btn btn-success" type="button" title="Click here to add a team to this league" value="Add A Team" role="button" id="addTeam">
-            <a class="btn btn-primary" href="profileAdmin.php" title="Click here to return to the home page" role="button">Back Home Page</a><br><br>   
-              <!--    while ($rowLeague=mysqli_fetch_assoc($league)) {
-                $leagueId = $rowLeague['id']; 
-               
-                echo '
-                <div class="text-center">
-                <a class="btn btn-danger" role="button" href="?deleteLeague='.$leagueId.'">Delete this league</a>
-                 </div>';
-                 -->
->>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
           </div>
         </div>
       </div>
@@ -796,55 +771,6 @@ include 'php/connect.php';
 
   ?>
   <!-- End Of Delete Team -->
-<<<<<<< HEAD
-=======
-  <!-- Delete League -->
-  <?php 
-
-  if (isset($_GET['deleteLeague'])) {
-      $leagueDelete = $_GET['deleteLeague'];
-
-      //Removes all messages with the message Id set above
-      $removeLeague = $dbcon->query("DELETE FROM leagues WHERE id = '$leagueDelete'");
-      if ($removeLeague) {
-     echo'
-  <div class="container-fluid">
-  <div class="row justify-content-center">
-  <div class="col-md-6 col-md-offset-3">
-  <div class="container-fluid regContainer">
-  <div class="text-center">
-  <p>The League has been removed</p>
-  <a href="profileAdmin.php" class="btn btn-primary">Click here to continue</a>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>';
-          
-            exit;
-      }else {
-           echo $leagueDelete;
-           echo'
-  <div class="container-fluid">
-  <div class="row justify-content-center">
-  <div class="col-md-6 col-md-offset-3">
-  <div class="container-fluid regContainer">
-  <div class="text-center">
-  <p>Unfortunatly something went wrong</p>
-  <a href="profileAdmin.php" class="btn btn-primary">Click here to try again</a>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>';
-
-      }
-      exit();
-  }
-
-  ?> 
-  <!-- End of Delete League -->
->>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
    <!-- End Of Edit Leagues -->
   <div class="container-fluid regContainer col-md-9" id="matchReportTableAdmin">
     <div class="row justify-content-center">
@@ -945,11 +871,7 @@ include 'php/connect.php';
           </select>
         </div>
         <div class="table-responsive">
-<<<<<<< HEAD
           <script src="js/editTeamAjax.js">
-=======
-          <script charset="utf-8" src="js/editTeamAjax.js">
->>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
           </script>
           <table class="table-sm table-striped table-bordered table-hover">
             <thead class="thead-dark">
@@ -965,20 +887,12 @@ include 'php/connect.php';
           </table>
         </div>
         <div class="text-center">
-<<<<<<< HEAD
         <input class="btn btn-primary" type="button" title="Click here to add a new league or competition" value="Add a new League or Competition" id="addLeague">
-=======
-        <input class="btn btn-primary" type="button" title="Click here to add a new league or competition" value="Add a new League or Competition" role="button" id="addLeague">
->>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
       </div>
       </div>
     </div>
         <!-- Add League Modal -->
-<<<<<<< HEAD
     <script>
-=======
-    <script type="text/javascript">
->>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
     $(document).ready(function(){
       $("#addLeague").on('click', function (){
         $("#addLeagueModal").modal('show');
@@ -1043,11 +957,7 @@ include 'php/connect.php';
         $reffResults = mysqli_fetch_assoc($currentDetails);
         $reffId = $reffResults["id"];{
         echo '
-<<<<<<< HEAD
         <form action="upDateRefDetailsAdmin.php" method="POST">
-=======
-        <form action="upDateRefDetailsAdmin.php" method="POST"
->>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
 
         <div class="form-row">
         <div class="form-group col-md-6">
@@ -1087,7 +997,6 @@ include 'php/connect.php';
        </select>
         </div>
         </div>
-<<<<<<< HEAD
         <div class="form-row">
         <div class="form-group col-md-6">
         <div class="input-group-preprend">
@@ -1095,23 +1004,12 @@ include 'php/connect.php';
         </div>
         <input class="form-control" type="text" name="telephoneNo" id="telephoneNo" placeholder="01234567890" value="'.$reffResults['telephoneNo'].'"  minlength="11" maxlength="11" autocomplete="mobile">
          </div>
-=======
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <div class="input-group-preprend">
-              <label class="input-group-text" for="telephoneNo">Telephone Number</label>
-            </div>
-            <input class="form-control" type="text" name="telephoneNo" id="telephoneNo" placeholder="01234567890" value="'.$reffResults['telephoneNo'].'"  minlength="11" maxlength="11" autocomplete="mobile">
-          </div>
->>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
         <div class="form-group col-md-6">
         <div class="input-group-preprend">
         <label class="input-group-text" for="email">Email</label>
         </div>
         <input class="form-control" type="email" name="email" id="email" placeholder="Email" value="'.$reffResults['email'].'" autocomplete="email">
         <div class="form-group" id="emailFeedBack">
-<<<<<<< HEAD
          </div>
          </div>
          </div>
@@ -1121,23 +1019,6 @@ include 'php/connect.php';
         </form>
         </div>
         </div>
-=======
-        </div>
-        </div>
-        </div>
-        <div class="text-center">
-        <input class="btn btn-primary" type="submit" name="updateDetailsRef" value="Update Details" onclick="updateSuccesfull()">
-        <a class="btn btn-primary" title="Click here to change your password" href="changePasswordAdmin.php">Change Password</a>
-        </div>
-        </form>
-        <script type="text/javascript">
-        function updateSuccesfull(){
-          alert("Your details have been saved. Press OK to continue");
-        }
-        </script>
-        </div>
-          </div>
->>>>>>> eebd52104002b23b26b2d25af789866f4fc1e928
         </div>';
 
                 } 
