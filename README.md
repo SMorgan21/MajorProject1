@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+=======
+
+# MajorProject
+Uni major Project
+
+
+>>>>>>> f3b1ca7542871c35ba99f596b5cac3a76fdbeb7f
 This is my final year project for Aberystwyth university.
 
 I have been tasked with developing a website that helps football officials with the completion of match reports and provides them with a means of communication with each other.
