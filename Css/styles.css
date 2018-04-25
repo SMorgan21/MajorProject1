@@ -1,0 +1,164 @@
+/* Logo's */
+
+.fawLogo {
+  max-width: 50%;
+  height: auto;
+  padding: 10px;
+}
+/* Header */
+
+.header {
+  padding: 20px;
+}
+.headerInfo {
+  border-style: solid;
+  border-color: #E11A22;
+  border-width: 2px;
+  border-radius: 5px;
+  background-color: #f7da5f  ;
+  padding: 10px;
+}
+.headerRightText {
+  font-size: 22px;
+}
+#pageTitle {
+  align-self: center;
+}
+#headerRight {
+  display: flex;
+  justify-content: center;
+}
+#infoTable {
+  align-self: center;
+}
+/* Navbar */
+.navbar-custom {
+  background-color: #f7da5f;
+  border: 2px;
+  border-style: solid;
+  border-color: #E11A22 !important;
+  border-width: 2px;
+  border-radius: 5px;
+}
+.navbar-custom .navbar-nav .nav-link {
+    color: #000000;
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #E11A22;
+}
+.nBar {
+  padding-bottom: 20px;
+}
+
+/* Registration Form */
+
+.regContainer {
+  padding: 40px;
+  border-style: solid;
+  border-color: #E11A22;
+  border-width: 2px;
+  border-radius: 25px;
+  background-color:  #f7da5f  ;
+}
+#status {
+  max-width: 10%;
+  height: auto;
+}
+/* Alert CSS */
+
+.hidden {
+  display: none;
+}
+/* Messages Tables */
+.table{
+  background-color: white;
+}
+
+.table tr th a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.table tr th a:hover {
+  color: #E11A22;
+  text-decoration: none;
+}
+.table tr td a {
+  color: #000000;
+  text-decoration: none;
+}
+.table tr td a:hover {
+  color: #E11A22;
+  text-decoration: none;
+}
+
+/* small tables */
+.table-sm{
+  background-color: white;
+}
+
+.table-sm tr th a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.table-sm tr th a:hover {
+  color: #E11A22;
+  text-decoration: none;
+}
+.table-sm tr td a {
+  color: #000000;
+  text-decoration: none;
+}
+.table-sm tr td a:hover {
+  color: #E11A22;
+  text-decoration: none;
+}
+
+/* Caution Table */
+
+.cautionContainer {
+  padding: 19px;
+  border-style: solid;
+  border-color: #E11A22;
+  border-width: 2px;
+  border-radius: 25px;
+  background-color:  #f7da5f  ;
+  font-size: 11.5px;
+}
+
+/* General Css */
+
+body {
+  padding-bottom: 50px;
+}
+.pages a {
+  color: #FFFFFF;
+  display: inline-block;
+  margin: 0px 10px 0px 0px;
+  padding: 10px 20px;
+  background: #007BFF;
+  -webkit-border-radius: 2px;
+  font-family: arial;
+  font-size: 18px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.pages a:active {
+  color: white;
+}
+.pages a:hover {
+  color: #E11A22;
+  text-decoration: none;
+}
+/* Logout link */
+
+.logOut {
+  color: #E11A22 !important;
+}
+
+strong.edit{
+  color: #E11A22 !important;
+  font-weight: bold;
+  font-size: 100;
+}
