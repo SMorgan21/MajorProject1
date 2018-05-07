@@ -101,7 +101,7 @@ include 'php/connect.php';
 
 	echo "
 	<form name='changePassword' action='changePassword.php' method='POST' accept-charset='utf-8'>
-	<div class='container-fluid regContainer'>
+	<div class='container-fluid regContainer col-md-4'>
 	<div class='form-group'>
 	<div class='input-group-preprend'>
 	<label class='input-group-text' for='changeEmail'>Email</label>

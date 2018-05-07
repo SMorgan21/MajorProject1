@@ -129,8 +129,8 @@ include 'php/connect.php';
               </div>
               <div class="form-row">
                 <div class="input-group-preprend">
-                  <label class="input-group-text" for="league">League</label>
-                </div><select class="form-control" id="changeLeague" name="league">
+                  <label class="input-group-text" for="changeLeague">League</label>
+                </div><select class="form-control" id="changeLeague" name="changeLeague">
                   <option value="<?php echo $league;?>">
                     <?php echo $league;?>
                   </option>
@@ -144,12 +144,12 @@ include 'php/connect.php';
                 </select>
               </div>
               <script src="js/teamAjaxAdmin.js">
-              </script>
+              </script><br>
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="homeTeam">Home Team</label>
-                  </div><select class="form-control teams" id="changeHomeTeam" name="homeTeam">
+                    <label class="input-group-text" for="changeHomeTeam">Home Team</label>
+                  </div><select class="form-control teams" id="changeHomeTeam" name="changeHomeTeam">
                     <option value="<?php echo $homeTeam;?>">
                       <?php echo $homeTeam;?>
                     </option>
@@ -157,8 +157,8 @@ include 'php/connect.php';
                 </div>
                 <div class="form-group col-md-6">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="awayTeam">Away Team</label>
-                  </div><select class="form-control teams" id="changeAwayTeam" name="awayTeam">
+                    <label class="input-group-text" for="changeAwayTeam">Away Team</label>
+                  </div><select class="form-control teams" id="changeAwayTeam" name="changeAwayTeam">
                     <option value="<?php echo $awayTeam;?>">
                       <?php echo $awayTeam;?>
                     </option>
@@ -168,8 +168,8 @@ include 'php/connect.php';
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="location">Location</label>
-                  </div><select class="form-control teams" id="changeLocation" name="location">
+                    <label class="input-group-text" for="changeLocation">Location</label>
+                  </div><select class="form-control teams" id="changeLocation" name="changeLocation">
                     <option value="<?php echo $location;?>">
                       <?php echo $location;?>
                     </option>
@@ -177,8 +177,8 @@ include 'php/connect.php';
                 </div>
                 <div class="form-group col-md-6">
                   <div class="input-group-prepend">
-                    <label class="input-group-text" for="datePlayed">Match Date</label>
-                  </div><input class="form-control" id="changeDatePlayed" name="datePlayed" type="date" value="<?php echo $datePlayed;?>">
+                    <label class="input-group-text" for="changeDatePlayed">Match Date</label>
+                  </div><input class="form-control" id="changeDatePlayed" name="changeDatePlayed" type="date" value="<?php echo $datePlayed;?>">
                 </div>
               </div>
             </div>
@@ -208,18 +208,18 @@ include 'php/connect.php';
               <div class="form-row">
                 <div class="form-group col-md-3">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="surname1">Surname</label>
-                  </div><input class="form-control" id="changeSurname1" maxlength="50" name="surname1" placeholder="Surname" type="text" value="<?php echo $surname1;?>">
+                    <label class="input-group-text" for="changeSurname1">Surname</label>
+                  </div><input class="form-control" id="changeSurname1" maxlength="50" name="changeSurname1" placeholder="Surname" type="text" value="<?php echo $surname1;?>">
                 </div>
                 <div class="form-group col-md-3">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="firstName1">First Name</label>
-                  </div><input class="form-control" id="changeFirstName1" maxlength="50" name="firstName1" placeholder="First Name" type="text" value="<?php echo $surname1;?>">
+                    <label class="input-group-text" for="changeFirstName1">First Name</label>
+                  </div><input class="form-control" id="changeFirstName1" maxlength="50" name="changeFirstName1" placeholder="First Name" type="text" value="<?php echo $surname1;?>">
                 </div>
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="team1">Team</label>
-                  </div><select class="form-control teams" id="changeTeam1" name="team1">
+                    <label class="input-group-text" for="changeTeam1">Team</label>
+                  </div><select class="form-control teams" id="changeTeam1" name="changeTeam1">
                     <option value="<?php echo $team1;?>">
                       <?php echo $team1;?>
                     </option>
@@ -227,8 +227,8 @@ include 'php/connect.php';
                 </div>
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="caution1">Caution</label>
-                  </div><select class="form-control" id="changeCaution1" name="caution1">
+                    <label class="input-group-text" for="changeCaution1">Caution</label>
+                  </div><select class="form-control" id="changeCaution1" name="changeCaution1">
                     <option value="<?php echo $caution1;?>">
                       <?php echo $caution1;?>
                     </option>
@@ -257,8 +257,8 @@ include 'php/connect.php';
                 </div>
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="sendOff1">Send Off</label>
-                  </div><select class="form-control" id="changeSendOff1" name="sendOff1">
+                    <label class="input-group-text" for="changeSendOff1">Send Off</label>
+                  </div><select class="form-control" id="changeSendOff1" name="changeSendOff1">
                     <option value="<?php echo $sendOff1;?>">
                       <?php echo $sendOff1;?>
                     </option>
@@ -290,18 +290,18 @@ include 'php/connect.php';
               <div class="form-row">
                 <div class="form-group col-md-3">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="surname2">Surname</label>
-                  </div><input class="form-control" id="changeSurname2" maxlength="50" name="surname2" placeholder="Surname" type="text" value="<?php echo $surname2;?>">
+                    <label class="input-group-text" for="changeSurname2">Surname</label>
+                  </div><input class="form-control" id="changeSurname2" maxlength="50" name="changeSurname2" placeholder="Surname" type="text" value="<?php echo $surname2;?>">
                 </div>
                 <div class="form-group col-md-3">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="firstName2">First Name</label>
-                  </div><input class="form-control" id="changeFirstName2" maxlength="50" name="firstName2" placeholder="First Name" type="text" value="<?php echo $firstName2;?>">
+                    <label class="input-group-text" for="changeFirstName2">First Name</label>
+                  </div><input class="form-control" id="changeFirstName2" maxlength="50" name="changeFirstName2" placeholder="First Name" type="text" value="<?php echo $firstName2;?>">
                 </div>
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="team2">Team</label>
-                  </div><select class="form-control teams" id="changeTeam2" name="team2">
+                    <label class="input-group-text" for="changeTeam2">Team</label>
+                  </div><select class="form-control teams" id="changeTeam2" name="changeTeam2">
                     <option value="<?php echo $team2;?>">
                       <?php echo $team2;?>
                     </option>
@@ -309,8 +309,8 @@ include 'php/connect.php';
                 </div>
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="caution2">Caution</label>
-                  </div><select class="form-control" id="changeCaution2" name="caution2">
+                    <label class="input-group-text" for="changeCaution2">Caution</label>
+                  </div><select class="form-control" id="changeCaution2" name="changeCaution2">
                     <option value="<?php echo $caution2;?>">
                       <?php echo $caution2;?>
                     </option>
@@ -342,18 +342,18 @@ include 'php/connect.php';
               <div class="form-row">
                 <div class="form-group col-md-3">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="surname3">Surname</label>
-                  </div><input class="form-control" id="changeSurname3" maxlength="50" name="surname3" placeholder="Surname" type="text" value="<?php echo $surname3;?>">
+                    <label class="input-group-text" for="changeSurname3">Surname</label>
+                  </div><input class="form-control" id="changeSurname3" maxlength="50" name="changeSurname3" placeholder="Surname" type="text" value="<?php echo $surname3;?>">
                 </div>
                 <div class="form-group col-md-3">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="firstName3">First Name</label>
-                  </div><input class="form-control" id="changeFirstName3" maxlength="50" name="firstName3" placeholder="First Name" type="text" value="<?php echo $firstName3;?>">
+                    <label class="input-group-text" for="changeFirstName3">First Name</label>
+                  </div><input class="form-control" id="changeFirstName3" maxlength="50" name="changeFirstName3" placeholder="First Name" type="text" value="<?php echo $firstName3;?>">
                 </div>
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="team3">Team</label>
-                  </div><select class="form-control teams" id="changeTeam3" name="team3">
+                    <label class="input-group-text" for="changeTeam3">Team</label>
+                  </div><select class="form-control teams" id="changeTeam3" name="changeTeam3">
                     <option value="<?php echo $team3;?>">
                       <?php echo $team3;?>
                     </option>
@@ -361,8 +361,8 @@ include 'php/connect.php';
                 </div>
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="caution3">Caution</label>
-                  </div><select class="form-control" id="changeCaution3" name="caution3">
+                    <label class="input-group-text" for="changeCaution3">Caution</label>
+                  </div><select class="form-control" id="changeCaution3" name="changeCaution3">
                     <option value="<?php echo $caution3;?>">
                       <?php echo $caution3;?>
                     </option>
@@ -394,18 +394,18 @@ include 'php/connect.php';
               <div class="form-row">
                 <div class="form-group col-md-3">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="surname4">Surname</label>
-                  </div><input class="form-control" id="changeSurname4" maxlength="50" name="surname4" placeholder="Surname" type="text" value="<?php echo $surname4;?>">
+                    <label class="input-group-text" for="changeSurname4">Surname</label>
+                  </div><input class="form-control" id="changeSurname4" maxlength="50" name="changeSurname4" placeholder="Surname" type="text" value="<?php echo $surname4;?>">
                 </div>
                 <div class="form-group col-md-3">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="firstName4">First Name</label>
-                  </div><input class="form-control" id="changeFirstName4" maxlength="50" name="firstName4" placeholder="First Name" type="text" value="<?php echo $firstName4;?>">
+                    <label class="input-group-text" for="changeFirstName4">First Name</label>
+                  </div><input class="form-control" id="changeFirstName4" maxlength="50" name="changeFirstName4" placeholder="First Name" type="text" value="<?php echo $firstName4;?>">
                 </div>
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="team4">Team</label>
-                  </div><select class="form-control teams" id="changeTeam4" name="team4">
+                    <label class="input-group-text" for="changeTeam4">Team</label>
+                  </div><select class="form-control teams" id="changeTeam4" name="changeTeam4">
                     <option value="<?php echo $team4;?>">
                       <?php echo $team4;?>
                     </option>
@@ -413,8 +413,8 @@ include 'php/connect.php';
                 </div>
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="caution4">Caution</label>
-                  </div><select class="form-control" id="changeCaution4" name="caution4">
+                    <label class="input-group-text" for="changeCaution4">Caution</label>
+                  </div><select class="form-control" id="changeCaution4" name="changeCaution4">
                     <option value="<?php echo $caution4;?>">
                       <?php echo $caution4;?>
                     </option>
@@ -446,18 +446,18 @@ include 'php/connect.php';
               <div class="form-row">
                 <div class="form-group col-md-3">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="surname5">Surname</label>
-                  </div><input class="form-control" id="changeSurname5" maxlength="50" name="surname5" placeholder="Surname" type="text" value="<?php echo $surname5;?>">
+                    <label class="input-group-text" for="changeSurname5">Surname</label>
+                  </div><input class="form-control" id="changeSurname5" maxlength="50" name="changeSurname5" placeholder="Surname" type="text" value="<?php echo $surname5;?>">
                 </div>
                 <div class="form-group col-md-3">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="firstName5">First Name</label>
-                  </div><input class="form-control" id="changeFirstName5" maxlength="50" name="firstName5" placeholder="First Name" type="text" value="<?php echo $firstName5;?>">
+                    <label class="input-group-text" for="changeFirstName5">First Name</label>
+                  </div><input class="form-control" id="changeFirstName5" maxlength="50" name="changeFirstName5" placeholder="First Name" type="text" value="<?php echo $firstName5;?>">
                 </div>
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="team5">Team</label>
-                  </div><select class="form-control teams" id="changeTeam5" name="team5">
+                    <label class="input-group-text" for="changeTeam5">Team</label>
+                  </div><select class="form-control teams" id="changeTeam5" name="changeTeam5">
                     <option value="<?php echo $team5;?>">
                       <?php echo $team5;?>
                     </option>
@@ -465,8 +465,8 @@ include 'php/connect.php';
                 </div>
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="caution5">Caution</label>
-                  </div><select class="form-control" id="changeCaution5" name="caution5">
+                    <label class="input-group-text" for="changeCaution5">Caution</label>
+                  </div><select class="form-control" id="changeCaution5" name="changeCaution5">
                     <option value="<?php echo $caution5;?>">
                       <?php echo $caution5;?>
                     </option>
@@ -498,18 +498,18 @@ include 'php/connect.php';
               <div class="form-row">
                 <div class="form-group col-md-3">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="surname6">Surname</label>
-                  </div><input class="form-control" id="changeSurname6" maxlength="50" name="surname6" placeholder="Surname" type="text" value="<?php echo $surname6;?>">
+                    <label class="input-group-text" for="changeSurname6">Surname</label>
+                  </div><input class="form-control" id="changeSurname6" maxlength="50" name="changeSurname6" placeholder="Surname" type="text" value="<?php echo $surname6;?>">
                 </div>
                 <div class="form-group col-md-3">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="firstName6">First Name</label>
-                  </div><input class="form-control" id="changeFirstName6" maxlength="50" name="firstName6" placeholder="First Name" type="text" value="<?php echo $firstName6;?>">
+                    <label class="input-group-text" for="changeFirstName6">First Name</label>
+                  </div><input class="form-control" id="changeFirstName6" maxlength="50" name="changeFirstName6" placeholder="First Name" type="text" value="<?php echo $firstName6;?>">
                 </div>
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="team6">Team</label>
-                  </div><select class="form-control teams" id="changeTeam6" name="team6">
+                    <label class="input-group-text" for="changeTeam6">Team</label>
+                  </div><select class="form-control teams" id="changeTeam6" name="changeTeam6">
                     <option value="<?php echo $team6;?>">
                       <?php echo $team6;?>
                     </option>
@@ -517,8 +517,8 @@ include 'php/connect.php';
                 </div>
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="caution6">Caution</label>
-                  </div><select class="form-control" id="changeCaution6" name="caution6">
+                    <label class="input-group-text" for="changeCaution6">Caution</label>
+                  </div><select class="form-control" id="changeCaution6" name="changeCaution6">
                     <option value="<?php echo $caution6;?>">
                       <?php echo $caution6;?>
                     </option>
@@ -550,18 +550,18 @@ include 'php/connect.php';
               <div class="form-row">
                 <div class="form-group col-md-3">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="surname7">Surname</label>
-                  </div><input class="form-control" id="changeSurname7" maxlength="50" name="surname7" placeholder="Surname" type="text" value="<?php echo $surname7;?>">
+                    <label class="input-group-text" for="changeSurname7">Surname</label>
+                  </div><input class="form-control" id="changeSurname7" maxlength="50" name="changeSurname7" placeholder="Surname" type="text" value="<?php echo $surname7;?>">
                 </div>
                 <div class="form-group col-md-3">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="firstName7">First Name</label>
-                  </div><input class="form-control" id="changeFirstName7" maxlength="50" name="firstName7" placeholder="First Name" type="text" value="<?php echo $firstName7;?>">
+                    <label class="input-group-text" for="changeFirstName7">First Name</label>
+                  </div><input class="form-control" id="changeFirstName7" maxlength="50" name="changeFirstName7" placeholder="First Name" type="text" value="<?php echo $firstName7;?>">
                 </div>
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="team7">Team</label>
-                  </div><select class="form-control teams" id="changeTeam7" name="team7">
+                    <label class="input-group-text" for="changeTeam7">Team</label>
+                  </div><select class="form-control teams" id="changeTeam7" name="changeTeam7">
                     <option value="<?php echo $team7;?>">
                       <?php echo $team7;?>
                     </option>
@@ -569,8 +569,8 @@ include 'php/connect.php';
                 </div>
                 <div class="form-group col-md-2">
                   <div class="input-group-preprend">
-                    <label class="input-group-text" for="caution7">Caution</label>
-                  </div><select class="form-control" id="changeCaution7" name="caution7">
+                    <label class="input-group-text" for="changeCaution7">Caution</label>
+                  </div><select class="form-control" id="changeCaution7" name="changeCaution7">
                     <option value="<?php echo $caution7;?>">
                       <?php echo $caution7;?>
                     </option>
@@ -731,7 +731,7 @@ include 'php/connect.php';
           </div>
           <div class="text-center">
             <input class="btn btn-success" type="button" title="Click here to add a team to this league" value="Add A Team" id="addTeam">
-            <a class="btn btn-primary" href="profileAdmin.php" title="Click here to return to the home page" role="button">Back Home Page</a><br><br>   
+            <a class="btn btn-primary" href="profileAdmin.php" title="Click here to return to the home page" role="button">Home Page</a><br><br>   
           </div>
         </div>
       </div>

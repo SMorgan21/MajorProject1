@@ -50,7 +50,7 @@ if (isset($_POST['login'])) {//listening for the login button
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="/MajorProject/Css/styles.css">
+  <link rel="stylesheet" href="/Css/styles.css">
   <title>Login</title>
 </head>
 <body>
@@ -63,7 +63,7 @@ if (isset($_POST['login'])) {//listening for the login button
     <div class="row justify-content-center">
       <div class="col-md-6 col-md-offset-3">
         <div class="text-center">
-          <img src="/MajorProject/images/FAW_logo.png" class="img-fluid fawLogo" alt="FAWlogo">
+          <img src="/images/FAW_logo.png" class="img-fluid fawLogo" alt="FAWlogo">
         </div>
         <div class="container-fluid regContainer">
           <form name="regForm" method="post" action="login.php">

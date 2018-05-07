@@ -85,7 +85,7 @@ include 'php/connect.php';
           <div class="text-center">
             <a class="btn btn-primary" href="messagesAdmin.php"  title="Click here to return to your home page" role="button">Back to Inbox</a> 
             <a class="btn btn-primary" href="sendMessageAdmin.php" id="sendMessageAdmin" name="sendMessage" title="Click here to compose a new message" role="button">Compose New Message</a> 
-            <a class="btn btn-danger" role="button" onclick="return deleteMessageConfirmAlert();" title="Click here to delete this message"> href="?delete=<?php echo $id; ?>;">Delete this message</a>
+            <a class="btn btn-danger" role="button" onclick="return deleteMessageConfirmAlert();" title="Click here to delete this message" href="?delete=<?php echo $id; ?>;">Delete this message</a>
           </div>
 
               <script type="text/javascript">

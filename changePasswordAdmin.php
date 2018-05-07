@@ -24,7 +24,7 @@ include 'php/connect.php';
 	</script> 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
 	</script> <!-- checks for input in the email input and displays a message -->
-	<script src="js/changePassAdmin.js" type="text/javascript">
+	<script src="js/changePassAdmin.js">
 	</script> 
 
 	
@@ -101,33 +101,33 @@ include 'php/connect.php';
 
 	echo "
 	<form name='changePassword' action='changePasswordAdmin.php' method='POST' accept-charset='utf-8'>
-	<div class='container-fluid regContainer'>
+	<div class='container-fluid regContainer col-md-4'>
 	<div class='form-group'>
 	<div class='input-group-preprend'>
-	<label class='input-group-text' for='email'>Email</label>
+	<label class='input-group-text' for='changeEmailAdmin'>Email</label>
 	</div>
-	<input class='form-control' type='email' name='changeEmail' id='changeEmailAdmin' placeholder='Email' autocomplete='email' required>
-	</div>
-	<div class='form-group'>
-	<div class='input-group-preprend'>
-	<label class='input-group-text' for='currentPassword'>Current Password</label>
-	</div>
-	<input class='form-control' type='password' name='currentPassword' id='currentPasswordAdmin' placeholder='Current Password' required>
+	<input class='form-control' type='email' name='changeEmailAdmin' id='changeEmailAdmin' placeholder='Email' autocomplete='email' required>
 	</div>
 	<div class='form-group'>
 	<div class='input-group-preprend'>
-	<label class='input-group-text' for='newPassword'>New Password</label>
+	<label class='input-group-text' for='currentPasswordAdmin'>Current Password</label>
 	</div>
-	<input class='form-control' type='password' name='newPassword' placeholder='************' id='newPasswordAdmin' minlength='8' maxlength='20' autocomplete='new-password'>
+	<input class='form-control' type='password' name='currentPasswordAdmin' id='currentPasswordAdmin' placeholder='Current Password' required>
+	</div>
+	<div class='form-group'>
+	<div class='input-group-preprend'>
+	<label class='input-group-text' for='newPasswordAdmin'>New Password</label>
+	</div>
+	<input class='form-control' type='password' name='newPasswordAdmin' placeholder='************' id='newPasswordAdmin' minlength='8' maxlength='20' autocomplete='new-password'>
 	<small id='changePasswordHelpBlockAdmin' class='form-text text-muted'>
 	Your password must be 8-20 characters long</small>
 	</div>
-	<script src='js/changePasswordCheck.js' type='text/javascript'></script>
+	<script src='js/changePasswordCheck.js'></script>
 	<div class='form-group'>
 	<div class='input-group-preprend'>
-	<label class='input-group-text' for='conPassword'>Confirm Password</label>
+	<label class='input-group-text' for='changeConPasswordAdmin'>Confirm Password</label>
 	</div>
-	<input class='form-control' type='password' name='conPassword' placeholder='************'id='changeConPasswordAdmin'>
+	<input class='form-control' type='password' name='changeConPasswordAdmin' placeholder='************'id='changeConPasswordAdmin'>
 	<div class='alert alert-danger hidden' id='changeNoMatchAdmin' role='alert'><strong>Your Passwords don't match,</strong> try again</div>
 	<div class='alert alert-success hidden' id='changeMatchAdmin' role='alert'><strong>Well done!</strong> You passwords match</div>
 	</div>
